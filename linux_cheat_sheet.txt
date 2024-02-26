@@ -342,7 +342,7 @@ Multiple Commands
     <command> 2>&1 <file>                                 | Output and errors from <command> are redirected and appended to <file>
 
     <command> << <text>                                   | <command> stops at <text>
-                                                            | e.g. "wc data.txt << "STOP"" will show the word count until the word "STOP" appears
+                                                            | e.g. "cat << "endhere"" the cat command will not recieve any input until you type "endhere" and enter it.
 
   Chain commands ------------------------------------------------------------------------------------------------------------------
     <command1> ; <command2>                               | Executes <command1> then executes <command2>
