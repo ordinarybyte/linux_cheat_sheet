@@ -1,0 +1,353 @@
+Linux Terminal Cheat Sheet
+
+This document is based off the Linux Bash Shell Cheat Sheet PDF (archived) here from 2011: https://web.archive.org/web/20111018212827/http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf
+An active re-upload of the PDF can be found here: https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf
+The original Cheat Sheet was made by Raph D., and was available on their blog (archived) here: https://web.archive.org/web/20120106085933/http://freeworld.posterous.com/
+
+This document is intended to be viewed with a monospace font and no line wrapping.
+It was made to improve the original by providing more concise details, more information, and consistant formatting, as well as updating outdated information and changing examples.
+
+Legend:
+ | legends will append a number to indicate that they can be different, e.g. <file1>, <file2>
+ |
+ | <option1,option2,option3> is how multiple options are shown
+ | <file> is the path to the file
+ | <file name> is the name of the file, excluding file extension
+ | <directory> is the path to a directory, it should be inside '' or "" if the path includes whitespaces or other special characters
+ | <command> is any valid terminal command
+ | <number> can be any valid whole number, or with decimals or other restrictions if specified
+ | <package> can be the name of any valid package in a package repository
+ | <download url> can be any valid url which links directly to a download
+ | <archive> is the name of an archive file, including file extension
+ | <text> can be almost any string of characters
+ | <file size> can be almost any positive integer and can have a unit (k, M, G, etc.) appended to the end
+ | <time> can be any valid date or time
+ | <process name> can be any valid process name
+ | <user> can be any valid user on a system
+ | <group> can be any valid group on a system
+ | 
+ | <year> or 'YYYY' is the year
+ | <month> or 'MM' is the month
+ | <day> or 'DD' is the day of the month
+ | <weekday> or 'D' is the day of the week, can also be 0-6, 0 being Sunday
+ | <hour> or 'hh' is the hour in 24-hour time
+ | <minute> or 'mm' is the minute
+
+Table of Contents                                |Line number
+-------------------------------------------------|------------
+  Basic Commands --------------------------------|65
+    Terminal Shortcuts                           |  67
+    File Path Shortcuts                          |  86
+    Terminal Navigation                          |  96
+    File Manipulation                            |  117
+    Installing Software (Arch Linux)             |  157
+    Installing Software (Debian and Derivatives) |  171
+    Installing from Source                       |  183
+  File Data -------------------------------------|194
+    File Searching                               |  196
+    Extracting, Sorting, and Filtering Data      |  205
+    Compressing and Extracting Data              |  228
+  Time and Date ---------------------------------|240
+    Viewing                                      |  242
+    Modifying                                    |  248
+  Programs --------------------------------------|251
+    Scheduling Programs                          |  253
+    Background Processes                         |  275
+    Process Management                           |  283
+  Permissions -----------------------------------|302
+    Users and Groups                             |  304
+    File Permissions                             |  314
+  Multiple Commands -----------------------------|333
+    Flow Redirection                             |  335
+    Chain Commands                               |  347
+-------------------------------------------------|------------
+
+Basic Commands
+
+  Terminal Shortcuts --------------------------------------------------------------------------------------------------------------
+    Ctrl+L                                                | Clear the terminal
+    Ctrl+D                                                | Exit (sends a signal indicating the end of a text stream)
+    Ctrl+C                                                | Kills the current program (lets the program intercept the command to clean up before exiting)
+    Ctrl+Z                                                | Pause current program
+
+    Shift+'PgUp'                                          | Scrolls up the terminal
+    Shift+'PgDn'                                          | Scrolls down the terminal
+
+    Ctrl+A                                                | Cursor to the start of the line
+    Ctrl+E                                                | Cursor to the end of the line
+    Ctrl+U                                                | Delete everything left of the cursor
+    Ctrl+K                                                | Delete everything right of the cursor
+    Ctrl+W                                                | Delete first word on the left
+
+    Ctrl+R                                                | Reverse search history
+    Tab                                                   | Auto complete a file or command
+    !!                                                    | Repeat last command
+
+  File Path Shortcuts -------------------------------------------------------------------------------------------------------------
+    /                                                     | Root directory, parent path to all the files on a system (always used to specify absolute paths)
+                                                            | e.g. "/home/user/Documents/data/data-tuesday.csv" is the absolute path for "./data/data-tuesday.csv" when working in "~/Documents"
+    .                                                     | Working directory
+                                                            | e.g. "cd ./downloaded_files/" functions the same as "cd /home/user/Downloads/downloaded_files/" when working in "/home/user/Downloads"
+    ~                                                     | Home directory
+                                                            | e.g. "cd ~/Documents/"
+    ..                                                    | Parent of working directory
+                                                            |e.g. "cd .." functions the same as "cd /home/user/" when working in "/home/user/Downloads"
+
+  Terminal Navigation -------------------------------------------------------------------------------------------------------------
+    ls -a                                                 | Lists all files and directories in working directory
+    ls -l                                                 | Detailed list
+    ls -h                                                 | Sizes are appended with units (k, M, G, etc.) for readability
+    ls <directory>                                        | Lists files and directories in <directory>
+    ls *.<text>                                           | Lists all .<text> files
+                                                            | e.g. "ls *.sh" lists all .sh files, such as "startup.sh" or "cleanfiles.sh"
+    ls <text1> <text2>                                    | Lists results for <text1> or <text2> only
+
+    cd <directory>                                        | Changes working directory
+    cd /                                                  | Changes working directory to root
+    cd ..                                                 | Changes to parent directory
+
+    du -h                                                 | Disk usage of directories, human readable
+    du -ah                                                | Disk usage of files & directories, human readable
+    du -sh                                                | Disk summary of usage of directories, human readable
+
+    pwd                                                   | Prints the working directory
+
+    man <command>                                         | Shows manual for <command>
+
+  File Manipulation ---------------------------------------------------------------------------------------------------------------
+    cat <file>                                            | Prints the content of <file>
+                                                            | append with " | less" for better readability
+    cat > <file>                                          | Creates or overwrites <file>, each line you enter will be written to each line of <file>
+    head -n <number> <file>                               | Prints the content of <file> at <number> of lines from the top
+    tail -n <number> <file>                               | Prints the content of <file> at <number> of lines from the bottom
+
+    mkdir <directory>                                     | Creates directories
+                                                            | e.g. "mkdir ../Downloads/plaintexts /mnt/tempstorage1/photos/"
+                                                            |      "mkdir rich_texts"
+                                                            |      "mkdir '~/My Photos/Tuesday/' "
+
+    cp <file1> <file2>                                    | Copy and rename a file
+                                                            | e.g. "cp ~/Downloads/example.png /mnt/my_images/renamedexample.png"
+    cp <file> <directory>                                 | Copy into a directory
+    cp -R <directory1> <directory2>                       | Copy and rename a directory
+    cp <text>* <directory>                                | Copy all files starting with "<text>" to <directory>
+                                                            | e.g. "cp data-* ../data" copies all files starting with "data-" (such as "data-tuesday.csv") to the "data" directory
+
+    mv <file1> <file2>                                    | Move and/or rename a file
+                                                            | e.g. "mv photo.jpg photo-wednesday.jpg" renames photo.jpg
+                                                            |      "mv photo.jpg .." moves photo.jpg into parent directory
+                                                            |      "mv /mnt/newusb/data.txt ~/Downloads/sortme.txt" moves and renames data.txt
+    mv <file> <directory>                                 | Move <file> into <directory>
+    mv <directory1> <directory2>                          | Move <directory> into <directory2>
+
+    rm <file>                                             | Delete file (or multiple)
+                                                            | e.g. "rm data-tue* data-wed* *.svg" removes all files starting with "data-tue" and all .svg files
+                                                            |      "rm !(data-monday.txt)" removes all files except data-monday.txt
+    rm -r <directory>                                     | Delete directory (or multiple)
+    rm -i <file>                                          | Ask for confirmation for each file
+    rm -f <file>                                          | Force deletion of a file
+
+    touch <file>                                          | Changes the access and modified dates of <file> to current time
+                                                            | <file> will be created if it does not exist
+
+    ln <file1> <file2>                                    | Creates <file2> as a hard link to <file1>
+    ln -s <file1> <file2>                                 | Creates <file2> as a symbolic link to <file1>
+    ln -s <directory1> <directory2>                       | Creates <directory2> as a symbolic link to <directory1>
+
+  Installing Software (Arch Linux) ------------------------------------------------------------------------------------------------
+    pacman -S <package>                                   | Installs <package> and any dependancies
+    pacman -R <package>                                   | Uninstalls <package>
+    pacman -Rs <package>                                  | Uninstalls <package> and any dependancies which are no longer required
+
+    pacman -Qs <text>                                     | Searches repositories and lists packages with <text>
+    pacman -Syu                                           | Updates all packages
+                                                            | "S" synchronizes packages including all dependencies
+                                                            | "y" refreshes package database
+                                                            | "u" upgrades outdated packages
+
+    yay -S <package>                                      | Installs <package> from the AUR if available
+                                                            | you can install yay with "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
+
+  Installing Software (Debian and Derivatives) ------------------------------------------------------------------------------------
+    apt install <package>                                 | Installs <package> and any dependancies
+    apt remove <package>                                  | Uninstalls <package>
+    apt autoremove                                        | Uninstalls orphaned dependancies (packages no longer required)
+                                                            | best practice to run after "apt remove <package>" to clean any unused dependancies
+
+    apt search <text>                                     | Searches repositories and lists packages with <text>
+    apt update                                            | Updates repositories and checks for newer package versions
+    apt upgrade                                           | Upgrades current packages
+                                                            | best practice to first run "apt update" to get the latest packages
+    apt full-upgrade                                      | Upgrades the entire system (will remove currently installed packages if needed to update the system)
+
+  Installing from Source ----------------------------------------------------------------------------------------------------------
+    1. | wget <download url>                              | Download the source file (should be .tar.gz, .tar.bz2, .zip, or another compressed format)
+    2. | ls                                               | Verify file name and existance
+    3. | tar -xf <archive>                                | Decompress the file
+       |                                                    | if .zip: "unzip <file name>.zip"
+    4. | ls                                               | Check for a new directory (most likely has the same, or similar name to <archive>)
+    5. | cd <directory>                                   | Change working directory to the new <directory>
+    6. | ./configure                                      | Creates a makefile
+    7. | make                                             | Builds software package
+    8. | sudo make install                                | Install package to correct locations on machine
+
+File Data
+
+  File Searching ------------------------------------------------------------------------------------------------------------------
+    find <directory> -name "<text>"                       | Search all file names in <directory> for "<text>"
+                                                            | e.g. "find ~ -name "linux_ch*"" lists all files beginning with "linux_ch"
+                                                            |      "find ~ -name "*.png"" lists all .png files
+                                                            | append with " | less" for better readability
+    find <directory> -size +<file size>                   | Search <directory> for files larger than <file size>
+    find -name "<text>" -mtime -<number>                  | Search <directory> for files called "<text>" modified less than <number> days ago
+    find -type d                                          | Search working directory for directories
+
+  Extracting, Sorting, and Filtering Data -----------------------------------------------------------------------------------------
+    grep <text> <file>                                    | Print lines with <text> in <file>
+    grep -i <text> <file>                                 | Print lines with <text> in <file> while ignoring capitalization
+    grep -v <text> <file>                                 | Print lines without <text> in <file>
+    grep -r <text> <directory>                            | Print file names with <text> in <directory>
+    grep -E "^<text>" <file>                              | Print lines starting with <text> in <file>
+    grep -E "<text>$" <file>                              | Print lines ending with <text> in <file>
+    grep -E "...<text>" <file>                            | Print lines containing any 3 characters followed by <text> in <file>
+    grep -E "[0-4]" <file>                                | Print lines containing numbers 0-4
+    grep -E "[a-zA-Z]" <file>                             | Print lines containing alphabetical letters
+    grep -E "^[A-Z].*\.$" <file>                          | Print lines that start with a capital letter which is followed by any character, and the line ends with a period
+
+    sort <file>                                           | Sort the content of <file> alphabetically
+    sort -o <file1> <file2>                               | Sort the content of <file2> alphabetically and output it to <file1>
+    sort -r <file>                                        | Sort the content of <file> reverse alphabetically
+    sort -R <file>                                        | Sort the content of <file> randomly
+
+    wc <file>                                             | Prints the number of lines, number of words, byte size, and file path
+                                                            | e.g. "wc Documents/plaintexts/*" lists all files in the plaintexts/ directory
+                                                            |      "wc ~/Documents/data/data-friday.txt"
+
+    cut -c <number1>-<number2> <file>                     | Prints everything between and including the <number1> character to <number2> character of each line
+
+  Compressing and Extracting Data -------------------------------------------------------------------------------------------------
+    tar -zcf <file name>.tar.gz <file>                    | Compresses <file> with gzip into the archive <file name>.tar.gz
+                                                            | "z" uses gzip, "j" uses bzip2, "J" uses xz
+                                                            | e.g. "tar -Jcf all_data.tar.xz data-monday.txt data-tuesday.txt data-wednesday.txt"
+
+    tar -xf <archive>                                     | Decompresses <file> and outputs contents to working directory
+    tar -tf <archive>                                     | Lists contents of <file> without decompressing it
+
+    zcat <file>                                           | View compressed file in the console (same as cat)
+    zmore <file>                                          | View compressed file in the console (same as more)
+    zless <file>                                          | View compressed file in the console (same as less)
+
+Time and Date
+
+  Viewing -------------------------------------------------------------------------------------------------------------------------
+    timedatectl                                           | Prints information about current system time, time zone, and synchronization
+    date                                                  | Prints the current system time and date
+    date +%H                                              | Prints the current hour with preceding zero
+    date +%H:%M:%S                                        | Prints the current hour, minute, and seconds
+
+  Modifying -----------------------------------------------------------------------------------------------------------------------
+    date <MMDDhhmmYYYY>                                   | Sets the system time and date with the format MMDDhhmmYYYY
+
+Programs
+
+  Scheduling Programs -------------------------------------------------------------------------------------------------------------
+    watch <command>                                       | Executes <command> every 2 seconds and displays the output
+    watch -n <number> <command>                           | Executes <command> every <number> seconds (up to 1 decimal place) and displays the output
+
+    at <time>                                             | Allows you to enter commands which will execute on <time>
+    atq                                                   | Lists pending commands
+    atrm <number>                                         | Removes pending command <number>
+
+    sleep <number>                                        | Pauses for <number> seconds
+                                                            | can be appended with s, m, h, or d to specify units
+
+    crontab -e                                            | Create or edit the users crontab entry
+                                                            | in crontab, valid format is "mm hh DD MM D <command>"
+                                                            | replace units with "*" for any
+                                                            | e.g. "* * * * * <command>" executes every minute
+                                                            |      "00 15 1,10,15,18 * * <command>" executes on days 1, 10, 15, and 18 each month at 3:00pm
+                                                            |      "45 17 1-21 * * <command>" executes every day at 5:45pm on days 1-21 each month
+                                                            |      "0 */2 * * * <command>" executes every 2 hours
+                                                            |      "/30 9-17 * * 1-5 <command>" executes every 30 minutes, from 9am-5pm on Monday to Friday
+    crontab -l                                            | Lists the users crontab entry
+    crontab -r                                            | Delete the users crontab entry
+
+  Background Processes ------------------------------------------------------------------------------------------------------------
+    <command> &                                           | Makes <command> run in the background
+    nohup <command>                                       | Makes <command> continue running when terminal is closed
+
+    jobs                                                  | Lists programs running in the background
+    fg <number>                                           | Makes program <number> run in the foreground
+    bg <number>                                           | Makes program <number> run in the background
+
+  Process Management --------------------------------------------------------------------------------------------------------------
+    w                                                     | Lists current users and what they are doing
+    top                                                   | Shows a dynamic list of running processes and system resources
+                                                            | "q" to quit, "h" for help, "k" to kill a process
+    htop                                                  | Shows an interactive dynamic list of running processes and system resources with color
+    ps                                                    | Lists currently running processes
+    ps -ef                                                | Lists all currently running processes
+                                                            | append with " | less" for better readability
+    ps -ejH                                               | Lists process tree
+    kill <number>                                         | Gracefully kill process with <number> process ID (sends signal to process to exit)
+                                                            | identical to "kill -15 <number>"
+                                                            | can replace <number> with process name
+    kill -9 <number>                                      | Kills process with <number> process ID (requests the OS to immediately cease process)
+    killall <process name>                                | Kills multiple processes by name
+
+    halt                                                  | Halts the machine
+    poweroff                                              | Shuts down the machine
+    reboot                                                | Restarts the machine
+
+Permissions
+
+  Users and Groups ----------------------------------------------------------------------------------------------------------------
+    adduser <text>                                        | Creates a new user named <text>
+    passwd <user>                                         | Changes the password for <user>
+    deluser <user>                                        | Deletes <user>
+    usermod -l <text> <user>                              | Change name of <user> to <text>
+
+    addgroup <text>                                       | Create a new user group named <text>
+    delgroup <group>                                      | Deletes <group>
+    usermod -aG <group> <user>                            | Adds <user> to <group>
+
+  File Permissions ----------------------------------------------------------------------------------------------------------------
+    chown <user> <file>                                   | Sets ownership of <file> to <user>
+    chown <user>:<group> <file>                           | Sets user ownership of <file> to <user> and group ownership to <group>
+    chown -R <user>:<group> <directory>                   | Sets user ownership of <directory> and all subdirectories to <user> and group ownership to <group>
+    chmod <u,g,o,a><+,-,=><r,w,x> <file>                  | Modifies permissions of <file>
+                                                            | "u" is user, "g" is group, "o" is other, "a" is all
+                                                            | "+" adds a right, "-" removes a right, "=" sets a right
+                                                            | "r" is read permission, "w" is write permission, "x" allows execution
+                                                            | e.g. "chmod a+x startup.sh" makes startup.sh executable by anyone
+                                                            |      "chmod ug+rwx data.txt" gives full permissions of data.txt to user and group
+    chmod <number1><number2><number3> <file>              | Modifies permissions of <file>
+                                                            | <number> can be any whole number from 0-7
+                                                            | "r"=4, "w"=2, "x"=1
+                                                            | <number1> is user, <number2> is group, <number3> is other
+                                                            | e.g. "rwx"="4+2+1"=7
+                                                            |      "rx"="4+1"=5
+                                                            |      "chmod 777 startup.sh" gives everyone read, write, and execute permissions
+                                                            |      "chmod 664 photo.jpg" gives user and group read and write permissions, and read permission to others
+
+Multiple Commands
+
+  Flow redirection ----------------------------------------------------------------------------------------------------------------
+    <command> > <file>                                    | Output of <command> is redirected into <file>
+                                                            | e.g. "ps -ejH > ouput.txt"
+                                                            |      "cat > data.txt"
+    <command> >> <file>                                   | Output of <command> is redirected and appended to <file>
+    <command> 2> <file>                                   | Errors from <command> are redirected into <file>
+                                                            | e.g. "ls -a notadir/ > data.txt 2> errors.log"
+    <command> 2>&1 <file>                                 | Output and errors from <command> are redirected and appended to <file>
+
+    <command> << <text>                                   | <command> stops at <text>
+                                                            | e.g. "wc data.txt << "STOP"" will show the word count until the word "STOP" appears
+
+  Chain commands ------------------------------------------------------------------------------------------------------------------
+    <command1> ; <command2>                               | Executes <command1> then executes <command2>
+    <command1> | <command2>                               | Executes <command1> and redirects the output to <command2>
+    <command1> && <command2>                              | Executes <command1> and only executes <command2> if <command1> was successful
+    <command1> || <command2>                              | Executes <command1> and only executes <command2> if <command1> failed
+
+This work is openly licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. https://creativecommons.org/licenses/by-nc-sa/4.0/
