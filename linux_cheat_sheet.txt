@@ -350,4 +350,4 @@ Multiple Commands
     <command1> && <command2>                              | Executes <command1> and only executes <command2> if <command1> was successful
     <command1> || <command2>                              | Executes <command1> and only executes <command2> if <command1> failed
 
-This work is openly licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. https://creativecommons.org/licenses/by-nc-sa/4.0/
+This work is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
