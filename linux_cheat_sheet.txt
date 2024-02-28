@@ -4,25 +4,29 @@ This document is based off the Linux Bash Shell Cheat Sheet PDF (archived) here 
 An active re-upload of the PDF can be found here: https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf
 The original Cheat Sheet was made by Raph D., and was available on their blog (archived) here: https://web.archive.org/web/20120106085933/http://freeworld.posterous.com/
 
-This document is intended to be viewed with a monospace font and no line wrapping.
-It was made to improve the original by providing more concise details, more information, and consistant formatting, as well as updating outdated information and changing examples.
+This document is intended to be viewed with a monospace font and without line wrapping.
+It was made to improve upon the original by providing more concise details, more information, and consistent formatting, as well as updating outdated information and changing examples.
 
 Legend:
- | legends will append a number to indicate that they can be different, e.g. <file1>, <file2>
+ | a number will be appended to indicate that they can be different, e.g. <file1>, <file2>
  |
- | <option1,option2,option3> is how multiple options are shown
+ | <\n> indicates a new line, also indicated either by describing a newline character or using multiple lines in the document
+ | <option1/option2/option3> is how multiple options are shown
  | <file> is the path to the file
- | <file name> is the name of the file, excluding file extension
+ | <filename> is the name of the file, excluding file extension
  | <directory> is the path to a directory, it should be inside '' or "" if the path includes whitespaces or other special characters
  | <command> is any valid terminal command
  | <number> can be any valid whole number, or with decimals or other restrictions if specified
  | <package> can be the name of any valid package in a package repository
- | <download url> can be any valid url which links directly to a download
+ | <address> can be any valid URL or IP address
  | <archive> is the name of an archive file, including file extension
  | <text> can be almost any string of characters
  | <file size> can be almost any positive integer and can have a unit (k, M, G, etc.) appended to the end
+ | <disk> can be any valid disk path (such as /dev/sda)
+ | <device> can be any valid disk or partition path (such as /dev/nvme0n1p1 or /dev/sdb)
+ | <source> can be a file or directory acting as a source
+ | <dest> can be a file or directory acting as a destination
  | <time> can be any valid date or time
- | <process name> can be any valid process name
  | <user> can be any valid user on a system
  | <group> can be any valid group on a system
  | 
@@ -32,46 +36,58 @@ Legend:
  | <weekday> or 'D' is the day of the week, can also be 0-6, 0 being Sunday
  | <hour> or 'hh' is the hour in 24-hour time
  | <minute> or 'mm' is the minute
+ | <second> or 'ss' is the second
 
-Table of Contents                                |Line number
--------------------------------------------------|------------
-  Basic Commands --------------------------------|65
-    Terminal Shortcuts                           |  67
-    File Path Shortcuts                          |  86
-    Terminal Navigation                          |  96
-    File Manipulation                            |  117
-    Installing Software (Arch Linux)             |  157
-    Installing Software (Debian and Derivatives) |  171
-    Installing from Source                       |  183
-  File Data -------------------------------------|194
-    File Searching                               |  196
-    Extracting, Sorting, and Filtering Data      |  205
-    Compressing and Extracting Data              |  228
-  Time and Date ---------------------------------|240
-    Viewing                                      |  242
-    Modifying                                    |  248
-  Programs --------------------------------------|251
-    Scheduling Programs                          |  253
-    Background Processes                         |  275
-    Process Management                           |  283
-  Permissions -----------------------------------|302
-    Users and Groups                             |  304
-    File Permissions                             |  314
-  Multiple Commands -----------------------------|333
-    Flow Redirection                             |  335
-    Chain Commands                               |  347
--------------------------------------------------|------------
+Table of Contents                                 |Line number
+--------------------------------------------------|------------
+  Basic Information ------------------------------|81
+    Terminal Shortcuts                            |  83
+    File Path Shortcuts                           |  108
+    Console/Terminal/Shell                        |  118
+    Shells                                        |  126
+  Basic Commands ---------------------------------|131
+    Terminal Navigation                           |  133
+    File Manipulation                             |  166
+    Text Editors                                  |  210
+    Installing Software (Arch Linux)              |  219
+    Installing Software (Debian and Derivatives)  |  233
+    Installing from Source (Do Your Own Research) |  245
+  Network ----------------------------------------|256
+    Local                                         |  258
+    Internet                                      |  274
+    Data over Internet                            |  287
+  File Data --------------------------------------|316
+    File Searching                                |  318
+    Extracting, Sorting, and Filtering Data       |  332
+    Compressing and Extracting Data               |  377
+    Mounting and Filesystems                      |  389
+  Time and Date ----------------------------------|409
+    Viewing                                       |  411
+    Modifying                                     |  418
+  Programs ---------------------------------------|424
+    Scheduling Programs                           |  426
+    Background Processes                          |  448
+    Process Management                            |  456
+  Permissions ------------------------------------|475
+    Users and Groups                              |  477
+    File Permissions                              |  487
+  Multiple Commands ------------------------------|506
+    Flow Redirection                              |  508
+    Chain Commands                                |  525
+    Executing and Scripting                       |  534
+  License ----------------------------------------|565
+--------------------------------------------------|------------
 
-Basic Commands
+Basic Information ##################################################################################################################################################################
 
-  Terminal Shortcuts --------------------------------------------------------------------------------------------------------------
+  Terminal Shortcuts ---------------------------------------------------------------------------------------------------------------------------------------------------------------
     Ctrl+L                                                | Clear the terminal
     Ctrl+D                                                | Exit (sends a signal indicating the end of a text stream)
     Ctrl+C                                                | Kills the current program (lets the program intercept the command to clean up before exiting)
     Ctrl+Z                                                | Pause current program
 
-    Shift+'PgUp'                                          | Scrolls up the terminal
-    Shift+'PgDn'                                          | Scrolls down the terminal
+    Shift+PgUp                                            | Scrolls up the terminal
+    Shift+PgDn                                            | Scrolls down the terminal
 
     Ctrl+A                                                | Cursor to the start of the line
     Ctrl+E                                                | Cursor to the end of the line
@@ -79,11 +95,17 @@ Basic Commands
     Ctrl+K                                                | Delete everything right of the cursor
     Ctrl+W                                                | Delete first word on the left
 
+    'Up Arrow'                                            | Navigates previous commands
+    'Down Arrow'                                          | Navigates previous commands
+    Alt+.                                                 | Inserts the last argument from previous commands
+
+    Ctrl+Alt+F<number>                                    | On most distributions, F1-F6 changes between different virtual consoles, and F7 is the X session (the GUI windows and apps)
+
     Ctrl+R                                                | Reverse search history
     Tab                                                   | Auto complete a file or command
     !!                                                    | Repeat last command
 
-  File Path Shortcuts -------------------------------------------------------------------------------------------------------------
+  File Path Shortcuts --------------------------------------------------------------------------------------------------------------------------------------------------------------
     /                                                     | Root directory, parent path to all the files on a system (always used to specify absolute paths)
                                                             | e.g. "/home/user/Documents/data/data-tuesday.csv" is the absolute path for "./data/data-tuesday.csv" when working in "~/Documents"
     .                                                     | Working directory
@@ -93,33 +115,61 @@ Basic Commands
     ..                                                    | Parent of working directory
                                                             |e.g. "cd .." functions the same as "cd /home/user/" when working in "/home/user/Downloads"
 
-  Terminal Navigation -------------------------------------------------------------------------------------------------------------
+  Console/Terminal/Shell -----------------------------------------------------------------------------------------------------------------------------------------------------------
+    Console                                               | Sometimes refers to a physical terminal (like the connected keyboard and monitor), and is a low-level part of the system
+                                                            | can also be called a tty (teletypewriter)
+    Terminal                                              | Sometimes refers to a terminal emulator, or the hardware (like a connected keyboard and monitor), running a shell
+    Terminal Emulator                                     | A software wrapper for a shell
+    Shell                                                 | A program which interprets and processes input and returns output
+    Command Line                                          | An interface used to enter commands (Command-Line Interface, CLI)
+
+  Shells ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    sh                                                    | A programming language described by the POSIX standard (sh is a specification, not implementation, and usually links to another implementation like bash)
+    bash                                                  | An implementation of the POSIX standard, although not fully POSIX-compliant (it may change the behaviour of valid POSIX shell scripts), it has more functionality than sh
+                                                            | you can search for lists of differences between shells
+
+Basic Commands #####################################################################################################################################################################
+
+  Terminal Navigation --------------------------------------------------------------------------------------------------------------------------------------------------------------
     ls -a                                                 | Lists all files and directories in working directory
     ls -l                                                 | Detailed list
     ls -h                                                 | Sizes are appended with units (k, M, G, etc.) for readability
     ls <directory>                                        | Lists files and directories in <directory>
     ls *.<text>                                           | Lists all .<text> files
                                                             | e.g. "ls *.sh" lists all .sh files, such as "startup.sh" or "cleanfiles.sh"
-    ls <text1> <text2>                                    | Lists results for <text1> or <text2> only
+    ls !(<text>)                                          | Lists all files except <text>
+    ls <text1> <text2>                                    | Lists results for both <text1> and <text2>
 
     cd <directory>                                        | Changes working directory
     cd /                                                  | Changes working directory to root
     cd ..                                                 | Changes to parent directory
+    cd -                                                  | Changes to previous directory
 
-    du -h                                                 | Disk usage of directories, human readable
-    du -ah                                                | Disk usage of files & directories, human readable
-    du -sh                                                | Disk summary of usage of directories, human readable
+    du -h                                                 | Lists storage usage of directories, human readable sizes
+    du -ah                                                | Lists storage usage of files & directories, human readable sizes
+    du -sh                                                | Lists storage summary of usage of directories, human readable sizes
 
     pwd                                                   | Prints the working directory
 
+    history                                               | Lists history of commands
+
+    alias <text>=<command>                                | Sets an alias for <text> to function as <command>
+    <text1>=<text2>                                       | Sets variable "<text1>" to be "<text2>"
+                                                            | you can use "<text2>" in other commands by typing "$<text1>"
+
     man <command>                                         | Shows manual for <command>
 
-  File Manipulation ---------------------------------------------------------------------------------------------------------------
+    less <file>                                           | Shows the contents of <file> in an interactive, dynamic interface
+
+    echo <text>                                           | Prints <text>
+
+  File Manipulation ----------------------------------------------------------------------------------------------------------------------------------------------------------------
     cat <file>                                            | Prints the content of <file>
-                                                            | append with " | less" for better readability
+                                                            | append " | less" for better readability
     cat > <file>                                          | Creates or overwrites <file>, each line you enter will be written to each line of <file>
     head -n <number> <file>                               | Prints the content of <file> at <number> of lines from the top
     tail -n <number> <file>                               | Prints the content of <file> at <number> of lines from the bottom
+    tail -f <file>                                        | Prints appended data as <file> grows
 
     mkdir <directory>                                     | Creates directories
                                                             | e.g. "mkdir ../Downloads/plaintexts /mnt/tempstorage1/photos/"
@@ -146,6 +196,9 @@ Basic Commands
     rm -r <directory>                                     | Delete directory (or multiple)
     rm -i <file>                                          | Ask for confirmation for each file
     rm -f <file>                                          | Force deletion of a file
+    shred <file>                                          | Overwrites the data of <file> with random data
+    shred -f <file>                                       | Forces overwriting the data of <file> with random data
+    shred -u <file>                                       | Overwrites the data of <file> with random data and removes the file
 
     touch <file>                                          | Changes the access and modified dates of <file> to current time
                                                             | <file> will be created if it does not exist
@@ -154,10 +207,19 @@ Basic Commands
     ln -s <file1> <file2>                                 | Creates <file2> as a symbolic link to <file1>
     ln -s <directory1> <directory2>                       | Creates <directory2> as a symbolic link to <directory1>
 
-  Installing Software (Arch Linux) ------------------------------------------------------------------------------------------------
-    pacman -S <package>                                   | Installs <package> and any dependancies
+  Text Editors ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    nano <file>                                           | Opens the nano editor to create or edit <file>
+                                                            | shortcuts and options are displayed at the bottom of the terminal
+    vim <file>                                            | Opens the vim editor to create or edit <file>
+                                                            | exit by typing ":q" in normal mode, ":wq" to save and exit, or ":q!" to exit without saving
+                                                            | enter insert mode (start typing) by pressing "i", exit to normal mode with the "Esc" key, and enter visual mode (selecting text) with "v"
+                                                            | in normal mode, type "dd" to delete the selected line, "yy" to copy the line, "P" to paste before cursor, and "p" to paste clipboard after cursor
+                                                            | select text by starting visual mode in the first position, then moving the cursor to the second position, press "y" to copy, or "d" to delete, then "p" to paste
+
+  Installing Software (Arch Linux) -------------------------------------------------------------------------------------------------------------------------------------------------
+    pacman -S <package>                                   | Installs <package> and any dependencies
     pacman -R <package>                                   | Uninstalls <package>
-    pacman -Rs <package>                                  | Uninstalls <package> and any dependancies which are no longer required
+    pacman -Rs <package>                                  | Uninstalls <package> and any dependencies which are no longer required
 
     pacman -Qs <text>                                     | Searches repositories and lists packages with <text>
     pacman -Syu                                           | Updates all packages
@@ -168,11 +230,11 @@ Basic Commands
     yay -S <package>                                      | Installs <package> from the AUR if available
                                                             | you can install yay with "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 
-  Installing Software (Debian and Derivatives) ------------------------------------------------------------------------------------
-    apt install <package>                                 | Installs <package> and any dependancies
+  Installing Software (Debian and Derivatives) -------------------------------------------------------------------------------------------------------------------------------------
+    apt install <package>                                 | Installs <package> and any dependencies
     apt remove <package>                                  | Uninstalls <package>
-    apt autoremove                                        | Uninstalls orphaned dependancies (packages no longer required)
-                                                            | best practice to run after "apt remove <package>" to clean any unused dependancies
+    apt autoremove                                        | Uninstalls orphaned dependencies (packages no longer required)
+                                                            | best practice to run after "apt remove <package>" to clean any unused dependencies
 
     apt search <text>                                     | Searches repositories and lists packages with <text>
     apt update                                            | Updates repositories and checks for newer package versions
@@ -180,44 +242,116 @@ Basic Commands
                                                             | best practice to first run "apt update" to get the latest packages
     apt full-upgrade                                      | Upgrades the entire system (will remove currently installed packages if needed to update the system)
 
-  Installing from Source ----------------------------------------------------------------------------------------------------------
-    1. | wget <download url>                              | Download the source file (should be .tar.gz, .tar.bz2, .zip, or another compressed format)
-    2. | ls                                               | Verify file name and existance
+  Installing from Source (Do Your Own Research) ------------------------------------------------------------------------------------------------------------------------------------
+    1. | wget <address>                                   | Download the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
+    2. | ls                                               | Verify file name and existence
     3. | tar -xf <archive>                                | Decompress the file
-       |                                                    | if .zip: "unzip <file name>.zip"
+       |                                                    | if .zip: "unzip <archive>.zip"
     4. | ls                                               | Check for a new directory (most likely has the same, or similar name to <archive>)
     5. | cd <directory>                                   | Change working directory to the new <directory>
     6. | ./configure                                      | Creates a makefile
     7. | make                                             | Builds software package
     8. | sudo make install                                | Install package to correct locations on machine
 
-File Data
+Network ############################################################################################################################################################################
 
-  File Searching ------------------------------------------------------------------------------------------------------------------
+  Local ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ip <a/addr>                                           | Displays information about network interfaces
+
+    nmcli                                                 | Displays status and configurations of network interfaces
+    nmcli device wifi list                                | Lists available Wi-Fi access points
+    nmcli device wifi connect <text1> password <text2>    | Connect to SSID <text1> with the password <text2>
+    nmcli --ask device wifi connect <text>                | Connect to open security SSID <text>
+    nmcli connection edit type ethernet                   | Opens an interactive menu to manage ethernet connections
+
+    nmtui                                                 | Displays an interactive TUI menu to configure network interfaces
+
+    ufw status                                            | Displays open ports on the local system
+    ufw <enable/disable>                                  | Enables and disables the ufw firewall
+    ufw allow <number>                                    | Opens port <number>
+    ufw deny <number>                                     | Closes port <number>
+
+  Internet -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ping <address>                                        | Pings <address>
+    ping -c <number> <address>                            | Pings <address> <number> times
+    ping -i <number> <address>                            | Pings <address> every <number> seconds
+
+    traceroute <address>                                  | Traces the route of packets sent to <address>
+    tracepath <address>                                   | Traces the path of packets sent to <address> (very similar to traceroute)
+
+    dig <address>                                         | When <address> is a URL, it queries DNS and prints the response as well as other information
+    nslookup <address>                                    | When <address> is a domain, it prints the IP address, when <address> is an IP address, it prints the domain name
+    netstat -a                                            | Lists all connected and listening sockets
+                                                            | append " | less" for better readability
+
+  Data over Internet ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+    wget <address>                                        | Downloads from <address>
+                                                            | e.g. "wget google.com" downloads "index.html" from "google.com"
+                                                            |      "wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.17.2.tar.xz" downloads a compressed Linux kernel
+    curl <address>                                        | Prints the content of <address>
+
+    ssh <address>                                         | Connects to SSH server at <address>, allows you to interact with the host remotely
+    ssh <user>@<address>                                  | Connects to SSH server at <address> as <user>
+    ssh <address> -p <number>                             | Connects to SSH server at <address> over port <number>
+    ssh-keygen -t rsa                                     | Creates an SSH key pair in "~/.ssh", run this command on the client system
+    ssh-copy-id <address>                                 | Copies the public key to <address> (the server), run this command on the client system
+
+    sftp <user>@<address>                                 | Connects to SFTP server at <address> as <user>, allows you to securely transfer files between machines
+                                                            | in sftp, enter "help" or "?" for help
+                                                            |          enter "get <file>" to download a file on the server
+                                                            |          enter "put <file> <directory>" to upload local <file> to remote <directory>
+                                                            |          enter "rm <file>" to delete <file> on the server
+                                                            |          enter "rmdir <directory>" to delete <directory> on the server
+                                                            |          enter "mkdir <directory>" to create <directory> on the server
+
+    scp <source> <user>@<address>:<dest>                  | Copies <source> on local machine to <dest> at <address>
+    scp <user>@<address>:<source> <dest>                  | Copies <source> from <address> to <dest> on local machine
+
+    rsync <source> <user>@<address>:<dest>                | Copies <source> on local machine to <dest> at <address>
+    rsync <user>@<address>:<source> <dest>                | Copies <source> from <address> to <dest> on local machine
+    rsync -P <user>@<address>:<source> <dest>             | Copies <source> from <address> to <dest> on local machine and allows resuming the command after interruption
+
+    w3m <address>                                         | Opens a TUI internet browser and loads <address>, not included on most distributions
+
+File Data ##########################################################################################################################################################################
+
+  File Searching -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    locate <text>                                         | Search all file names in a database for <text>
+                                                            | append " | less" for better readability
+    locate -r /<text>$                                    | Search all file names in a database for exact matches of <text>
+    updatedb                                              | Updates the database
+
     find <directory> -name "<text>"                       | Search all file names in <directory> for "<text>"
                                                             | e.g. "find ~ -name "linux_ch*"" lists all files beginning with "linux_ch"
                                                             |      "find ~ -name "*.png"" lists all .png files
-                                                            | append with " | less" for better readability
+                                                            | append " | less" for better readability
     find <directory> -size +<file size>                   | Search <directory> for files larger than <file size>
-    find -name "<text>" -mtime -<number>                  | Search <directory> for files called "<text>" modified less than <number> days ago
+    find -name "<text>" -mtime -<number>                  | Search <directory> for files named "<text>" modified less than <number> days ago
     find -type d                                          | Search working directory for directories
 
-  Extracting, Sorting, and Filtering Data -----------------------------------------------------------------------------------------
-    grep <text> <file>                                    | Print lines with <text> in <file>
-    grep -i <text> <file>                                 | Print lines with <text> in <file> while ignoring capitalization
-    grep -v <text> <file>                                 | Print lines without <text> in <file>
-    grep -r <text> <directory>                            | Print file names with <text> in <directory>
-    grep -E "^<text>" <file>                              | Print lines starting with <text> in <file>
-    grep -E "<text>$" <file>                              | Print lines ending with <text> in <file>
-    grep -E "...<text>" <file>                            | Print lines containing any 3 characters followed by <text> in <file>
-    grep -E "[0-4]" <file>                                | Print lines containing numbers 0-4
-    grep -E "[a-zA-Z]" <file>                             | Print lines containing alphabetical letters
-    grep -E "^[A-Z].*\.$" <file>                          | Print lines that start with a capital letter which is followed by any character, and the line ends with a period
+  Extracting, Sorting, and Filtering Data ------------------------------------------------------------------------------------------------------------------------------------------
+    grep <text> <file>                                    | Prints lines with <text> in <file>
+    grep -i <text> <file>                                 | Prints lines with <text> in <file> while ignoring capitalization
+    grep -v <text> <file>                                 | Prints lines without <text> in <file>
+    grep -r <text> <directory>                            | Prints file names with <text> in <directory>
+    grep -E "^<text>" <file>                              | Prints lines starting with <text> in <file>
+    grep -E "<text>$" <file>                              | Prints lines ending with <text> in <file>
+    grep -E "...<text>" <file>                            | Prints lines containing any 3 characters followed by <text> in <file>
+    grep -E "[0-9]" <file>                                | Prints lines containing numbers in <file>
+    grep -E "[a-zA-Z]" <file>                             | Prints lines containing alphabetical letters in <file>
+    grep -E "^[A-Z].*\.$" <file>                          | Prints lines that start with a capital letter which is followed by any character, and the line ends with a period in <file>
 
-    sort <file>                                           | Sort the content of <file> alphabetically
-    sort -o <file1> <file2>                               | Sort the content of <file2> alphabetically and output it to <file1>
-    sort -r <file>                                        | Sort the content of <file> reverse alphabetically
-    sort -R <file>                                        | Sort the content of <file> randomly
+    sort <file>                                           | Prints the sorted content of <file> alphabetically
+    sort -u <file>                                        | Prints the sorted content of <file> alphabetically and removes duplicates
+    sort -o <file1> <file2>                               | Prints the sorted content of <file2> alphabetically and output it to <file1>
+    sort -r <file>                                        | Prints the sorted content of <file> reverse alphabetically
+    sort -R <file>                                        | Prints the sorted content of <file> randomly
+
+    uniq <file>                                           | Prints the content of <file> without any duplicated adjacent lines
+
+    diff <file1> <file2>                                  | Display the differences between <file1> and <file2>
+    diff -c <file1> <file2>                               | Display the differences between <file1> and <file2> with context for each difference
+    diff -u <file1> <file2>                               | Display the differences between <file1> and <file2> as one file
 
     wc <file>                                             | Prints the number of lines, number of words, byte size, and file path
                                                             | e.g. "wc Documents/plaintexts/*" lists all files in the plaintexts/ directory
@@ -225,8 +359,23 @@ File Data
 
     cut -c <number1>-<number2> <file>                     | Prints everything between and including the <number1> character to <number2> character of each line
 
-  Compressing and Extracting Data -------------------------------------------------------------------------------------------------
-    tar -zcf <file name>.tar.gz <file>                    | Compresses <file> with gzip into the archive <file name>.tar.gz
+    sed 's/<text1>/<text2>/g' <file>                      | Prints the content of <file>, replacing every occurrence of <text1> with <text2>
+                                                            | "s" specifies the substitution operation
+                                                            | "g" searches for all matches in each line
+    sed '<number> s/<text1>/<text2>/g' <file>             | Prints the content of <file>, replacing every occurrence of <text1> with <text2> on line <number>
+    sed '<number1>,<number2> s/<text1>/<text2>/g' <file>  | Prints the content of <file>, replacing every occurrence of <text1> with <text2> on lines <number1>-<number2>
+    sed 's/<text1>/<text2>/<number>g' <file1>             | Prints the content of <file>, replacing every occurrence of <text1> which is after and including the <number> occurrence in each line, with <text2>
+    sed -n '<number1>,<number2>p' <file>                  | Prints lines <number1> to <number2> in <file>
+                                                            | "p" prints the matched lines
+                                                            | "-n" makes it not print the full contents of <file> as well
+    sed -n '/^<text>/p' <file>                            | Prints every line that starts with "<text>" in <file>
+    sed -n -e '1~2p' -e '1~7p' <file>                     | Prints every 2nd line starting at 1, and every 7th line starting at 1 in <file>
+    sed '<number1>,<number2>d' <file>                     | Deletes lines <number1>-<number2> in <file>
+    sed '<number>,$d' <file>                              | Deletes lines from line <number> to the last line in <file>
+    sed '/<text>/d' <file>                                | Deletes all lines with "<text>" in <file>
+
+  Compressing and Extracting Data --------------------------------------------------------------------------------------------------------------------------------------------------
+    tar -zcf <filename>.tar.gz <file>                     | Compresses <file> with gzip into the archive <filename>.tar.gz
                                                             | "z" uses gzip, "j" uses bzip2, "J" uses xz
                                                             | e.g. "tar -Jcf all_data.tar.xz data-monday.txt data-tuesday.txt data-wednesday.txt"
 
@@ -237,20 +386,44 @@ File Data
     zmore <file>                                          | View compressed file in the console (same as more)
     zless <file>                                          | View compressed file in the console (same as less)
 
-Time and Date
+  Mounting and Filesystems ---------------------------------------------------------------------------------------------------------------------------------------------------------
+    lsblk                                                 | Lists block storage devices
+    df                                                    | Lists file systems, their available space, and mount points
+    df -h                                                 | Lists file systems, their available space with human readable sizes, and mount points
+    fdisk -l                                              | Lists all file systems in /proc/partitions
+    fdisk <disk>                                          | Creates and modifies partition tables on <disk>
+                                                            | in fdisk, enter "m" for help, and "q" to quit without saving
 
-  Viewing -------------------------------------------------------------------------------------------------------------------------
+    mkfs.<text> <device>                                  | When <text> is a valid filesystem, it formats <device> with that filesystem
+
+    mount <device> <directory>                            | Mounts <device> to <directory>
+    umount <device>                                       | Unmounts <device>
+
+    dd if=<filename1>.txt of=<filename2>.txt conv=ucase   | Creates a copy of <filename1>.txt with all uppercase letters named <filename2>.txt
+    dd if=<disk1> of=<disk2>                              | Clones <disk1> to <disk2>, <disk2> should be at least equal size to <disk1>
+    dd if=/dev/zero of=<device>                           | Overwrites all data on <device>
+    dd if=<filename>.<iso/img> of=<device>                | Flashes <filename>.<iso,img> to <device>
+                                                            | use mkfs with appropriate filesystem on <device> beforehand
+    dd if=<device> of=<filename>.<iso/img>                | Makes an image of <device>
+
+Time and Date ######################################################################################################################################################################
+
+  Viewing --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     timedatectl                                           | Prints information about current system time, time zone, and synchronization
+    hwclock --show                                        | Prints the current date and time from the hardware clock
     date                                                  | Prints the current system time and date
     date +%H                                              | Prints the current hour with preceding zero
     date +%H:%M:%S                                        | Prints the current hour, minute, and seconds
 
-  Modifying -----------------------------------------------------------------------------------------------------------------------
-    date <MMDDhhmmYYYY>                                   | Sets the system time and date with the format MMDDhhmmYYYY
+  Modifying ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    timedatectl set-ntp true                              | Enables the synchronization of system time with an NTP server
+    hwclock --systohc                                     | Sets the hardware clock from the system clock
+    timedatectl set-time 'YYYY-MM-DD hh:mm:ss'            | Sets the system time and date with the format 'YYYY-MM-DD hh:mm:ss'
+    date 'MMDDhhmmYYYY'                                   | Sets the system time and date with the format 'MMDDhhmmYYYY'
 
-Programs
+Programs ###########################################################################################################################################################################
 
-  Scheduling Programs -------------------------------------------------------------------------------------------------------------
+  Scheduling Programs --------------------------------------------------------------------------------------------------------------------------------------------------------------
     watch <command>                                       | Executes <command> every 2 seconds and displays the output
     watch -n <number> <command>                           | Executes <command> every <number> seconds (up to 1 decimal place) and displays the output
 
@@ -272,7 +445,7 @@ Programs
     crontab -l                                            | Lists the users crontab entry
     crontab -r                                            | Delete the users crontab entry
 
-  Background Processes ------------------------------------------------------------------------------------------------------------
+  Background Processes -------------------------------------------------------------------------------------------------------------------------------------------------------------
     <command> &                                           | Makes <command> run in the background
     nohup <command>                                       | Makes <command> continue running when terminal is closed
 
@@ -280,28 +453,28 @@ Programs
     fg <number>                                           | Makes program <number> run in the foreground
     bg <number>                                           | Makes program <number> run in the background
 
-  Process Management --------------------------------------------------------------------------------------------------------------
+  Process Management ---------------------------------------------------------------------------------------------------------------------------------------------------------------
     w                                                     | Lists current users and what they are doing
     top                                                   | Shows a dynamic list of running processes and system resources
                                                             | "q" to quit, "h" for help, "k" to kill a process
     htop                                                  | Shows an interactive dynamic list of running processes and system resources with color
     ps                                                    | Lists currently running processes
     ps -ef                                                | Lists all currently running processes
-                                                            | append with " | less" for better readability
+                                                            | append " | less" for better readability
     ps -ejH                                               | Lists process tree
     kill <number>                                         | Gracefully kill process with <number> process ID (sends signal to process to exit)
                                                             | identical to "kill -15 <number>"
                                                             | can replace <number> with process name
     kill -9 <number>                                      | Kills process with <number> process ID (requests the OS to immediately cease process)
-    killall <process name>                                | Kills multiple processes by name
+    killall <text>                                        | Kills multiple processes by name, matching "<text>"
 
     halt                                                  | Halts the machine
     poweroff                                              | Shuts down the machine
     reboot                                                | Restarts the machine
 
-Permissions
+Permissions ########################################################################################################################################################################
 
-  Users and Groups ----------------------------------------------------------------------------------------------------------------
+  Users and Groups -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     adduser <text>                                        | Creates a new user named <text>
     passwd <user>                                         | Changes the password for <user>
     deluser <user>                                        | Deletes <user>
@@ -311,11 +484,11 @@ Permissions
     delgroup <group>                                      | Deletes <group>
     usermod -aG <group> <user>                            | Adds <user> to <group>
 
-  File Permissions ----------------------------------------------------------------------------------------------------------------
+  File Permissions -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     chown <user> <file>                                   | Sets ownership of <file> to <user>
     chown <user>:<group> <file>                           | Sets user ownership of <file> to <user> and group ownership to <group>
     chown -R <user>:<group> <directory>                   | Sets user ownership of <directory> and all subdirectories to <user> and group ownership to <group>
-    chmod <u,g,o,a><+,-,=><r,w,x> <file>                  | Modifies permissions of <file>
+    chmod <u/g/o/a><+/-/=><r/w/x> <file>                  | Modifies permissions of <file>
                                                             | "u" is user, "g" is group, "o" is other, "a" is all
                                                             | "+" adds a right, "-" removes a right, "=" sets a right
                                                             | "r" is read permission, "w" is write permission, "x" allows execution
@@ -330,24 +503,63 @@ Permissions
                                                             |      "chmod 777 startup.sh" gives everyone read, write, and execute permissions
                                                             |      "chmod 664 photo.jpg" gives user and group read and write permissions, and read permission to others
 
-Multiple Commands
+Multiple Commands ##################################################################################################################################################################
 
-  Flow redirection ----------------------------------------------------------------------------------------------------------------
-    <command> > <file>                                    | Output of <command> is redirected into <file>
-                                                            | e.g. "ps -ejH > ouput.txt"
+  Flow redirection -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    <command> > <file>                                    | Standard output of <command> is redirected to <file>
+                                                            | e.g. "ps -ejH > output.txt"
                                                             |      "cat > data.txt"
-    <command> >> <file>                                   | Output of <command> is redirected and appended to <file>
-    <command> 2> <file>                                   | Errors from <command> are redirected into <file>
-                                                            | e.g. "ls -a notadir/ > data.txt 2> errors.log"
-    <command> 2>&1 <file>                                 | Output and errors from <command> are redirected and appended to <file>
+    <command> 2> <file>                                   | Error output of <command> is redirected to <file>
+    <command> &> <file>                                   | Standard and error output of <command> is redirected to <file>
 
-    <command> << <text>                                   | <command> stops at <text>
-                                                            | e.g. "cat << "endhere"" the cat command will not recieve any input until you type "endhere" and enter it.
+    <command> >> <file>                                   | Standard output of <command> is redirected and appended to <file>
+                                                            | e.g. "ls -a notadir/ >> data.txt 2>> errors.log"
+    <command> 2>> <file>                                  | Error output of <command> is redirected and appended to <file>
+    <command> &>> <file>                                  | Standard and error output of <command> is redirected and appended to <file>
 
-  Chain commands ------------------------------------------------------------------------------------------------------------------
+    <command> < <file>                                    | Inputs <file> to <command>
+    <command> << "<text>"                                 | <command> stops at <text>
+                                                            | e.g. "cat << "endhere"" the cat command will not receive any input until you type "endhere" and enter it
+    <command> <<< "<text>"                                | Inputs <text> to <command>
+
+  Chain commands -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     <command1> ; <command2>                               | Executes <command1> then executes <command2>
     <command1> | <command2>                               | Executes <command1> and redirects the output to <command2>
-    <command1> && <command2>                              | Executes <command1> and only executes <command2> if <command1> was successful
-    <command1> || <command2>                              | Executes <command1> and only executes <command2> if <command1> failed
+    <command1> && <command2>                              | Executes <command1> and executes <command2> if <command1> was successful
+    <command1> || <command2>                              | Executes <command1> and executes <command2> if <command1> failed
+    <command1> && {<command2>;<command3>}                 | Executes <command1> and executes <command2> then <command3> if <command1> was successful
+    <command1> && <command2> || <command3>                | Executes <command1> and executes <command2> if <command1> was successful, or <command3> if <command1> failed
+    
+
+  Executing and Scripting ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    <file>                                                | Executes <file> (assuming <file> has correct executable permission)
+                                                            | e.g. "~/Downloads/install.sh" runs "install.sh"
+                                                            |      "./uninstall.sh" runs the "uninstall.sh" file in the working directory
+                                                            |      "/usr/bin/pwd" runs "pwd"
+                                                            |      "/usr/bin/man ls" functions the same as "man ls"
+
+     script.sh                                            | This is a file named "script.sh", with the contents on the lines below after each ">" character
+    >echo "Here is the time:"                               | Each newline character is interpreted the same as ";", it will execute every command one after the other
+    >date +%H:%M:%S                                         | e.g. "date<\n>echo End" functions the same as "date;echo End"
+    >echo "That is the time."                               | The script exits after the last command
+    >echo "Goodbye."
+
+     easystart.sh                                         | This script is named "easystart.sh", for best practice it should use "&&" between every command, but works as an example
+    >mkdir ./my-program                                     | First, it creates a "my-program/" directory in the working directory
+    >cd ./my-program                                        | Second, it changes the working directory to my-program/
+    >wget example.com/someprogram && ./bashinstall.sh       | Third, it downloads something from example.com/program, and if successful, executes bashinstall.sh
+    >./myprogram                                            | Fourth, it executes "myprogram"
+
+     bashinstall.sh                                       | This script is specifically a bash script, which uses a shebang line (the first line) so that it will run with bash
+    >#!/bin/bash                                            | indicates that the script will be executed with bash
+    >InstallDir="/usr/local/bin/myapp"                      | sets the "InstallDir" variable to a specific directory
+    >mkdir $InstallDir && echo "Created app directory"      | creates the specified installation directory and tells the user that it made a directory
+    >pacman -S somedependency --noconfirm                   | installs a dependency without any confirmations
+    >cd $InstallDir && wget mydomain.com/app                | changes working directory to $InstallDir and downloads an app
+    >./install && echo "Installed app"                      | runs an install script and tells the user the app was installed
+    >systemctl enable app && systemctl restart app          | enables and starts the app as a service
+    >echo "Success!"                                        | tells the user "Success!"
+    >sleep 2                                                | pauses for 2 seconds before exiting
+    
 
 This work is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
