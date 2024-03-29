@@ -40,42 +40,43 @@ Legend:
 
 Table of Contents                                 |Line number
 --------------------------------------------------|------------
-  Basic Information ------------------------------|81
-    Terminal Shortcuts                            |  83
-    File Path Shortcuts                           |  108
-    Console/Terminal/Shell                        |  118
-    Shells                                        |  126
-  Basic Commands ---------------------------------|131
-    Terminal Navigation                           |  133
-    File Manipulation                             |  166
-    Text Editors                                  |  210
-    Installing Software (Arch Linux)              |  219
-    Installing Software (Debian and Derivatives)  |  233
-    Installing from Source (Do Your Own Research) |  245
-  Network ----------------------------------------|256
-    Local                                         |  258
-    Internet                                      |  274
-    Data over Internet                            |  287
-  File Data --------------------------------------|316
-    File Searching                                |  318
-    Extracting, Sorting, and Filtering Data       |  332
-    Compressing and Extracting Data               |  377
-    Mounting and Filesystems                      |  389
-  Time and Date ----------------------------------|409
-    Viewing                                       |  411
-    Modifying                                     |  418
-  Programs ---------------------------------------|424
-    Scheduling Programs                           |  426
-    Background Processes                          |  448
-    Process Management                            |  456
-  Permissions ------------------------------------|475
-    Users and Groups                              |  477
-    File Permissions                              |  487
-  Multiple Commands ------------------------------|506
-    Flow Redirection                              |  508
-    Chain Commands                                |  525
-    Executing and Scripting                       |  534
-  License ----------------------------------------|565
+  Basic Information ------------------------------|82
+    Terminal Shortcuts                            |  84
+    File Path Shortcuts                           |  109
+    Console/Terminal/Shell                        |  119
+    Shells                                        |  127
+  Basic Commands ---------------------------------|132
+    Terminal Navigation                           |  134
+    File Manipulation                             |  167
+    Text Editors                                  |  211
+    System Information                            |  220
+    Installing Software (Arch Linux)              |  237
+    Installing Software (Debian and Derivatives)  |  251
+    Installing from Source (Do Your Own Research) |  263
+  Network ----------------------------------------|274
+    Local                                         |  276
+    Internet                                      |  292
+    Data over Internet                            |  305
+  File Data --------------------------------------|334
+    File Searching                                |  336
+    Extracting, Sorting, and Filtering Data       |  350
+    Compressing and Extracting Data               |  395
+    Mounting and Filesystems                      |  407
+  Time and Date ----------------------------------|427
+    Viewing                                       |  429
+    Modifying                                     |  436
+  Programs ---------------------------------------|442
+    Scheduling Programs                           |  444
+    Background Processes                          |  466
+    Process Management                            |  474
+  Permissions ------------------------------------|493
+    Users and Groups                              |  495
+    File Permissions                              |  505
+  Multiple Commands ------------------------------|524
+    Flow Redirection                              |  526
+    Chain Commands                                |  543
+    Executing and Scripting                       |  552
+  License ----------------------------------------|583
 --------------------------------------------------|------------
 
 Basic Information ##################################################################################################################################################################
@@ -215,6 +216,23 @@ Basic Commands #################################################################
                                                             | enter insert mode (start typing) by pressing "i", exit to normal mode with the "Esc" key, and enter visual mode (selecting text) with "v"
                                                             | in normal mode, type "dd" to delete the selected line, "yy" to copy the line, "P" to paste before cursor, and "p" to paste clipboard after cursor
                                                             | select text by starting visual mode in the first position, then moving the cursor to the second position, press "y" to copy, or "d" to delete, then "p" to paste
+
+  System Information ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+    free                                                  | Lists information about system memory
+    free -h                                               | Lists information about system memory in a human readable format
+    dmidecode -t memory                                   | Lists information about physical memory
+
+    lspci                                                 | Lists PCI and PCIe devices
+    lspci -nnk                                            | Lists PCI and PCIe devices with some detail and drivers
+    lspci -vvv                                            | Lists detailed information about PCI and PCIe devices
+    lsusb                                                 | Lists USB devices
+    lsusb -v                                              | Lists detailed USB device information
+    lsusb -vvt                                            | Lists detailed USB device information as a tree
+    lscpu                                                 | Lists CPU information
+
+    uname -a                                              | Lists system software information including: hostname, kernel, and architecture
+    hostnamectl                                           | Lists various system information
+    neofetch                                              | Lists various system information
 
   Installing Software (Arch Linux) -------------------------------------------------------------------------------------------------------------------------------------------------
     pacman -S <package>                                   | Installs <package> and any dependencies
