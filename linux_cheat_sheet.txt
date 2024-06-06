@@ -1,28 +1,30 @@
 Linux Terminal Cheat Sheet
 
-This document is based off the Linux Bash Shell Cheat Sheet PDF (archived) here from 2011: https://web.archive.org/web/20111018212827/http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf
-An active re-upload of the PDF can be found here: https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf
-The original Cheat Sheet was made by Raph D., and was available on their blog (archived) here: https://web.archive.org/web/20120106085933/http://freeworld.posterous.com/
+This document is a derivative of the Linux Bash Shell Cheat Sheet PDF by Raph D. from 2011:
+    https://web.archive.org/web/20111018212827/http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf
+An available copy of the PDF can be found here:
+    https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf
+It was initially published on their blog (archived) here:
+    https://web.archive.org/web/20120106085933/http://freeworld.posterous.com/
 
-This document is intended to be viewed with a monospace font and without line wrapping.
-It was made to improve upon the original by providing more concise details, more information, and consistent formatting, as well as updating outdated information and changing examples.
+This document should be viewed with a monospace font and without line wrapping.
+This document was made to improve the original by adding new content, removing outdated information, improving readability and formatting, using better examples, and various other changes.
 
 Legend:
- | a number will be appended to indicate that they can be different, e.g. <file1>, <file2>
+ | Placeholders are contained in '<' and '>', they should be replaced with the relevant string, e.g. '<file>' could be 'options.json'
+ | A number will be appended to indicate separate placeholders of the same type, e.g. <file1>, <file2>
+ | Multiple options are each separated by a '/' in the placeholder, some placeholders with multiple options include literal strings of text which should not be replaced, e.g. '<y/n>' could be 'y' or 'n'
  |
- | <option1/option2/option3> is how multiple options are shown
- | <file> is the path to the file
- | <filename> is the name of the file, excluding the file extension
+ | <file> is the path or name of a file
  | <directory> is the path to a directory, it should be inside '' or "" if the path includes whitespaces or other special characters
  | <command> is any valid terminal command
- | <number> can be any valid whole number, or with decimals or other restrictions if specified
+ | <number> can be any valid whole number, and can have decimals or other restrictions if specified
  | <package> can be the name of any valid package in a package repository
  | <address> can be any valid URL or IP address
- | <archive> is the name of an archive file, including file extension
+ | <archive> is the path or name of an archive file
  | <text> can be almost any string of characters
- | <file size> can be almost any positive integer and can have a unit (k, M, G, etc.) appended to the end
- | <disk> can be any valid disk path (such as /dev/sda)
- | <device> can be any valid disk or partition path (such as /dev/nvme0n1p1 or /dev/sdb)
+ | <disk> can be any valid disk path, e.g. '/dev/sda'
+ | <device> can be any valid disk or partition path, e.g. '/dev/nvme0n1p1' or '/dev/sdb'
  | <source> can be a file or directory acting as a source
  | <dest> can be a file or directory acting as a destination
  | <time> can be any valid date or time
@@ -39,43 +41,43 @@ Legend:
 
 Table of Contents                                 |Line number
 --------------------------------------------------|------------
-  Basic Information ------------------------------|81
-    Terminal Shortcuts                            |  83
-    File Path Shortcuts                           |  108
-    Console/Terminal/Shell                        |  118
-    Shells                                        |  126
-  Basic Commands ---------------------------------|131
-    Terminal Navigation                           |  133
-    File Manipulation                             |  166
-    Text Editors                                  |  213
-    System Information                            |  222
-    Installing Software (Arch Linux)              |  239
-    Installing Software (Debian and Derivatives)  |  253
-    Installing from Source (Do Your Own Research) |  265
-  Network ----------------------------------------|276
-    Local                                         |  278
-    Internet                                      |  294
-    Data over Internet                            |  307
-  File Data --------------------------------------|338
-    File Searching                                |  340
-    Extracting, Sorting, and Filtering Data       |  354
-    Compressing and Extracting Data               |  399
-    Mounting and Filesystems                      |  411
-  Time and Date ----------------------------------|432
-    Viewing                                       |  434
-    Modifying                                     |  441
-  Programs ---------------------------------------|447
-    Scheduling Programs                           |  449
-    Background Processes                          |  471
-    Process Management                            |  479
-  Permissions ------------------------------------|508
-    Users and Groups                              |  510
-    File Permissions                              |  520
-  Multiple Commands ------------------------------|539
-    Flow Redirection                              |  541
-    Chain Commands                                |  559
-    Executing and Scripting                       |  567
-  License ----------------------------------------|597
+  Basic Information ------------------------------|83
+    Terminal Shortcuts                            |  85
+    File Path Shortcuts                           |  111
+    Console/Terminal/Shell                        |  121
+    Shells                                        |  129
+  Basic Commands ---------------------------------|134
+    Terminal Navigation                           |  136
+    File Manipulation                             |  169
+    Text Editors                                  |  216
+    System Information                            |  225
+    Installing Software (Arch Linux)              |  242
+    Installing Software (Debian and Derivatives)  |  256
+    Installing from Source (Do Your Own Research) |  268
+  Network ----------------------------------------|279
+    Local                                         |  281
+    Internet                                      |  297
+    Data over Internet                            |  310
+  File Data --------------------------------------|341
+    File Searching                                |  343
+    Extracting, Sorting, and Filtering Data       |  357
+    Compressing and Extracting Data               |  402
+    Mounting and Filesystems                      |  414
+  Time and Date ----------------------------------|435
+    Viewing                                       |  437
+    Modifying                                     |  444
+  Programs ---------------------------------------|450
+    Scheduling Programs                           |  452
+    Background Processes                          |  474
+    Process Management                            |  482
+  Permissions ------------------------------------|511
+    Users and Groups                              |  513
+    File Permissions                              |  523
+  Multiple Commands ------------------------------|542
+    Flow Redirection                              |  544
+    Chain Commands                                |  562
+    Executing and Scripting                       |  570
+  License ----------------------------------------|600
 --------------------------------------------------|------------
 
 Basic Information ##################################################################################################################################################################
@@ -97,6 +99,7 @@ Basic Information ##############################################################
 
     'Up Arrow'                                            | Navigates previous commands
     'Down Arrow'                                          | Navigates previous commands
+    Ctrl+R                                                | Searches previous commands
     Alt+.                                                 | Inserts the last argument from previous commands
 
     Ctrl+Alt+F<number>                                    | Selects <number> console, F1-F6 switches between different virtual consoles, and F7 is used for the X session (with GUI windows and apps)
@@ -266,7 +269,7 @@ Basic Commands #################################################################
     1. | wget <address>                                   | Downloads the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
     2. | ls                                               | Verify file name and existence
     3. | tar -xf <archive>                                | Decompress the file
-       |                                                    | if .zip: "unzip <filename>.zip"
+       |                                                    | if .zip: "unzip <text>.zip"
     4. | ls                                               | Check for a new directory (most likely has the same, or similar name to <archive>)
     5. | cd <directory>                                   | Change working directory to the new <directory>
     6. | ./configure                                      | Create a makefile
@@ -347,7 +350,7 @@ File Data ######################################################################
                                                             | e.g. "find ~ -name "linux_ch*"" lists all files beginning with "linux_ch"
                                                             |      "find ~ -name "*.png"" lists all .png files
                                                             | append " | less" for better readability
-    find <directory> -size +<file size>                   | Searches <directory> for files larger than <file size>
+    find <directory> -size +<number><k/M/G/T>             | Searches <directory> for files larger than <number>, k/M/G/T are decimal prefixes
     find -name "<text>" -mtime -<number>                  | Searches <directory> for files named "<text>" modified less than <number> days ago
     find -type d                                          | Searches working directory for directories
 
@@ -397,7 +400,7 @@ File Data ######################################################################
     sed '/<text>/d' <file>                                | Deletes all lines with "<text>" in <file>
 
   Compressing and Extracting Data --------------------------------------------------------------------------------------------------------------------------------------------------
-    tar -zcf <filename>.tar.gz <file>                     | Compresses <file> with gzip into the archive <filename>.tar.gz
+    tar -zcf <text>.tar.gz <file>                     | Compresses <file> with gzip into the archive <text>.tar.gz
                                                             | "z" uses gzip, "j" uses bzip2, "J" uses xz
                                                             | e.g. "tar -Jcf all_data.tar.xz data-monday.txt data-tuesday.txt data-wednesday.txt"
 
@@ -422,12 +425,12 @@ File Data ######################################################################
     mount <device> <directory>                            | Mounts <device> to <directory>
     umount <device>                                       | Unmounts <device>
 
-    dd if=<filename1>.txt of=<filename2>.txt conv=ucase   | Creates a copy of <filename1>.txt with all uppercase letters named <filename2>.txt
+    dd if=<text1>.txt of=<text2>.txt conv=ucase           | Creates a copy of <text1>.txt with all uppercase letters named <text2>.txt
     dd if=<disk1> of=<disk2>                              | Clones <disk1> to <disk2>, <disk2> should be at least equal size to <disk1>
-    dd if=/dev/zero of=<device>                           | Overwrites all data on <device>
-    dd if=<filename>.<iso/img> of=<device>                | Flashes <filename>.<iso,img> to <device>
-                                                            | use mkfs with appropriate filesystem on <device> beforehand
-    dd if=<device> of=<filename>.<iso/img>                | Makes an image of <device>
+    dd if=/dev/zero of=<disk>                             | Overwrites all data on <disk>
+    dd if=<text>.<iso/img> of=<disk>                      | Flashes <text>.<iso,img> to <disk>
+                                                            | use mkfs with appropriate filesystem on <disk> beforehand
+    dd if=<disk> of=<text>.<iso/img>                      | Makes an image of <disk>
 
 Time and Date ######################################################################################################################################################################
 
