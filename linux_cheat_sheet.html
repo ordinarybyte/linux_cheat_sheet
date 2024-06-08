@@ -14,33 +14,33 @@ This is a derivative work under a <a href="https://creativecommons.org/licenses/
 This document should be viewed with a monospace font and without line wrapping.
 This document aims to improve the original by adding content, removing outdated information, improving readability and formatting, improving examples, and various other changes.
 
-<h2>Legend:</h2> | Placeholders are contained in '&#60' and '&#62', they should be replaced with the relevant string, e.g. '&#60file&#62' could be 'options.json'
- | A number will be appended to indicate separate placeholders of the same type, e.g. &#60file1&#62, &#60file2&#62
- | Multiple options are each separated by a '/' in the placeholder, some placeholders with multiple options include literal strings of text which should not be replaced, e.g. '&#60y/n&#62' could be 'y' or 'n'
+<h2>Legend:</h2> | Placeholders are contained in '&#60;' and '&#62;', they should be replaced with the relevant string, e.g. '&#60;file&#62;' could be 'options.json'
+ | A number will be appended to indicate separate placeholders of the same type, e.g. &#60;file1&#62;, &#60;file2&#62;
+ | Multiple options are each separated by a '/' in the placeholder, some placeholders with multiple options include literal strings of text which should not be replaced, e.g. '&#60;y/n&#62;' could be 'y' or 'n'
  |
- | &#60file&#62 is the path or name of a file
- | &#60directory&#62 is the path to a directory, it should be inside '' or "" if the path includes whitespaces or other special characters
- | &#60command&#62 is any valid terminal command
- | &#60number&#62 can be any valid whole number, and can have decimals or other restrictions if specified
- | &#60package&#62 can be the name of any valid package in a package repository
- | &#60address&#62 can be any valid URL or IP address
- | &#60archive&#62 is the path or name of an archive file
- | &#60text&#62 can be almost any string of characters
- | &#60disk&#62 can be any valid disk path, e.g. '/dev/sda'
- | &#60device&#62 can be any valid disk or partition path, e.g. '/dev/nvme0n1p1' or '/dev/sdb'
- | &#60source&#62 can be a file or directory acting as a source
- | &#60dest&#62 can be a file or directory acting as a destination
- | &#60time&#62 can be any valid date or time
- | &#60user&#62 can be any valid user on a system
- | &#60group&#62 can be any valid group on a system
+ | &#60;file&#62; is the path or name of a file
+ | &#60;directory&#62; is the path to a directory, it should be inside '' or "" if the path includes whitespaces or other special characters
+ | &#60;command&#62; is any valid terminal command
+ | &#60;number&#62; can be any valid whole number, and can have decimals or other restrictions if specified
+ | &#60;package&#62; can be the name of any valid package in a package repository
+ | &#60;address&#62; can be any valid URL or IP address
+ | &#60;archive&#62; is the path or name of an archive file
+ | &#60;text&#62; can be almost any string of characters
+ | &#60;disk&#62; can be any valid disk path, e.g. '/dev/sda'
+ | &#60;device&#62; can be any valid disk or partition path, e.g. '/dev/nvme0n1p1' or '/dev/sdb'
+ | &#60;source&#62; can be a file or directory acting as a source
+ | &#60;dest&#62; can be a file or directory acting as a destination
+ | &#60;time&#62; can be any valid date or time
+ | &#60;user&#62; can be any valid user on a system
+ | &#60;group&#62; can be any valid group on a system
  | 
- | &#60YYYY&#62 is the year
- | &#60MM&#62 is the month, from 01-12
- | &#60DD&#62 is the day of the month, from 01-31
- | &#60D&#62 is the day of the week, from 0-6, 0 being Sunday
- | &#60h&#62 is the hour in 24-hour time, from 00-23
- | &#60m&#62 is the minute, from 00-59
- | &#60s&#62 is the second, from 00-59
+ | &#60;YYYY&#62; is the year
+ | &#60;MM&#62; is the month, from 01-12
+ | &#60;DD&#62; is the day of the month, from 01-31
+ | &#60;D&#62; is the day of the week, from 0-6, 0 being Sunday
+ | &#60;h&#62; is the hour in 24-hour time, from 00-23
+ | &#60;m&#62; is the minute, from 00-59
+ | &#60;s&#62; is the second, from 00-59
 
 <h2 id="Contents">Table of Contents</h2> | Section                                          Line number 
  |--------------------------------------------------------------
@@ -104,7 +104,7 @@ This document aims to improve the original by adding content, removing outdated 
     Alt+.                                                 | Inserts the last argument from previous commands
     !!                                                    | Repeat last command
 
-    Ctrl+Alt+F&#60number&#62                                    | Selects &#60number&#62 console, F1-F6 switches between different virtual consoles, and F7 is used for the X session (with GUI windows and apps)
+    Ctrl+Alt+F&#60;number&#62;                                    | Selects &#60;number&#62; console, F1-F6 switches between different virtual consoles, and F7 is used for the X session (with GUI windows and apps)
 
 <h3 id="File_Path_Shortcuts"><a href="#Contents">File Path Shortcuts</a></h3>    /                                                     | Root directory, parent path to all the files on a system (always used to specify absolute paths)
                                                             | e.g. '/home/user/Documents/data/data-tuesday.csv' is the absolute path for './data/data-tuesday.csv' when working in '~/Documents'
@@ -129,13 +129,13 @@ This document aims to improve the original by adding content, removing outdated 
 <h2 id="Basic_Commands"><a href="#Contents">Basic Commands</a></h2><hr><h3 id="Terminal_Navigation"><a href="#Contents">Terminal Navigation</a></h3>    ls -a                                                 | Lists all files and directories in working directory
     ls -l                                                 | Lists details of all files and directories in working directory
     ls -h                                                 | Lists all files and directories with with units (k, M, G, etc.) appended to the sizes for readability
-    ls &#60directory&#62                                        | Lists files and directories in &#60directory&#62
-    ls *.&#60text&#62                                           | Lists all .&#60text&#62 files
+    ls &#60;directory&#62;                                        | Lists files and directories in &#60;directory&#62;
+    ls *.&#60;text&#62;                                           | Lists all .&#60;text&#62; files
                                                             | e.g. "ls *.sh" lists all .sh files, such as 'startup.sh' or 'cleanfiles.sh'
-    ls !(&#60text&#62)                                          | Lists all files except &#60text&#62
-    ls &#60text1&#62 &#60text2&#62                                    | Lists results for both &#60text1&#62 and &#60text2&#62
+    ls !(&#60;text&#62;)                                          | Lists all files except &#60;text&#62;
+    ls &#60;text1&#62; &#60;text2&#62;                                    | Lists results for both &#60;text1&#62; and &#60;text2&#62;
 
-    cd &#60directory&#62                                        | Changes working directory to &#60directory&#62
+    cd &#60;directory&#62;                                        | Changes working directory to &#60;directory&#62;
     cd /                                                  | Changes working directory to root directory
     cd ..                                                 | Changes to parent of working directory
     cd -                                                  | Changes to previous working directory
@@ -148,65 +148,65 @@ This document aims to improve the original by adding content, removing outdated 
 
     history                                               | Lists history of commands
 
-    alias &#60text&#62=&#60command&#62                                | Sets an alias for &#60text&#62 to function as &#60command&#62
-    &#60text1&#62=&#60text2&#62                                       | Sets variable '&#60text1&#62' to be '&#60text2&#62'
-                                                            | you can use '&#60text2&#62' in other commands by typing '$&#60text1&#62'
+    alias &#60;text&#62;=&#60;command&#62;                                | Sets an alias for &#60;text&#62; to function as &#60;command&#62;
+    &#60;text1&#62;=&#60;text2&#62;                                       | Sets variable '&#60;text1&#62;' to be '&#60;text2&#62;'
+                                                            | you can use '&#60;text2&#62;' in other commands by typing '$&#60;text1&#62;'
 
-    man &#60command&#62                                         | Shows the manual page for &#60command&#62
+    man &#60;command&#62;                                         | Shows the manual page for &#60;command&#62;
 
-    less &#60file&#62                                           | Shows the contents of &#60file&#62 in an interactive, dynamic interface
+    less &#60;file&#62;                                           | Shows the contents of &#60;file&#62; in an interactive, dynamic interface
 
-    echo &#60text&#62                                           | Prints &#60text&#62
+    echo &#60;text&#62;                                           | Prints &#60;text&#62;
 
-<h3 id="File_Manipulation"><a href="#Contents">File Manipulation</a></h3>    cat &#60file&#62                                            | Prints the content of &#60file&#62
+<h3 id="File_Manipulation"><a href="#Contents">File Manipulation</a></h3>    cat &#60;file&#62;                                            | Prints the content of &#60;file&#62;
                                                             | append " | less" for better readability
-    cat &#62 &#60file&#62                                          | Creates or overwrites &#60file&#62, each line you enter will be written to each line of &#60file&#62
-    head -n &#60number&#62 &#60file&#62                               | Prints the content of &#60file&#62 at &#60number&#62 lines from the top
-    tail -n &#60number&#62 &#60file&#62                               | Prints the content of &#60file&#62 at &#60number&#62 lines from the bottom
-    tail -f &#60file&#62                                        | Prints new data as &#60file&#62 grows
+    cat &#62; &#60;file&#62;                                          | Creates or overwrites &#60;file&#62;, each line you enter will be written to each line of &#60;file&#62;
+    head -n &#60;number&#62; &#60;file&#62;                               | Prints the content of &#60;file&#62; at &#60;number&#62; lines from the top
+    tail -n &#60;number&#62; &#60;file&#62;                               | Prints the content of &#60;file&#62; at &#60;number&#62; lines from the bottom
+    tail -f &#60;file&#62;                                        | Prints new data as &#60;file&#62; grows
 
-    mkdir &#60directory&#62                                     | Creates &#60directory&#62
+    mkdir &#60;directory&#62;                                     | Creates &#60;directory&#62;
                                                             | e.g. "mkdir ../Downloads/plaintexts /mnt/tempstorage1/photos/"
                                                             |      "mkdir rich_texts"
                                                             |      "mkdir '~/My Photos/Tuesday/' "
-    mkdir -p &#60directory&#62                                  | Creates &#60directory&#62 as well as any specified parent directories if required
+    mkdir -p &#60;directory&#62;                                  | Creates &#60;directory&#62; as well as any specified parent directories if required
 
-    cp &#60file1&#62 &#60file2&#62                                    | Copies and renames &#60file1&#62 to &#60file2&#62
+    cp &#60;file1&#62; &#60;file2&#62;                                    | Copies and renames &#60;file1&#62; to &#60;file2&#62;
                                                             | e.g. "cp ~/Downloads/example.png /mnt/my_images/renamedexample.png"
-    cp &#60file&#62 &#60directory&#62                                 | Copies &#60file&#62 into &#60directory&#62
-    cp -R &#60directory1&#62 &#60directory2&#62                       | Copies and renames &#60directory1&#62 to &#60directory2&#62
-    cp &#60text&#62* &#60directory&#62                                | Copies all files starting with '&#60text&#62' to &#60directory&#62
+    cp &#60;file&#62; &#60;directory&#62;                                 | Copies &#60;file&#62; into &#60;directory&#62;
+    cp -R &#60;directory1&#62; &#60;directory2&#62;                       | Copies and renames &#60;directory1&#62; to &#60;directory2&#62;
+    cp &#60;text&#62;* &#60;directory&#62;                                | Copies all files starting with '&#60;text&#62;' to &#60;directory&#62;
                                                             | e.g. "cp data-* ../data" copies all files starting with 'data-' (such as 'data-tuesday.csv') to the 'data' directory
 
-    mv &#60file1&#62 &#60file2&#62                                    | Moves and renames &#60file1&#62 to &#60file2&#62
+    mv &#60;file1&#62; &#60;file2&#62;                                    | Moves and renames &#60;file1&#62; to &#60;file2&#62;
                                                             | e.g. "mv photo.jpg photo-wednesday.jpg" renames photo.jpg
                                                             |      "mv photo.jpg .." moves photo.jpg into parent directory
                                                             |      "mv /mnt/newusb/data.txt ~/Downloads/sortme.txt" moves and renames data.txt
-    mv &#60file&#62 &#60directory&#62                                 | Moves &#60file&#62 into &#60directory&#62
-    mv &#60directory1&#62 &#60directory2&#62                          | Moves &#60directory1&#62 into &#60directory2&#62
+    mv &#60;file&#62; &#60;directory&#62;                                 | Moves &#60;file&#62; into &#60;directory&#62;
+    mv &#60;directory1&#62; &#60;directory2&#62;                          | Moves &#60;directory1&#62; into &#60;directory2&#62;
 
-    rm &#60file&#62                                             | Deletes &#60file&#62 (or multiple)
+    rm &#60;file&#62;                                             | Deletes &#60;file&#62; (or multiple)
                                                             | e.g. "rm data-tue* data-wed* *.svg" removes all files starting with 'data-tue' and all .svg files
                                                             |      "rm !(data-monday.txt)" removes all files except data-monday.txt
-    rm -r &#60directory&#62                                     | Deletes &#60directory&#62 (or multiple)
-    rm -i &#60file&#62                                          | Asks for confirmation before deleting each file
-    rm -f &#60file&#62                                          | Forces the deletion of &#60file&#62
-    shred &#60file&#62                                          | Overwrites the data of &#60file&#62 with random data
-    shred -f &#60file&#62                                       | Forces overwriting the data of &#60file&#62 with random data
-    shred -u &#60file&#62                                       | Overwrites the data of &#60file&#62 with random data and removes the file
+    rm -r &#60;directory&#62;                                     | Deletes &#60;directory&#62; (or multiple)
+    rm -i &#60;file&#62;                                          | Asks for confirmation before deleting each file
+    rm -f &#60;file&#62;                                          | Forces the deletion of &#60;file&#62;
+    shred &#60;file&#62;                                          | Overwrites the data of &#60;file&#62; with random data
+    shred -f &#60;file&#62;                                       | Forces overwriting the data of &#60;file&#62; with random data
+    shred -u &#60;file&#62;                                       | Overwrites the data of &#60;file&#62; with random data and removes the file
 
-    touch &#60file&#62                                          | Updates the accessed and modified dates of &#60file&#62 to the current time
-                                                            | &#60file&#62 will be created if it does not exist
+    touch &#60;file&#62;                                          | Updates the accessed and modified dates of &#60;file&#62; to the current time
+                                                            | &#60;file&#62; will be created if it does not exist
 
-    ln &#60file1&#62 &#60file2&#62                                    | Creates &#60file2&#62 as a hard link to &#60file1&#62
+    ln &#60;file1&#62; &#60;file2&#62;                                    | Creates &#60;file2&#62; as a hard link to &#60;file1&#62;
                                                             | A hard link is a file which points to the same inode (the same data on the disk)
-    ln -s &#60file1&#62 &#60file2&#62                                 | Creates &#60file2&#62 as a symbolic link to &#60file1&#62
+    ln -s &#60;file1&#62; &#60;file2&#62;                                 | Creates &#60;file2&#62; as a symbolic link to &#60;file1&#62;
                                                             | A symbolic link (or soft link) is a file which points to another file/directory
-    ln -s &#60directory1&#62 &#60directory2&#62                       | Creates &#60directory2&#62 as a symbolic link to &#60directory1&#62
+    ln -s &#60;directory1&#62; &#60;directory2&#62;                       | Creates &#60;directory2&#62; as a symbolic link to &#60;directory1&#62;
 
-<h3 id="Text_Editors"><a href="#Contents">Text Editors</a></h3>    nano &#60file&#62                                           | Opens the nano editor to create or edit &#60file&#62
+<h3 id="Text_Editors"><a href="#Contents">Text Editors</a></h3>    nano &#60;file&#62;                                           | Opens the nano editor to create or edit &#60;file&#62;
                                                             | shortcuts and options are displayed at the bottom of the terminal
-    vim &#60file&#62                                            | Opens the vim editor to create or edit &#60file&#62
+    vim &#60;file&#62;                                            | Opens the vim editor to create or edit &#60;file&#62;
                                                             | exit by typing ':q' in normal mode, ':wq' to save and exit, or ':q!' to exit without saving
                                                             | enter insert mode (start typing) by pressing 'i', exit to normal mode with the 'Esc' key, and enter visual mode (selecting text) with 'v'
                                                             | in normal mode, type 'dd' to delete the selected line, 'yy' to copy the line, 'P' to paste before cursor, and 'p' to paste clipboard after cursor
@@ -228,184 +228,184 @@ This document aims to improve the original by adding content, removing outdated 
     hostnamectl                                           | Lists various system information
     neofetch                                              | Lists various system information
 
-<h3 id="Installing_Software_Arch"><a href="#Contents">Installing Software (Arch Linux)</a></h3>    pacman -S &#60package&#62                                   | Installs &#60package&#62 and any dependencies
-    pacman -R &#60package&#62                                   | Uninstalls &#60package&#62
-    pacman -Rs &#60package&#62                                  | Uninstalls &#60package&#62 and any dependencies which are no longer required
+<h3 id="Installing_Software_Arch"><a href="#Contents">Installing Software (Arch Linux)</a></h3>    pacman -S &#60;package&#62;                                   | Installs &#60;package&#62; and any dependencies
+    pacman -R &#60;package&#62;                                   | Uninstalls &#60;package&#62;
+    pacman -Rs &#60;package&#62;                                  | Uninstalls &#60;package&#62; and any dependencies which are no longer required
 
-    pacman -Qs &#60text&#62                                     | Searches repositories and lists packages with &#60text&#62
+    pacman -Qs &#60;text&#62;                                     | Searches repositories and lists packages with &#60;text&#62;
     pacman -Syu                                           | Updates all packages
                                                             | 'S' synchronizes packages including all dependencies
                                                             | 'y' refreshes package database
                                                             | 'u' upgrades outdated packages
 
-    yay -S &#60package&#62                                      | Installs &#60package&#62 from the AUR if available
+    yay -S &#60;package&#62;                                      | Installs &#60;package&#62; from the AUR if available
                                                             | you can install yay with "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 
-<h3 id="Installing_Software_Debian"><a href="#Contents">Installing Software (Debian and Derivatives)</a></h3>    apt install &#60package&#62                                 | Installs &#60package&#62 and any dependencies
-    apt remove &#60package&#62                                  | Uninstalls &#60package&#62
+<h3 id="Installing_Software_Debian"><a href="#Contents">Installing Software (Debian and Derivatives)</a></h3>    apt install &#60;package&#62;                                 | Installs &#60;package&#62; and any dependencies
+    apt remove &#60;package&#62;                                  | Uninstalls &#60;package&#62;
     apt autoremove                                        | Uninstalls orphaned dependencies (packages no longer required)
-                                                            | best practice to run after "apt remove &#60package&#62" to clean any unused dependencies
+                                                            | best practice to run after "apt remove &#60;package&#62;" to clean any unused dependencies
 
-    apt search &#60text&#62                                     | Searches repositories and lists packages with &#60text&#62
+    apt search &#60;text&#62;                                     | Searches repositories and lists packages with &#60;text&#62;
     apt update                                            | Updates repositories and checks for newer package versions
     apt upgrade                                           | Upgrades current packages
                                                             | best practice to first run "apt update" to get the latest packages
     apt full-upgrade                                      | Upgrades the entire system (will remove currently installed packages if needed to update the system)
 
-<h3 id="Installing_Software_Source"><a href="#Contents">Installing From Source (Do Your Own Research)</a></h3>    1. | wget &#60address&#62                                   | Downloads the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
+<h3 id="Installing_Software_Source"><a href="#Contents">Installing From Source (Do Your Own Research)</a></h3>    1. | wget &#60;address&#62;                                   | Downloads the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
     2. | ls                                               | Verify file name and existence
-    3. | tar -xf &#60archive&#62                                | Decompress the file
-       |                                                    | if .zip: "unzip &#60text&#62.zip"
-    4. | ls                                               | Check for a new directory (most likely has the same, or similar name to &#60archive&#62)
-    5. | cd &#60directory&#62                                   | Change working directory to the new &#60directory&#62
+    3. | tar -xf &#60;archive&#62;                                | Decompress the file
+       |                                                    | if .zip: "unzip &#60;text&#62;.zip"
+    4. | ls                                               | Check for a new directory (most likely has the same, or similar name to &#60;archive&#62;)
+    5. | cd &#60;directory&#62;                                   | Change working directory to the new &#60;directory&#62;
     6. | ./configure                                      | Create a makefile
     7. | make                                             | Build the software package
     8. | sudo make install                                | Install the package to the correct locations on the machine
 
-<h2 id="Network"><a href="#Contents">Network</a></h2><hr><h3 id="Local_Network"><a href="#Contents">Local</a></h3>    ip &#60a/addr&#62                                           | Displays information about network interfaces
+<h2 id="Network"><a href="#Contents">Network</a></h2><hr><h3 id="Local_Network"><a href="#Contents">Local</a></h3>    ip &#60;a/addr&#62;                                           | Displays information about network interfaces
 
     nmcli                                                 | Displays status and configurations of network interfaces
     nmcli device wifi list                                | Lists available Wi-Fi access points
-    nmcli device wifi connect &#60text1&#62 password &#60text2&#62    | Connect to SSID &#60text1&#62 with the password &#60text2&#62
-    nmcli --ask device wifi connect &#60text&#62                | Connect to open security SSID &#60text&#62
+    nmcli device wifi connect &#60;text1&#62; password &#60;text2&#62;    | Connect to SSID &#60;text1&#62; with the password &#60;text2&#62;
+    nmcli --ask device wifi connect &#60;text&#62;                | Connect to open security SSID &#60;text&#62;
     nmcli connection edit type ethernet                   | Opens an interactive menu to manage ethernet connections
 
     nmtui                                                 | Displays an interactive TUI menu to configure network interfaces
 
     ufw status                                            | Displays open ports on the local system
-    ufw &#60enable/disable&#62                                  | Enables and disables the ufw firewall
-    ufw allow &#60number&#62                                    | Opens port &#60number&#62
-    ufw deny &#60number&#62                                     | Closes port &#60number&#62
+    ufw &#60;enable/disable&#62;                                  | Enables and disables the ufw firewall
+    ufw allow &#60;number&#62;                                    | Opens port &#60;number&#62;
+    ufw deny &#60;number&#62;                                     | Closes port &#60;number&#62;
 
-<h3 id="Internet"><a href="#Contents">Internet</a></h3>    ping &#60address&#62                                        | Pings &#60address&#62
-    ping -c &#60number&#62 &#60address&#62                            | Pings &#60address&#62 &#60number&#62 times
-    ping -i &#60number&#62 &#60address&#62                            | Pings &#60address&#62 every &#60number&#62 seconds
+<h3 id="Internet"><a href="#Contents">Internet</a></h3>    ping &#60;address&#62;                                        | Pings &#60;address&#62;
+    ping -c &#60;number&#62; &#60;address&#62;                            | Pings &#60;address&#62; &#60;number&#62; times
+    ping -i &#60;number&#62; &#60;address&#62;                            | Pings &#60;address&#62; every &#60;number&#62; seconds
 
-    traceroute &#60address&#62                                  | Traces the route of packets sent to &#60address&#62
-    tracepath &#60address&#62                                   | Traces the path of packets sent to &#60address&#62 (very similar to traceroute)
+    traceroute &#60;address&#62;                                  | Traces the route of packets sent to &#60;address&#62;
+    tracepath &#60;address&#62;                                   | Traces the path of packets sent to &#60;address&#62; (very similar to traceroute)
 
-    dig &#60address&#62                                         | When &#60address&#62 is a URL, it queries DNS and prints the response as well as other information
-    nslookup &#60address&#62                                    | When &#60address&#62 is a domain, it prints the IP address, when &#60address&#62 is an IP address, it prints the domain name
+    dig &#60;address&#62;                                         | When &#60;address&#62; is a URL, it queries DNS and prints the response as well as other information
+    nslookup &#60;address&#62;                                    | When &#60;address&#62; is a domain, it prints the IP address, when &#60;address&#62; is an IP address, it prints the domain name
     netstat -a                                            | Lists all connected and listening sockets
                                                             | append " | less" for better readability
 
-<h3 id="Data_Over_Internet"><a href="#Contents">Data Over Internet</a></h3>    wget &#60address&#62                                        | Downloads the content content &#60address&#62
+<h3 id="Data_Over_Internet"><a href="#Contents">Data Over Internet</a></h3>    wget &#60;address&#62;                                        | Downloads the content content &#60;address&#62;
                                                             | e.g. "wget google.com" downloads 'index.html' from 'google.com'
                                                             |      "wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.17.2.tar.xz" downloads the compressed Linux 4.17.2 kernel
-    curl &#60address&#62                                        | Prints the content at &#60address&#62
-    curl -O &#60address&#62                                     | Downloads the content at &#60address&#62 with the remote filename
-    curl -o &#60text&#62 &#60address&#62                              | Downloads the content at &#60address&#62 with the filename of &#60text&#62
+    curl &#60;address&#62;                                        | Prints the content at &#60;address&#62;
+    curl -O &#60;address&#62;                                     | Downloads the content at &#60;address&#62; with the remote filename
+    curl -o &#60;text&#62; &#60;address&#62;                              | Downloads the content at &#60;address&#62; with the filename of &#60;text&#62;
 
-    ssh &#60address&#62                                         | Connects to SSH server at &#60address&#62, allows you to interact with the host remotely
-    ssh &#60user&#62@&#60address&#62                                  | Connects to SSH server at &#60address&#62 as &#60user&#62
-    ssh &#60address&#62 -p &#60number&#62                             | Connects to SSH server at &#60address&#62 over port &#60number&#62
+    ssh &#60;address&#62;                                         | Connects to SSH server at &#60;address&#62;, allows you to interact with the host remotely
+    ssh &#60;user&#62;@&#60;address&#62;                                  | Connects to SSH server at &#60;address&#62; as &#60;user&#62;
+    ssh &#60;address&#62; -p &#60;number&#62;                             | Connects to SSH server at &#60;address&#62; over port &#60;number&#62;
     ssh-keygen -t rsa                                     | Creates an SSH key pair in '~/.ssh', run this command on the client system
-    ssh-copy-id &#60address&#62                                 | Copies the public key to &#60address&#62 (the server), run this command on the client system
+    ssh-copy-id &#60;address&#62;                                 | Copies the public key to &#60;address&#62; (the server), run this command on the client system
 
-    sftp &#60user&#62@&#60address&#62                                 | Connects to SFTP server at &#60address&#62 as &#60user&#62, allows you to securely transfer files between machines
+    sftp &#60;user&#62;@&#60;address&#62;                                 | Connects to SFTP server at &#60;address&#62; as &#60;user&#62;, allows you to securely transfer files between machines
                                                             | in sftp, enter 'help' or '?' for help
-                                                            |          enter "get &#60file&#62" to download a file on the server
-                                                            |          enter "put &#60file&#62 &#60directory&#62" to upload local &#60file&#62 to remote &#60directory&#62
-                                                            |          enter "rm &#60file&#62" to delete &#60file&#62 on the server
-                                                            |          enter "rmdir &#60directory&#62" to delete &#60directory&#62 on the server
-                                                            |          enter "mkdir &#60directory&#62" to create &#60directory&#62 on the server
+                                                            |          enter "get &#60;file&#62;" to download a file on the server
+                                                            |          enter "put &#60;file&#62; &#60;directory&#62;" to upload local &#60;file&#62; to remote &#60;directory&#62;
+                                                            |          enter "rm &#60;file&#62;" to delete &#60;file&#62; on the server
+                                                            |          enter "rmdir &#60;directory&#62;" to delete &#60;directory&#62; on the server
+                                                            |          enter "mkdir &#60;directory&#62;" to create &#60;directory&#62; on the server
 
-    scp &#60source&#62 &#60user&#62@&#60address&#62:&#60dest&#62                  | Copies &#60source&#62 on local machine to &#60dest&#62 at &#60address&#62
-    scp &#60user&#62@&#60address&#62:&#60source&#62 &#60dest&#62                  | Copies &#60source&#62 from &#60address&#62 to &#60dest&#62 on local machine
+    scp &#60;source&#62; &#60;user&#62;@&#60;address&#62;:&#60;dest&#62;                  | Copies &#60;source&#62; on local machine to &#60;dest&#62; at &#60;address&#62;
+    scp &#60;user&#62;@&#60;address&#62;:&#60;source&#62; &#60;dest&#62;                  | Copies &#60;source&#62; from &#60;address&#62; to &#60;dest&#62; on local machine
 
-    rsync &#60source&#62 &#60user&#62@&#60address&#62:&#60dest&#62                | Copies &#60source&#62 on local machine to &#60dest&#62 at &#60address&#62
-    rsync &#60user&#62@&#60address&#62:&#60source&#62 &#60dest&#62                | Copies &#60source&#62 from &#60address&#62 to &#60dest&#62 on local machine
-    rsync -P &#60user&#62@&#60address&#62:&#60source&#62 &#60dest&#62             | Copies &#60source&#62 from &#60address&#62 to &#60dest&#62 on local machine and allows resuming the command after interruption
+    rsync &#60;source&#62; &#60;user&#62;@&#60;address&#62;:&#60;dest&#62;                | Copies &#60;source&#62; on local machine to &#60;dest&#62; at &#60;address&#62;
+    rsync &#60;user&#62;@&#60;address&#62;:&#60;source&#62; &#60;dest&#62;                | Copies &#60;source&#62; from &#60;address&#62; to &#60;dest&#62; on local machine
+    rsync -P &#60;user&#62;@&#60;address&#62;:&#60;source&#62; &#60;dest&#62;             | Copies &#60;source&#62; from &#60;address&#62; to &#60;dest&#62; on local machine and allows resuming the command after interruption
 
-    w3m &#60address&#62                                         | Opens a TUI internet browser and loads &#60address&#62, not included on most distributions
+    w3m &#60;address&#62;                                         | Opens a TUI internet browser and loads &#60;address&#62;, not included on most distributions
 
-<h2 id="File_Data"><a href="#Contents">File Data</a></h2><hr><h3 id="File_Searching"><a href="#Contents">File Searching</a></h3>    locate &#60text&#62                                         | Searches all file names in a database for &#60text&#62
+<h2 id="File_Data"><a href="#Contents">File Data</a></h2><hr><h3 id="File_Searching"><a href="#Contents">File Searching</a></h3>    locate &#60;text&#62;                                         | Searches all file names in a database for &#60;text&#62;
                                                             | append " | less" for better readability
-    locate -r /&#60text&#62$                                    | Searches all file names in a database for exact matches of &#60text&#62
+    locate -r /&#60;text&#62;$                                    | Searches all file names in a database for exact matches of &#60;text&#62;
     updatedb                                              | Updates the database
 
-    find &#60directory&#62 -name "&#60text&#62"                       | Searches all file names in &#60directory&#62 for "&#60text&#62"
+    find &#60;directory&#62; -name "&#60;text&#62;"                       | Searches all file names in &#60;directory&#62; for "&#60;text&#62;"
                                                             | e.g. "find ~ -name 'linux_ch*'" lists all files beginning with 'linux_ch'
                                                             |      "find ~ -name '*.png'" lists all .png files
                                                             | append " | less" for better readability
-    find &#60directory&#62 -size +&#60number&#62&#60k/M/G/T&#62             | Searches &#60directory&#62 for files larger than &#60number&#62, k/M/G/T are decimal prefixes
-    find -name "&#60text&#62" -mtime -&#60number&#62                  | Searches &#60directory&#62 for files named "&#60text&#62" modified less than &#60number&#62 days ago
+    find &#60;directory&#62; -size +&#60;number&#62;&#60;k/M/G/T&#62;             | Searches &#60;directory&#62; for files larger than &#60;number&#62;, k/M/G/T are decimal prefixes
+    find -name "&#60;text&#62;" -mtime -&#60;number&#62;                  | Searches &#60;directory&#62; for files named "&#60;text&#62;" modified less than &#60;number&#62; days ago
     find -type d                                          | Searches working directory for directories
 
-<h3 id="Extracting_Sorting_Filtering_Data"><a href="#Contents">Extracting, Sorting, and Filtering Data</a></h3>    grep &#60text&#62 &#60file&#62                                    | Prints lines with &#60text&#62 in &#60file&#62
-    grep -i &#60text&#62 &#60file&#62                                 | Prints lines with &#60text&#62 in &#60file&#62 while ignoring capitalization
-    grep -v &#60text&#62 &#60file&#62                                 | Prints lines without &#60text&#62 in &#60file&#62
-    grep -r &#60text&#62 &#60directory&#62                            | Prints file names with &#60text&#62 in &#60directory&#62
-    grep -E "^&#60text&#62" &#60file&#62                              | Prints lines starting with &#60text&#62 in &#60file&#62
-    grep -E "&#60text&#62$" &#60file&#62                              | Prints lines ending with &#60text&#62 in &#60file&#62
-    grep -E "...&#60text&#62" &#60file&#62                            | Prints lines containing any 3 characters followed by &#60text&#62 in &#60file&#62
-    grep -E "[0-9]" &#60file&#62                                | Prints lines containing numbers in &#60file&#62
-    grep -E "[a-zA-Z]" &#60file&#62                             | Prints lines containing alphabetical letters in &#60file&#62
-    grep -E "^[A-Z].*\.$" &#60file&#62                          | Prints lines that start with a capital letter which is followed by any character, and the line ends with a period in &#60file&#62
+<h3 id="Extracting_Sorting_Filtering_Data"><a href="#Contents">Extracting, Sorting, and Filtering Data</a></h3>    grep &#60;text&#62; &#60;file&#62;                                    | Prints lines with &#60;text&#62; in &#60;file&#62;
+    grep -i &#60;text&#62; &#60;file&#62;                                 | Prints lines with &#60;text&#62; in &#60;file&#62; while ignoring capitalization
+    grep -v &#60;text&#62; &#60;file&#62;                                 | Prints lines without &#60;text&#62; in &#60;file&#62;
+    grep -r &#60;text&#62; &#60;directory&#62;                            | Prints file names with &#60;text&#62; in &#60;directory&#62;
+    grep -E "^&#60;text&#62;" &#60;file&#62;                              | Prints lines starting with &#60;text&#62; in &#60;file&#62;
+    grep -E "&#60;text&#62;$" &#60;file&#62;                              | Prints lines ending with &#60;text&#62; in &#60;file&#62;
+    grep -E "...&#60;text&#62;" &#60;file&#62;                            | Prints lines containing any 3 characters followed by &#60;text&#62; in &#60;file&#62;
+    grep -E "[0-9]" &#60;file&#62;                                | Prints lines containing numbers in &#60;file&#62;
+    grep -E "[a-zA-Z]" &#60;file&#62;                             | Prints lines containing alphabetical letters in &#60;file&#62;
+    grep -E "^[A-Z].*\.$" &#60;file&#62;                          | Prints lines that start with a capital letter which is followed by any character, and the line ends with a period in &#60;file&#62;
 
-    sort &#60file&#62                                           | Prints the sorted content of &#60file&#62 alphabetically
-    sort -u &#60file&#62                                        | Prints the sorted content of &#60file&#62 alphabetically and removes duplicates
-    sort -o &#60file1&#62 &#60file2&#62                               | Prints the sorted content of &#60file2&#62 alphabetically and outputs it to &#60file1&#62
-    sort -r &#60file&#62                                        | Prints the sorted content of &#60file&#62 reverse alphabetically
-    sort -R &#60file&#62                                        | Prints the sorted content of &#60file&#62 randomly
+    sort &#60;file&#62;                                           | Prints the sorted content of &#60;file&#62; alphabetically
+    sort -u &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; alphabetically and removes duplicates
+    sort -o &#60;file1&#62; &#60;file2&#62;                               | Prints the sorted content of &#60;file2&#62; alphabetically and outputs it to &#60;file1&#62;
+    sort -r &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; reverse alphabetically
+    sort -R &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; randomly
 
-    uniq &#60file&#62                                           | Prints the content of &#60file&#62 without any duplicated adjacent lines
+    uniq &#60;file&#62;                                           | Prints the content of &#60;file&#62; without any duplicated adjacent lines
 
-    diff &#60file1&#62 &#60file2&#62                                  | Displays the differences between &#60file1&#62 and &#60file2&#62
-    diff -c &#60file1&#62 &#60file2&#62                               | Displays the differences between &#60file1&#62 and &#60file2&#62 with context for each difference
-    diff -u &#60file1&#62 &#60file2&#62                               | Displays the differences between &#60file1&#62 and &#60file2&#62 as one file
+    diff &#60;file1&#62; &#60;file2&#62;                                  | Displays the differences between &#60;file1&#62; and &#60;file2&#62;
+    diff -c &#60;file1&#62; &#60;file2&#62;                               | Displays the differences between &#60;file1&#62; and &#60;file2&#62; with context for each difference
+    diff -u &#60;file1&#62; &#60;file2&#62;                               | Displays the differences between &#60;file1&#62; and &#60;file2&#62; as one file
 
-    wc &#60file&#62                                             | Prints the number of lines, number of words, byte size, and file path
+    wc &#60;file&#62;                                             | Prints the number of lines, number of words, byte size, and file path
                                                             | e.g. "wc Documents/plaintexts/*" lists all files in the plaintexts/ directory
                                                             |      "wc ~/Documents/data/data-friday.txt"
 
-    cut -c &#60number1&#62-&#60number2&#62 &#60file&#62                     | Prints everything between and including the &#60number1&#62 character to &#60number2&#62 character of each line
+    cut -c &#60;number1&#62;-&#60;number2&#62; &#60;file&#62;                     | Prints everything between and including the &#60;number1&#62; character to &#60;number2&#62; character of each line
 
-    sed 's/&#60text1&#62/&#60text2&#62/g' &#60file&#62                      | Prints the content of &#60file&#62, replacing every occurrence of &#60text1&#62 with &#60text2&#62
+    sed 's/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;                      | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62;
                                                             | 's' specifies the substitution operation
                                                             | 'g' searches for all matches in each line
-    sed '&#60number&#62 s/&#60text1&#62/&#60text2&#62/g' &#60file&#62             | Prints the content of &#60file&#62, replacing every occurrence of &#60text1&#62 with &#60text2&#62 on line &#60number&#62
-    sed '&#60number1&#62,&#60number2&#62 s/&#60text1&#62/&#60text2&#62/g' &#60file&#62  | Prints the content of &#60file&#62, replacing every occurrence of &#60text1&#62 with &#60text2&#62 on lines &#60number1&#62-&#60number2&#62
-    sed 's/&#60text1&#62/&#60text2&#62/&#60number&#62g' &#60file1&#62             | Prints the content of &#60file&#62, replacing every occurrence of &#60text1&#62 which is after and including the &#60number&#62 occurrence in each line, with &#60text2&#62
-    sed -n '&#60number1&#62,&#60number2&#62p' &#60file&#62                  | Prints lines &#60number1&#62 to &#60number2&#62 in &#60file&#62
+    sed '&#60;number&#62; s/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;             | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62; on line &#60;number&#62;
+    sed '&#60;number1&#62;,&#60;number2&#62; s/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;  | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62; on lines &#60;number1&#62;-&#60;number2&#62;
+    sed 's/&#60;text1&#62;/&#60;text2&#62;/&#60;number&#62;g' &#60;file1&#62;             | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; which is after and including the &#60;number&#62; occurrence in each line, with &#60;text2&#62;
+    sed -n '&#60;number1&#62;,&#60;number2&#62;p' &#60;file&#62;                  | Prints lines &#60;number1&#62; to &#60;number2&#62; in &#60;file&#62;
                                                             | 'p' prints the matched lines
-                                                            | '-n' makes it not print the full contents of &#60file&#62 as well
-    sed -n '/^&#60text&#62/p' &#60file&#62                            | Prints every line that starts with "&#60text&#62" in &#60file&#62
-    sed -n -e '1~2p' -e '1~7p' &#60file&#62                     | Prints every 2nd line starting at 1, and every 7th line starting at 1 in &#60file&#62
-    sed '&#60number1&#62,&#60number2&#62d' &#60file&#62                     | Deletes lines &#60number1&#62-&#60number2&#62 in &#60file&#62
-    sed '&#60number&#62,$d' &#60file&#62                              | Deletes lines from line &#60number&#62 to the last line in &#60file&#62
-    sed '/&#60text&#62/d' &#60file&#62                                | Deletes all lines with "&#60text&#62" in &#60file&#62
+                                                            | '-n' makes it not print the full contents of &#60;file&#62; as well
+    sed -n '/^&#60;text&#62;/p' &#60;file&#62;                            | Prints every line that starts with "&#60;text&#62;" in &#60;file&#62;
+    sed -n -e '1~2p' -e '1~7p' &#60;file&#62;                     | Prints every 2nd line starting at 1, and every 7th line starting at 1 in &#60;file&#62;
+    sed '&#60;number1&#62;,&#60;number2&#62;d' &#60;file&#62;                     | Deletes lines &#60;number1&#62;-&#60;number2&#62; in &#60;file&#62;
+    sed '&#60;number&#62;,$d' &#60;file&#62;                              | Deletes lines from line &#60;number&#62; to the last line in &#60;file&#62;
+    sed '/&#60;text&#62;/d' &#60;file&#62;                                | Deletes all lines with "&#60;text&#62;" in &#60;file&#62;
 
-<h3 id="Compressing_and_Extracting_Data"><a href="#Contents">Compressing and Extracting Data</a></h3>    tar -zcf &#60text&#62.tar.gz &#60file&#62                         | Compresses &#60file&#62 with gzip into the archive &#60text&#62.tar.gz
+<h3 id="Compressing_and_Extracting_Data"><a href="#Contents">Compressing and Extracting Data</a></h3>    tar -zcf &#60;text&#62;.tar.gz &#60;file&#62;                         | Compresses &#60;file&#62; with gzip into the archive &#60;text&#62;.tar.gz
                                                             | 'z' uses gzip, 'j' uses bzip2, 'J' uses xz
                                                             | e.g. "tar -Jcf all_data.tar.xz data-monday.txt data-tuesday.txt data-wednesday.txt"
 
-    tar -xf &#60archive&#62                                     | Decompresses &#60archive&#62 and outputs contents to working directory
-    tar -tf &#60archive&#62                                     | Lists contents of &#60archive&#62 without decompressing it
+    tar -xf &#60;archive&#62;                                     | Decompresses &#60;archive&#62; and outputs contents to working directory
+    tar -tf &#60;archive&#62;                                     | Lists contents of &#60;archive&#62; without decompressing it
 
-    zcat &#60file&#62                                           | View compressed file in the console (same as cat)
-    zmore &#60file&#62                                          | View compressed file in the console (same as more)
-    zless &#60file&#62                                          | View compressed file in the console (same as less)
+    zcat &#60;file&#62;                                           | View compressed file in the console (same as cat)
+    zmore &#60;file&#62;                                          | View compressed file in the console (same as more)
+    zless &#60;file&#62;                                          | View compressed file in the console (same as less)
 
 <h3 id="Mounting_and_Filesystems"><a href="#Contents">Mounting and Filesystems</a></h3>    lsblk                                                 | Lists block storage devices
     df                                                    | Lists file systems, their available space, and mount points
     df -h                                                 | Lists file systems, their available space with human readable sizes, and mount points
     fdisk -l                                              | Lists all file systems in /proc/partitions
-    fdisk &#60disk&#62                                          | Creates and modifies partition tables on &#60disk&#62
+    fdisk &#60;disk&#62;                                          | Creates and modifies partition tables on &#60;disk&#62;
                                                             | in fdisk, enter 'm' for help, and 'q' to quit without saving
 
-    mkfs.&#60text&#62 &#60device&#62                                  | When &#60text&#62 is a valid filesystem, formats &#60device&#62 with that filesystem
+    mkfs.&#60;text&#62; &#60;device&#62;                                  | When &#60;text&#62; is a valid filesystem, formats &#60;device&#62; with that filesystem
                                                             | e.g. "mkfs.ext4 /dev/sda2"
 
-    mount &#60device&#62 &#60directory&#62                            | Mounts &#60device&#62 to &#60directory&#62
-    umount &#60device&#62                                       | Unmounts &#60device&#62
+    mount &#60;device&#62; &#60;directory&#62;                            | Mounts &#60;device&#62; to &#60;directory&#62;
+    umount &#60;device&#62;                                       | Unmounts &#60;device&#62;
 
-    dd if=&#60text1&#62.txt of=&#60text2&#62.txt conv=ucase           | Creates a copy of &#60text1&#62.txt with all uppercase letters named &#60text2&#62.txt
-    dd if=&#60disk1&#62 of=&#60disk2&#62                              | Clones &#60disk1&#62 to &#60disk2&#62, &#60disk2&#62 should be at least equal size to &#60disk1&#62
-    dd if=/dev/zero of=&#60disk&#62                             | Overwrites all data on &#60disk&#62
-    dd if=&#60text&#62.&#60iso/img&#62 of=&#60disk&#62                      | Flashes &#60text&#62.&#60iso,img&#62 to &#60disk&#62
-                                                            | use mkfs with appropriate filesystem on &#60disk&#62 beforehand
-    dd if=&#60disk&#62 of=&#60text&#62.&#60iso/img&#62                      | Makes an image of &#60disk&#62
+    dd if=&#60;text1&#62;.txt of=&#60;text2&#62;.txt conv=ucase           | Creates a copy of &#60;text1&#62;.txt with all uppercase letters named &#60;text2&#62;.txt
+    dd if=&#60;disk1&#62; of=&#60;disk2&#62;                              | Clones &#60;disk1&#62; to &#60;disk2&#62;, &#60;disk2&#62; should be at least equal size to &#60;disk1&#62;
+    dd if=/dev/zero of=&#60;disk&#62;                             | Overwrites all data on &#60;disk&#62;
+    dd if=&#60;text&#62;.&#60;iso/img&#62; of=&#60;disk&#62;                      | Flashes &#60;text&#62;.&#60;iso,img&#62; to &#60;disk&#62;
+                                                            | use mkfs with appropriate filesystem on &#60;disk&#62; beforehand
+    dd if=&#60;disk&#62; of=&#60;text&#62;.&#60;iso/img&#62;                      | Makes an image of &#60;disk&#62;
 
 <h2 id="Time_and_Date"><a href="#Contents">Time and Date</a></h2><hr><h3 id="Viewing_Time_and_Date"><a href="#Contents">Viewing</a></h3>    timedatectl                                           | Prints information about current system time, time zone, and synchronization
     hwclock --show                                        | Prints the current date and time from the hardware clock
@@ -418,33 +418,33 @@ This document aims to improve the original by adding content, removing outdated 
     timedatectl set-time 'YYYY-MM-DD hh:mm:ss'            | Sets the system time and date
     date 'MMDDhhmmYYYY'                                   | Sets the system time and date
 
-<h2 id="Programs"><a href="#Contents">Programs</a></h2><hr><h3 id="Scheduling_Programs"><a href="#Contents">Scheduling Programs</a></h3>    watch &#60command&#62                                       | Executes &#60command&#62 every 2 seconds and displays the output
-    watch -n &#60number&#62 &#60command&#62                           | Executes &#60command&#62 every &#60number&#62 seconds (up to 1 decimal place) and displays the output
+<h2 id="Programs"><a href="#Contents">Programs</a></h2><hr><h3 id="Scheduling_Programs"><a href="#Contents">Scheduling Programs</a></h3>    watch &#60;command&#62;                                       | Executes &#60;command&#62; every 2 seconds and displays the output
+    watch -n &#60;number&#62; &#60;command&#62;                           | Executes &#60;command&#62; every &#60;number&#62; seconds (up to 1 decimal place) and displays the output
 
-    at &#60time&#62                                             | Allows you to enter commands which will execute on &#60time&#62
+    at &#60;time&#62;                                             | Allows you to enter commands which will execute on &#60;time&#62;
     atq                                                   | Lists pending commands
-    atrm &#60number&#62                                         | Removes pending command &#60number&#62
+    atrm &#60;number&#62;                                         | Removes pending command &#60;number&#62;
 
-    sleep &#60number&#62                                        | Pauses for &#60number&#62 seconds
-                                                            | &#60number&#62 can be appended with s, m, h, or d to specify units
+    sleep &#60;number&#62;                                        | Pauses for &#60;number&#62; seconds
+                                                            | &#60;number&#62; can be appended with s, m, h, or d to specify units
 
     crontab -e                                            | Creates or edits the current user's crontab entry
-                                                            | in crontab, valid format is "&#60m&#62 &#60h&#62 &#60DD&#62 &#60MM&#60 &#60D&#62 &#60command&#62"
+                                                            | in crontab, valid format is "&#60;m&#62; &#60;h&#62; &#60;DD&#62; &#60;MM&#60; &#60;D&#62; &#60;command&#62;"
                                                             | replace units with '*' for any
-                                                            | e.g. "* * * * * &#60command&#62" executes every minute
-                                                            |      "00 15 1,10,15,18 * * &#60command&#62" executes on days 1, 10, 15, and 18 each month at 3:00pm
-                                                            |      "45 17 1-21 * * &#60command&#62" executes every day at 5:45pm on days 1-21 each month
-                                                            |      "0 */2 * * * &#60command&#62" executes every 2 hours
-                                                            |      "/30 9-17 * * 1-5 &#60command&#62" executes every 30 minutes, from 9am-5pm on Monday to Friday
+                                                            | e.g. "* * * * * &#60;command&#62;" executes every minute
+                                                            |      "00 15 1,10,15,18 * * &#60;command&#62;" executes on days 1, 10, 15, and 18 each month at 3:00pm
+                                                            |      "45 17 1-21 * * &#60;command&#62;" executes every day at 5:45pm on days 1-21 each month
+                                                            |      "0 */2 * * * &#60;command&#62;" executes every 2 hours
+                                                            |      "/30 9-17 * * 1-5 &#60;command&#62;" executes every 30 minutes, from 9am-5pm on Monday to Friday
     crontab -l                                            | Lists the current user's crontab entry
     crontab -r                                            | Deletes the current user's crontab entry
 
-<h3 id="Background_Processes"><a href="#Contents">Background Processes</a></h3>    &#60command&#62 &                                           | Runs &#60command&#62 in the background
-    nohup &#60command&#62                                       | Runs &#60command&#62 and continues running when terminal is closed
+<h3 id="Background_Processes"><a href="#Contents">Background Processes</a></h3>    &#60;command&#62; &                                           | Runs &#60;command&#62; in the background
+    nohup &#60;command&#62;                                       | Runs &#60;command&#62; and continues running when terminal is closed
 
     jobs                                                  | Lists programs running in the background
-    fg &#60number&#62                                           | Makes program &#60number&#62 run in the foreground
-    bg &#60number&#62                                           | Makes program &#60number&#62 run in the background
+    fg &#60;number&#62;                                           | Makes program &#60;number&#62; run in the foreground
+    bg &#60;number&#62;                                           | Makes program &#60;number&#62; run in the background
 
 <h3 id="Process_Management"><a href="#Contents">Process Management</a></h3>    w                                                     | Lists current users and what they are doing
     top                                                   | Shows a dynamic list of running processes and system resources
@@ -454,18 +454,18 @@ This document aims to improve the original by adding content, removing outdated 
     ps -ef                                                | Lists all currently running processes
                                                             | append " | less" for better readability
     ps -ejH                                               | Lists process tree
-    kill &#60number&#62                                         | Gracefully kill process with &#60number&#62 process ID (sends signal to process to exit)
-                                                            | identical to "kill -15 &#60number&#62"
-                                                            | can replace &#60number&#62 with process name
-    kill -9 &#60number&#62                                      | Kills process with &#60number&#62 process ID (requests the OS to immediately cease process)
-    killall &#60text&#62                                        | Kills multiple processes by name, matching "&#60text&#62"
+    kill &#60;number&#62;                                         | Gracefully kill process with &#60;number&#62; process ID (sends signal to process to exit)
+                                                            | identical to "kill -15 &#60;number&#62;"
+                                                            | can replace &#60;number&#62; with process name
+    kill -9 &#60;number&#62;                                      | Kills process with &#60;number&#62; process ID (requests the OS to immediately cease process)
+    killall &#60;text&#62;                                        | Kills multiple processes by name, matching "&#60;text&#62;"
 
-    systemctl enable &#60text&#62.service                       | Enables the &#60text&#62.service systemd unit
-    systemctl start &#60text&#62.service                        | Starts the &#60text&#62.service systemd unit
-    systemctl stop &#60text&#62.service                         | Stops the &#60text&#62.service systemd unit
-    systemctl status &#60text&#62.service                       | Displays information and the most recent logs of the &#60text&#62.service systemd unit
-    journalctl -u &#60text&#62.service                          | Prints log entries of the &#60text&#62.service systemd unit
-    journalctl -f &#60text&#62.service                          | Prints the most recent log entries of the &#60text&#62.service systemd unit and continuously prints new entries
+    systemctl enable &#60;text&#62;.service                       | Enables the &#60;text&#62;.service systemd unit
+    systemctl start &#60;text&#62;.service                        | Starts the &#60;text&#62;.service systemd unit
+    systemctl stop &#60;text&#62;.service                         | Stops the &#60;text&#62;.service systemd unit
+    systemctl status &#60;text&#62;.service                       | Displays information and the most recent logs of the &#60;text&#62;.service systemd unit
+    journalctl -u &#60;text&#62;.service                          | Prints log entries of the &#60;text&#62;.service systemd unit
+    journalctl -f &#60;text&#62;.service                          | Prints the most recent log entries of the &#60;text&#62;.service systemd unit and continuously prints new entries
 
     halt                                                  | Halts the machine
     shutdown -H                                           | Halts the machine
@@ -474,85 +474,85 @@ This document aims to improve the original by adding content, removing outdated 
     reboot                                                | Restarts the machine
     shutdown -r                                           | Restarts the machine
 
-<h2 id="Permissions"><a href="#Contents">Permissions</a></h2><hr><h3 id="Users_and_Groups"><a href="#Contents">Users and Groups</a></h3>    useradd &#60text&#62                                        | Creates a new user named &#60text&#62, an alternative command 'adduser' is made to be more user-friendly
-    passwd &#60user&#62                                         | Changes the password for &#60user&#62
-    userdel &#60user&#62                                        | Deletes &#60user&#62, an alternative command 'deluser' is made to be more user-friendly
-    usermod -l &#60text&#62 &#60user&#62                              | Changes the name of &#60user&#62 to &#60text&#62
+<h2 id="Permissions"><a href="#Contents">Permissions</a></h2><hr><h3 id="Users_and_Groups"><a href="#Contents">Users and Groups</a></h3>    useradd &#60;text&#62;                                        | Creates a new user named &#60;text&#62;, an alternative command 'adduser' is made to be more user-friendly
+    passwd &#60;user&#62;                                         | Changes the password for &#60;user&#62;
+    userdel &#60;user&#62;                                        | Deletes &#60;user&#62;, an alternative command 'deluser' is made to be more user-friendly
+    usermod -l &#60;text&#62; &#60;user&#62;                              | Changes the name of &#60;user&#62; to &#60;text&#62;
 
-    groupadd &#60text&#62                                       | Create a new user group named &#60text&#62, an alternative command 'addgroup' is made to be more user-friendly
-    groupdel &#60group&#62                                      | Deletes &#60group&#62, an alternative command 'delgroup' is made to be more user-friendly
-    usermod -aG &#60group&#62 &#60user&#62                            | Adds &#60user&#62 to &#60group&#62
+    groupadd &#60;text&#62;                                       | Create a new user group named &#60;text&#62;, an alternative command 'addgroup' is made to be more user-friendly
+    groupdel &#60;group&#62;                                      | Deletes &#60;group&#62;, an alternative command 'delgroup' is made to be more user-friendly
+    usermod -aG &#60;group&#62; &#60;user&#62;                            | Adds &#60;user&#62; to &#60;group&#62;
 
-<h3 id="File_Permissions"><a href="#Contents">File Permissions</a></h3>    chown &#60user&#62 &#60file&#62                                   | Sets ownership of &#60file&#62 to &#60user&#62
-    chown &#60user&#62:&#60group&#62 &#60file&#62                           | Sets user ownership of &#60file&#62 to &#60user&#62 and group ownership to &#60group&#62
-    chown -R &#60user&#62:&#60group&#62 &#60directory&#62                   | Sets user ownership of &#60directory&#62 and all subdirectories to &#60user&#62 and group ownership to &#60group&#62
-    chmod &#60u/g/o/a&#62&#60+/-/=&#62&#60r/w/x&#62 &#60file&#62                  | Modifies permissions of &#60file&#62
+<h3 id="File_Permissions"><a href="#Contents">File Permissions</a></h3>    chown &#60;user&#62; &#60;file&#62;                                   | Sets ownership of &#60;file&#62; to &#60;user&#62;
+    chown &#60;user&#62;:&#60;group&#62; &#60;file&#62;                           | Sets user ownership of &#60;file&#62; to &#60;user&#62; and group ownership to &#60;group&#62;
+    chown -R &#60;user&#62;:&#60;group&#62; &#60;directory&#62;                   | Sets user ownership of &#60;directory&#62; and all subdirectories to &#60;user&#62; and group ownership to &#60;group&#62;
+    chmod &#60;u/g/o/a&#62;&#60;+/-/=&#62;&#60;r/w/x&#62; &#60;file&#62;                  | Modifies permissions of &#60;file&#62;
                                                             | 'u' is user, 'g' is group, 'o' is other, 'a' is all
                                                             | '+' adds a right, '-' removes a right, '=' sets a right
                                                             | 'r' is read permission, 'w' is write permission, 'x' allows execution
                                                             | e.g. "chmod a+x startup.sh" makes startup.sh executable by anyone
                                                             |      "chmod ug+rwx data.txt" gives full permissions of data.txt to user and group
-    chmod &#60number1&#62&#60number2&#62&#60number3&#62 &#60file&#62              | Modifies permissions of &#60file&#62
-                                                            | &#60number&#62 can be any whole number from 0-7
+    chmod &#60;number1&#62;&#60;number2&#62;&#60;number3&#62; &#60;file&#62;              | Modifies permissions of &#60;file&#62;
+                                                            | &#60;number&#62; can be any whole number from 0-7
                                                             | 'r'=4, 'w'=2, 'x'=1
-                                                            | &#60number1&#62 is user, &#60number2&#62 is group, &#60number3&#62 is other
+                                                            | &#60;number1&#62; is user, &#60;number2&#62; is group, &#60;number3&#62; is other
                                                             | e.g. 'rwx'='4+2+1'=7
                                                             |      'rx'='4+1'=5
                                                             |      "chmod 777 startup.sh" gives everyone read, write, and execute permissions
                                                             |      "chmod 664 photo.jpg" gives user and group read and write permissions, and read permission to others
 
-<h2 id="Multiple_Commands"><a href="#Contents">Multiple Commands</a></h2><hr><h3 id="Flow_Redirection"><a href="#Contents">Flow Redirection</a></h3>    &#60command&#62 &#62 &#60file&#62                                    | Standard output of &#60command&#62 is redirected to &#60file&#62
-                                                            | e.g. "ps -ejH &#62 output.txt"
-                                                            |      "cat &#62 data.txt"
-    &#60command&#62 2&#62 &#60file&#62                                   | Error output of &#60command&#62 is redirected to &#60file&#62
-    &#60command&#62 &&#62 &#60file&#62                                   | Standard and error output of &#60command&#62 is redirected to &#60file&#62
-                                                            | e.g. "&&#62 /dev/null" can be used to silence the output of a command
+<h2 id="Multiple_Commands"><a href="#Contents">Multiple Commands</a></h2><hr><h3 id="Flow_Redirection"><a href="#Contents">Flow Redirection</a></h3>    &#60;command&#62; &#62; &#60;file&#62;                                    | Standard output of &#60;command&#62; is redirected to &#60;file&#62;
+                                                            | e.g. "ps -ejH &#62; output.txt"
+                                                            |      "cat &#62; data.txt"
+    &#60;command&#62; 2&#62; &#60;file&#62;                                   | Error output of &#60;command&#62; is redirected to &#60;file&#62;
+    &#60;command&#62; &&#62; &#60;file&#62;                                   | Standard and error output of &#60;command&#62; is redirected to &#60;file&#62;
+                                                            | e.g. "&&#62; /dev/null" can be used to silence the output of a command
 
-    &#60command&#62 &#62&#62 &#60file&#62                                   | Standard output of &#60command&#62 is redirected and appended to &#60file&#62
-                                                            | e.g. "ls -a notadir/ &#62&#62 data.txt 2&#62&#62 errors.log"
-    &#60command&#62 2&#62&#62 &#60file&#62                                  | Error output of &#60command&#62 is redirected and appended to &#60file&#62
-    &#60command&#62 &&#62&#62 &#60file&#62                                  | Standard and error output of &#60command&#62 is redirected and appended to &#60file&#62
+    &#60;command&#62; &#62;&#62; &#60;file&#62;                                   | Standard output of &#60;command&#62; is redirected and appended to &#60;file&#62;
+                                                            | e.g. "ls -a notadir/ &#62;&#62; data.txt 2&#62;&#62; errors.log"
+    &#60;command&#62; 2&#62;&#62; &#60;file&#62;                                  | Error output of &#60;command&#62; is redirected and appended to &#60;file&#62;
+    &#60;command&#62; &&#62;&#62; &#60;file&#62;                                  | Standard and error output of &#60;command&#62; is redirected and appended to &#60;file&#62;
 
-    &#60command&#62 &#60 &#60file&#62                                    | Inputs &#60file&#62 to &#60command&#62
-    &#60command&#62 &#60&#60 "&#60text&#62"                                 | &#60command&#62 stops at &#60text&#62
-                                                            | e.g. "cat &#62 &#60file&#62 &#60&#60 endhere" will not write the entered lines until you enter 'endhere' on a new line
-    &#60command&#62 &#60&#60&#60 "&#60text&#62"                                | Inputs &#60text&#62 to &#60command&#62
+    &#60;command&#62; &#60; &#60;file&#62;                                    | Inputs &#60;file&#62; to &#60;command&#62;
+    &#60;command&#62; &#60;&#60; "&#60;text&#62;"                                 | &#60;command&#62; stops at &#60;text&#62;
+                                                            | e.g. "cat &#62; &#60;file&#62; &#60;&#60; endhere" will not write the entered lines until you enter 'endhere' on a new line
+    &#60;command&#62; &#60;&#60;&#60; "&#60;text&#62;"                                | Inputs &#60;text&#62; to &#60;command&#62;
 
-<h3 id="Chaining_Commands"><a href="#Contents">Chaining Commands</a></h3>    &#60command1&#62 ; &#60command2&#62                               | Executes &#60command1&#62 then executes &#60command2&#62
-    &#60command1&#62 | &#60command2&#62                               | Executes &#60command1&#62 and redirects the output to &#60command2&#62
-    &#60command1&#62 && &#60command2&#62                              | Executes &#60command1&#62 and executes &#60command2&#62 if &#60command1&#62 was successful
-    &#60command1&#62 || &#60command2&#62                              | Executes &#60command1&#62 and executes &#60command2&#62 if &#60command1&#62 failed
-    &#60command1&#62 && { &#60command2&#62 ; &#60command3&#62 ; }           | Executes &#60command1&#62 and executes both &#60command2&#62 then &#60command3&#62 if &#60command1&#62 was successful
-    &#60command1&#62 && &#60command2&#62 || &#60command3&#62                | Executes &#60command1&#62 and executes &#60command2&#62 if &#60command1&#62 was successful, or &#60command3&#62 if &#60command1&#62 failed
+<h3 id="Chaining_Commands"><a href="#Contents">Chaining Commands</a></h3>    &#60;command1&#62; ; &#60;command2&#62;                               | Executes &#60;command1&#62; then executes &#60;command2&#62;
+    &#60;command1&#62; | &#60;command2&#62;                               | Executes &#60;command1&#62; and redirects the output to &#60;command2&#62;
+    &#60;command1&#62; && &#60;command2&#62;                              | Executes &#60;command1&#62; and executes &#60;command2&#62; if &#60;command1&#62; was successful
+    &#60;command1&#62; || &#60;command2&#62;                              | Executes &#60;command1&#62; and executes &#60;command2&#62; if &#60;command1&#62; failed
+    &#60;command1&#62; && { &#60;command2&#62; ; &#60;command3&#62; ; }           | Executes &#60;command1&#62; and executes both &#60;command2&#62; then &#60;command3&#62; if &#60;command1&#62; was successful
+    &#60;command1&#62; && &#60;command2&#62; || &#60;command3&#62;                | Executes &#60;command1&#62; and executes &#60;command2&#62; if &#60;command1&#62; was successful, or &#60;command3&#62; if &#60;command1&#62; failed
 
-<h3 id="Executing_and_Scripting"><a href="#Contents">Executing and Scripting</a></h3>    &#60file&#62                                                | Executes &#60file&#62 (assuming &#60file&#62 has correct executable permission)
+<h3 id="Executing_and_Scripting"><a href="#Contents">Executing and Scripting</a></h3>    &#60;file&#62;                                                | Executes &#60;file&#62; (assuming &#60;file&#62; has correct executable permission)
                                                             | e.g. "~/Downloads/install.sh" runs 'install.sh'
                                                             |      "./uninstall.sh" runs the 'uninstall.sh' file in the working directory
                                                             |      "/usr/bin/pwd" functions the same as 'pwd'
                                                             |      "/usr/bin/man ls" functions the same as 'man ls'
 
-     script.sh                                            | This is a file named 'script.sh', with the contents of each line after each '&#62' character
-    &#62echo "Here is the time:"                               | each newline character is interpreted the same as ';', it will execute each command one after the other
-    &#62date +%H:%M:%S                                         | e.g. 'date' followed by "echo End" on a new line functions the same as "date; echo End"
-    &#62echo "That is the time."                               | the script exits after the last command
-    &#62echo "Goodbye."
+     script.sh                                            | This is a file named 'script.sh', with the contents of each line after each '&#62;' character
+    &#62;echo "Here is the time:"                               | each newline character is interpreted the same as ';', it will execute each command one after the other
+    &#62;date +%H:%M:%S                                         | e.g. 'date' followed by "echo End" on a new line functions the same as "date; echo End"
+    &#62;echo "That is the time."                               | the script exits after the last command
+    &#62;echo "Goodbye."
 
      easystart.sh                                         | This script is named 'easystart.sh', it should include '&&' between every command to stop on failure, but works as an example
-    &#62mkdir ./my-program                                     | first, it creates a 'my-program/' directory in the working directory
-    &#62cd ./my-program                                        | second, it changes the working directory to 'my-program/'
-    &#62wget example.com/someprogram && ./bashinstall.sh       | third, it downloads something from 'example.com/program', and if successful, executes 'bashinstall.sh'
-    &#62./myprogram                                            | fourth, it executes 'myprogram'
+    &#62;mkdir ./my-program                                     | first, it creates a 'my-program/' directory in the working directory
+    &#62;cd ./my-program                                        | second, it changes the working directory to 'my-program/'
+    &#62;wget example.com/someprogram && ./bashinstall.sh       | third, it downloads something from 'example.com/program', and if successful, executes 'bashinstall.sh'
+    &#62;./myprogram                                            | fourth, it executes 'myprogram'
 
      bashinstall.sh                                       | This script is specifically a bash script, which uses a shebang (on the first line) to be run with bash
-    &#62#!/bin/bash                                            | indicates that the script will be executed with bash
-    &#62InstallDir='/usr/local/bin/myapp'                      | sets the 'InstallDir' variable to a specific directory
-    &#62mkdir $InstallDir && echo "Created app directory"      | creates the specified installation directory and tells the user that it made a directory
-    &#62pacman -S somedependency --noconfirm                   | installs a dependency without any confirmations
-    &#62cd $InstallDir && wget mydomain.com/app                | changes working directory to $InstallDir and downloads an app
-    &#62./install && echo "Installed app"                      | runs an install script and tells the user the app was installed
-    &#62systemctl enable app && systemctl restart app          | enables and starts the app as a service
-    &#62echo "Success!"                                        | tells the user "Success!"
-    &#62sleep 2                                                | pauses for 2 seconds before exiting
+    &#62;#!/bin/bash                                            | indicates that the script will be executed with bash
+    &#62;InstallDir='/usr/local/bin/myapp'                      | sets the 'InstallDir' variable to a specific directory
+    &#62;mkdir $InstallDir && echo "Created app directory"      | creates the specified installation directory and tells the user that it made a directory
+    &#62;pacman -S somedependency --noconfirm                   | installs a dependency without any confirmations
+    &#62;cd $InstallDir && wget mydomain.com/app                | changes working directory to $InstallDir and downloads an app
+    &#62;./install && echo "Installed app"                      | runs an install script and tells the user the app was installed
+    &#62;systemctl enable app && systemctl restart app          | enables and starts the app as a service
+    &#62;echo "Success!"                                        | tells the user "Success!"
+    &#62;sleep 2                                                | pauses for 2 seconds before exiting
 
 <h3 id="License_Information"><a href="#Contents">License Information</a></h3>This document is a derivative work of the "Linux Bash Shell Cheat Sheet" PDF by Raph D. from 2011:
     <a href="https://web.archive.org/web/20111018212827/http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf">https://web.archive.org/web/20111018212827/http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf</a>
@@ -561,7 +561,7 @@ The original document was published on their blog (archived) here:
 An available copy of the original can be found here:
     <a href="https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf">https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf</a>
 
-Linux Cheat Sheet © 2024 is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. To view a copy of this license, visit <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">https://creativecommons.org/licenses/by-nc-sa/4.0/</a>
+Linux Cheat Sheet &#169; 2024 is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. To view a copy of this license, visit <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">https://creativecommons.org/licenses/by-nc-sa/4.0/</a>
 </pre>
 </body>
 </html>
