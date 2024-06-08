@@ -601,4 +601,4 @@ License Information ############################################################
   An available copy of the original can be found here:
     https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf
 
-Linux Cheat Sheet © 2024 is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
+Linux Cheat Sheet copyright 2024 is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
