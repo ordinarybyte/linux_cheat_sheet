@@ -5,7 +5,7 @@ This is a derivative work under a CC BY-NC-SA 4.0 license. See license informati
 This document should be viewed with a monospace font and without line wrapping.
 This document aims to improve the original by adding content, removing outdated information, improving readability and formatting, improving examples, and various other changes.
 
-Legend:
+Legend
  | Placeholders are contained in '<' and '>', they should be replaced with the relevant string, e.g. '<file>' could be 'options.json'
  | A number will be appended to indicate separate placeholders of the same type, e.g. <file1>, <file2>
  | Multiple options are each separated by a '/' in the placeholder, some placeholders with multiple options include literal strings of text which should not be replaced, e.g. '<y/n>' could be 'y' or 'n'
