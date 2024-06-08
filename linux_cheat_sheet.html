@@ -6,8 +6,7 @@
     <meta name="description" content="A basic cheat sheet for the Linux terminal">
     <title>Linux Terminal Cheat Sheet</title>
   </head>
-<body>
-<h1>Linux Terminal Cheat Sheet</h1><pre>
+<body><h1>Linux Terminal Cheat Sheet</h1><pre>
 This is a derivative work under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> license. See license information section for more details.
 
 This document should be viewed with a monospace font and without line wrapping.
@@ -43,42 +42,42 @@ This document aims to improve the original by adding content, removing outdated 
 
 </pre><h2 id="Contents">Table of Contents</h2><pre> | Section                                          Line number 
  |--------------------------------------------------------------
- | <a href="#Basic_Information">Basic Information</a> .............................. 79
- |   <a href="#Terminal_Shortcuts">Terminal Shortcuts</a>                               80
- |   <a href="#File_Path_Syntax">File Path Syntax</a>                                 104
- |   <a href="#Console_Terminology">Console Terminology</a>                              114
- |   <a href="#Shells">Shells</a>                                           122
- |   <a href="#Text_Editors">Text Editors</a>                                     208
- | <a href="#Basic_Commands">Basic Commands</a> ................................. 127
- |   <a href="#Terminal_Navigation">Terminal Navigation</a>                              128
- |   <a href="#System_Information">System Information</a>                               217
- |   <a href="#Time_and_Date">Time and Date</a>                                  425
- | <a href="#Installing_Software">Installing Software</a> .............................. 127
- |   <a href="#Installing_Software_Arch_Linux">Arch Linux (Using pacman)</a>                        234
- |   <a href="#Installing_Software_Debian">Debian and Derivatives (Using apt)</a>               248
- |   <a href="#Installing_Software_From_Source">From Source (Do Your Own Research)</a>               260
- | <a href="#File_Data">File Data</a> ...................................... 332
- |   <a href="#File_Manipulation">File Manipulation</a>                                161
- |   <a href="#File_Searching">File Searching</a>                                   333
- |   <a href="#Reading_Sorting_and_Filtering_Data">Reading, Sorting, and Filtering Data</a>          347
- |   <a href="#Compressing_and_Extracting_Data">Compressing and Extracting Data</a>                  392
- |   <a href="#Mounting_and_Filesystems">Mounting and Filesystems</a>                         404
- | <a href="#Permissions">Permissions</a> .................................... 499
- |   <a href="#Users_and_Groups">Users and Groups</a>                                 500
- |   <a href="#File_Permissions">File Permissions</a>                                 510
- | <a href="#Network">Network</a> ........................................ 271
- |   <a href="#Local_Area_Network">Local Area Network</a>                               272
- |   <a href="#Internet">Internet</a>                                         288
- |   <a href="#Data_Over_Internet">Data Over Internet</a>                               301
- | <a href="#Programs">Programs</a> ....................................... 439
- |   <a href="#Scheduling_Programs">Scheduling Programs</a>                              440
- |   <a href="#Background_Processes">Background Processes</a>                             462
- |   <a href="#Process_Management">Process Management</a>                               470
- | <a href="#Managing_Commands">Managing Commands</a> .............................. 529
- |   <a href="#Flow_Redirection">Flow Redirection</a>                                 530
- |   <a href="#Chaining_Commands">Chaining Commands</a>                                548
- |   <a href="#Executing_and_Scripting">Executing and Scripting</a>                          556
- | <a href="#License_Information">License Information</a> ............................ 586
+ | <a href="#Basic_Information">Basic Information</a> .............................. 80
+ |   <a href="#Terminal_Shortcuts">Terminal Shortcuts</a>                               81
+ |   <a href="#File_Path_Syntax">File Path Syntax</a>                                 106
+ |   <a href="#Console_Terminology">Console Terminology</a>                              117
+ |   <a href="#Shells">Shells</a>                                           126
+ |   <a href="#Text_Editors">Text Editors</a>                                     134
+ | <a href="#Basic_Commands">Basic Commands</a> ................................. 144
+ |   <a href="#Terminal_Navigation">Terminal Navigation</a>                              145
+ |   <a href="#System_Information">System Information</a>                               176
+ |   <a href="#Time_and_Date">Time and Date</a>                                  194
+ | <a href="#Installing_Software">Installing Software</a> .............................. 207
+ |   <a href="#Installing_Software_Arch_Linux">Arch Linux (Using pacman)</a>                        208
+ |   <a href="#Installing_Software_Debian">Debian and Derivatives (Using apt)</a>               223
+ |   <a href="#Installing_Software_From_Source">From Source (Do Your Own Research)</a>               236
+ | <a href="#File_Data">File Data</a> ...................................... 248
+ |   <a href="#File_Manipulation">File Manipulation</a>                                249
+ |   <a href="#File_Searching">File Searching</a>                                   297
+ |   <a href="#Reading_Sorting_and_Filtering_Data">Reading, Sorting, and Filtering Data</a>          312
+ |   <a href="#Compressing_and_Extracting_Data">Compressing and Extracting Data</a>                  358
+ |   <a href="#Mounting_and_Filesystems">Mounting and Filesystems</a>                         371
+ | <a href="#Permissions">Permissions</a> .................................... 397
+ |   <a href="#Users_and_Groups">Users and Groups</a>                                 398
+ |   <a href="#File_Permissions">File Permissions</a>                                 409
+ | <a href="#Network">Network</a> ........................................ 429
+ |   <a href="#Local_Area_Network">Local Area Network</a>                               430
+ |   <a href="#Internet">Internet</a>                                         447
+ |   <a href="#Data_Over_Internet">Data Over Internet</a>                               461
+ | <a href="#Programs">Programs</a> ....................................... 493
+ |   <a href="#Scheduling_Programs">Scheduling Programs</a>                              494
+ |   <a href="#Background_Processes">Background Processes</a>                             517
+ |   <a href="#Process_Management">Process Management</a>                               526
+ | <a href="#Managing_Commands">Managing Commands</a> .............................. 556
+ |   <a href="#Flow_Redirection">Flow Redirection</a>                                 557
+ |   <a href="#Chaining_Commands">Chaining Commands</a>                                576
+ |   <a href="#Executing_and_Scripting">Executing and Scripting</a>                          585
+ | <a href="#License_Information">License Information</a> ............................ 616
  |--------------------------------------------------------------
 
 </pre><h2 id="Basic_Information"><a href="#Contents">Basic Information</a></h2><hr><h3 id="Terminal_Shortcuts"><a href="#Contents">Terminal Shortcuts</a></h3><pre>    Ctrl+L                                                | Clear the terminal screen
