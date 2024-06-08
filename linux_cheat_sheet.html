@@ -7,14 +7,13 @@
     <title>Linux Terminal Cheat Sheet</title>
   </head>
 <body>
-<pre>
-<h1>Linux Terminal Cheat Sheet</h1>
+<h1>Linux Terminal Cheat Sheet</h1><pre>
 This is a derivative work under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> license. See license information section for more details.
 
 This document should be viewed with a monospace font and without line wrapping.
 This document aims to improve the original by adding content, removing outdated information, improving readability and formatting, improving examples, and various other changes.
 
-<h2>Legend:</h2> | Placeholders are contained in '&#60;' and '&#62;', they should be replaced with the relevant string, e.g. '&#60;file&#62;' could be 'options.json'
+</pre><h2>Legend:</h2><pre> | Placeholders are contained in '&#60;' and '&#62;', they should be replaced with the relevant string, e.g. '&#60;file&#62;' could be 'options.json'
  | A number will be appended to indicate separate placeholders of the same type, e.g. &#60;file1&#62;, &#60;file2&#62;
  | Multiple options are each separated by a '/' in the placeholder, some placeholders with multiple options include literal strings of text which should not be replaced, e.g. '&#60;y/n&#62;' could be 'y' or 'n'
  |
@@ -42,7 +41,7 @@ This document aims to improve the original by adding content, removing outdated 
  | &#60;m&#62; is the minute, from 00-59
  | &#60;s&#62; is the second, from 00-59
 
-<h2 id="Contents">Table of Contents</h2> | Section                                          Line number 
+</pre><h2 id="Contents">Table of Contents</h2><pre> | Section                                          Line number 
  |--------------------------------------------------------------
  | <a href="#Basic_Information">Basic Information</a> .............................. 79
  |   <a href="#Terminal_Shortcuts">Terminal Shortcuts</a>                               80
@@ -83,7 +82,7 @@ This document aims to improve the original by adding content, removing outdated 
  | <a href="#License_Information">License Information</a> ............................ 586
  |--------------------------------------------------------------
 
-<h2 id="Basic_Information"><a href="#Contents">Basic Information</a></h2><hr><h3 id="Terminal_Shortcuts"><a href="#Contents">Terminal Shortcuts</a></h3>    Ctrl+L                                                | Clear the terminal screen
+</pre><h2 id="Basic_Information"><a href="#Contents">Basic Information</a></h2><hr><h3 id="Terminal_Shortcuts"><a href="#Contents">Terminal Shortcuts</a></h3><pre>    Ctrl+L                                                | Clear the terminal screen
     Ctrl+D                                                | Exit (sends a signal indicating the end of a text stream)
     Ctrl+C                                                | Kills the current program (soft kill, lets the program intercept the command to clean up before exiting)
     Ctrl+Z                                                | Pause current program
@@ -106,7 +105,7 @@ This document aims to improve the original by adding content, removing outdated 
 
     Ctrl+Alt+F&#60;number&#62;                                    | Selects &#60;number&#62; console, F1-F6 switches between different virtual consoles, and F7 is used for the X session (with GUI windows and apps)
 
-<h3 id="File_Path_Shortcuts"><a href="#Contents">File Path Shortcuts</a></h3>    /                                                     | Root directory, parent path to all the files on a system (always used to specify absolute paths)
+</pre><h3 id="File_Path_Shortcuts"><a href="#Contents">File Path Shortcuts</a></h3><pre>    /                                                     | Root directory, parent path to all the files on a system (always used to specify absolute paths)
                                                             | e.g. '/home/user/Documents/data/data-tuesday.csv' is the absolute path for './data/data-tuesday.csv' when working in '~/Documents'
     .                                                     | Working directory
                                                             | e.g. 'cd ./downloaded_files/' functions the same as 'cd /home/user/Downloads/downloaded_files/' when working in '/home/user/Downloads'
@@ -115,18 +114,18 @@ This document aims to improve the original by adding content, removing outdated 
     ..                                                    | Parent of working directory
                                                             |e.g. 'cd ..' functions the same as 'cd /home/user/' when working in '/home/user/Downloads'
 
-<h3 id="Console_Terminal_Shell"><a href="#Contents">Console/Terminal/Shell</a></h3>    Console                                               | Sometimes refers to a physical terminal (like the connected keyboard and monitor), and is a low-level part of the system
+</pre><h3 id="Console_Terminal_Shell"><a href="#Contents">Console/Terminal/Shell</a></h3><pre>    Console                                               | Sometimes refers to a physical terminal (like the connected keyboard and monitor), and is a low-level part of the system
                                                             | can also be called a tty (teletypewriter)
     Terminal                                              | Sometimes refers to a terminal emulator, or the hardware (like a connected keyboard and monitor), running a shell
     Terminal Emulator                                     | A software wrapper for a shell
     Shell                                                 | A program which interprets and processes input and returns output
     Command Line                                          | An interface used to enter commands (Command-Line Interface, CLI)
 
-<h3 id="Shells"><a href="#Contents">Shells</a></h3>    sh                                                    | A programming language described by the POSIX standard (sh is a specification, not implementation, and usually links to another implementation like bash)
+</pre><h3 id="Shells"><a href="#Contents">Shells</a></h3><pre>    sh                                                    | A programming language described by the POSIX standard (sh is a specification, not implementation, and usually links to another implementation like bash)
     bash                                                  | An implementation of the POSIX standard, although not fully POSIX-compliant (it may change the behaviour of valid POSIX shell scripts), it has more functionality than sh
                                                             | you can search for lists of differences between shells
 
-<h2 id="Basic_Commands"><a href="#Contents">Basic Commands</a></h2><hr><h3 id="Terminal_Navigation"><a href="#Contents">Terminal Navigation</a></h3>    ls -a                                                 | Lists all files and directories in working directory
+</pre><h2 id="Basic_Commands"><a href="#Contents">Basic Commands</a></h2><hr><h3 id="Terminal_Navigation"><a href="#Contents">Terminal Navigation</a></h3><pre>    ls -a                                                 | Lists all files and directories in working directory
     ls -l                                                 | Lists details of all files and directories in working directory
     ls -h                                                 | Lists all files and directories with with units (k, M, G, etc.) appended to the sizes for readability
     ls &#60;directory&#62;                                        | Lists files and directories in &#60;directory&#62;
@@ -158,7 +157,7 @@ This document aims to improve the original by adding content, removing outdated 
 
     echo &#60;text&#62;                                           | Prints &#60;text&#62;
 
-<h3 id="File_Manipulation"><a href="#Contents">File Manipulation</a></h3>    cat &#60;file&#62;                                            | Prints the content of &#60;file&#62;
+</pre><h3 id="File_Manipulation"><a href="#Contents">File Manipulation</a></h3><pre>    cat &#60;file&#62;                                            | Prints the content of &#60;file&#62;
                                                             | append " | less" for better readability
     cat &#62; &#60;file&#62;                                          | Creates or overwrites &#60;file&#62;, each line you enter will be written to each line of &#60;file&#62;
     head -n &#60;number&#62; &#60;file&#62;                               | Prints the content of &#60;file&#62; at &#60;number&#62; lines from the top
@@ -204,7 +203,7 @@ This document aims to improve the original by adding content, removing outdated 
                                                             | A symbolic link (or soft link) is a file which points to another file/directory
     ln -s &#60;directory1&#62; &#60;directory2&#62;                       | Creates &#60;directory2&#62; as a symbolic link to &#60;directory1&#62;
 
-<h3 id="Text_Editors"><a href="#Contents">Text Editors</a></h3>    nano &#60;file&#62;                                           | Opens the nano editor to create or edit &#60;file&#62;
+</pre><h3 id="Text_Editors"><a href="#Contents">Text Editors</a></h3><pre>    nano &#60;file&#62;                                           | Opens the nano editor to create or edit &#60;file&#62;
                                                             | shortcuts and options are displayed at the bottom of the terminal
     vim &#60;file&#62;                                            | Opens the vim editor to create or edit &#60;file&#62;
                                                             | exit by typing ':q' in normal mode, ':wq' to save and exit, or ':q!' to exit without saving
@@ -212,7 +211,7 @@ This document aims to improve the original by adding content, removing outdated 
                                                             | in normal mode, type 'dd' to delete the selected line, 'yy' to copy the line, 'P' to paste before cursor, and 'p' to paste clipboard after cursor
                                                             | select text by starting visual mode in the first position, then moving the cursor to the second position, press 'y' to copy, or 'd' to delete, then 'p' to paste
 
-<h3 id="System_Information"><a href="#Contents">System Information</a></h3>    free                                                  | Lists information about system memory
+</pre><h3 id="System_Information"><a href="#Contents">System Information</a></h3><pre>    free                                                  | Lists information about system memory
     free -h                                               | Lists information about system memory in a human readable format
     dmidecode -t memory                                   | Lists information about physical memory
 
@@ -228,7 +227,7 @@ This document aims to improve the original by adding content, removing outdated 
     hostnamectl                                           | Lists various system information
     neofetch                                              | Lists various system information
 
-<h3 id="Installing_Software_Arch"><a href="#Contents">Installing Software (Arch Linux)</a></h3>    pacman -S &#60;package&#62;                                   | Installs &#60;package&#62; and any dependencies
+</pre><h3 id="Installing_Software_Arch"><a href="#Contents">Installing Software (Arch Linux)</a></h3><pre>    pacman -S &#60;package&#62;                                   | Installs &#60;package&#62; and any dependencies
     pacman -R &#60;package&#62;                                   | Uninstalls &#60;package&#62;
     pacman -Rs &#60;package&#62;                                  | Uninstalls &#60;package&#62; and any dependencies which are no longer required
 
@@ -241,7 +240,7 @@ This document aims to improve the original by adding content, removing outdated 
     yay -S &#60;package&#62;                                      | Installs &#60;package&#62; from the AUR if available
                                                             | you can install yay with "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
 
-<h3 id="Installing_Software_Debian"><a href="#Contents">Installing Software (Debian and Derivatives)</a></h3>    apt install &#60;package&#62;                                 | Installs &#60;package&#62; and any dependencies
+</pre><h3 id="Installing_Software_Debian"><a href="#Contents">Installing Software (Debian and Derivatives)</a></h3><pre>    apt install &#60;package&#62;                                 | Installs &#60;package&#62; and any dependencies
     apt remove &#60;package&#62;                                  | Uninstalls &#60;package&#62;
     apt autoremove                                        | Uninstalls orphaned dependencies (packages no longer required)
                                                             | best practice to run after "apt remove &#60;package&#62;" to clean any unused dependencies
@@ -252,7 +251,7 @@ This document aims to improve the original by adding content, removing outdated 
                                                             | best practice to first run "apt update" to get the latest packages
     apt full-upgrade                                      | Upgrades the entire system (will remove currently installed packages if needed to update the system)
 
-<h3 id="Installing_Software_Source"><a href="#Contents">Installing From Source (Do Your Own Research)</a></h3>    1. | wget &#60;address&#62;                                   | Downloads the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
+</pre><h3 id="Installing_Software_Source"><a href="#Contents">Installing From Source (Do Your Own Research)</a></h3><pre>    1. | wget &#60;address&#62;                                   | Downloads the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
     2. | ls                                               | Verify file name and existence
     3. | tar -xf &#60;archive&#62;                                | Decompress the file
        |                                                    | if .zip: "unzip &#60;text&#62;.zip"
@@ -262,7 +261,7 @@ This document aims to improve the original by adding content, removing outdated 
     7. | make                                             | Build the software package
     8. | sudo make install                                | Install the package to the correct locations on the machine
 
-<h2 id="Network"><a href="#Contents">Network</a></h2><hr><h3 id="Local_Network"><a href="#Contents">Local</a></h3>    ip &#60;a/addr&#62;                                           | Displays information about network interfaces
+</pre><h2 id="Network"><a href="#Contents">Network</a></h2><hr><h3 id="Local_Network"><a href="#Contents">Local</a></h3><pre>    ip &#60;a/addr&#62;                                           | Displays information about network interfaces
 
     nmcli                                                 | Displays status and configurations of network interfaces
     nmcli device wifi list                                | Lists available Wi-Fi access points
@@ -277,7 +276,7 @@ This document aims to improve the original by adding content, removing outdated 
     ufw allow &#60;number&#62;                                    | Opens port &#60;number&#62;
     ufw deny &#60;number&#62;                                     | Closes port &#60;number&#62;
 
-<h3 id="Internet"><a href="#Contents">Internet</a></h3>    ping &#60;address&#62;                                        | Pings &#60;address&#62;
+</pre><h3 id="Internet"><a href="#Contents">Internet</a></h3><pre>    ping &#60;address&#62;                                        | Pings &#60;address&#62;
     ping -c &#60;number&#62; &#60;address&#62;                            | Pings &#60;address&#62; &#60;number&#62; times
     ping -i &#60;number&#62; &#60;address&#62;                            | Pings &#60;address&#62; every &#60;number&#62; seconds
 
@@ -289,7 +288,7 @@ This document aims to improve the original by adding content, removing outdated 
     netstat -a                                            | Lists all connected and listening sockets
                                                             | append " | less" for better readability
 
-<h3 id="Data_Over_Internet"><a href="#Contents">Data Over Internet</a></h3>    wget &#60;address&#62;                                        | Downloads the content content &#60;address&#62;
+</pre><h3 id="Data_Over_Internet"><a href="#Contents">Data Over Internet</a></h3><pre>    wget &#60;address&#62;                                        | Downloads the content content &#60;address&#62;
                                                             | e.g. "wget google.com" downloads 'index.html' from 'google.com'
                                                             |      "wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.17.2.tar.xz" downloads the compressed Linux 4.17.2 kernel
     curl &#60;address&#62;                                        | Prints the content at &#60;address&#62;
@@ -319,7 +318,7 @@ This document aims to improve the original by adding content, removing outdated 
 
     w3m &#60;address&#62;                                         | Opens a TUI internet browser and loads &#60;address&#62;, not included on most distributions
 
-<h2 id="File_Data"><a href="#Contents">File Data</a></h2><hr><h3 id="File_Searching"><a href="#Contents">File Searching</a></h3>    locate &#60;text&#62;                                         | Searches all file names in a database for &#60;text&#62;
+</pre><h2 id="File_Data"><a href="#Contents">File Data</a></h2><hr><h3 id="File_Searching"><a href="#Contents">File Searching</a></h3><pre>    locate &#60;text&#62;                                         | Searches all file names in a database for &#60;text&#62;
                                                             | append " | less" for better readability
     locate -r /&#60;text&#62;$                                    | Searches all file names in a database for exact matches of &#60;text&#62;
     updatedb                                              | Updates the database
@@ -332,7 +331,7 @@ This document aims to improve the original by adding content, removing outdated 
     find -name "&#60;text&#62;" -mtime -&#60;number&#62;                  | Searches &#60;directory&#62; for files named "&#60;text&#62;" modified less than &#60;number&#62; days ago
     find -type d                                          | Searches working directory for directories
 
-<h3 id="Extracting_Sorting_Filtering_Data"><a href="#Contents">Extracting, Sorting, and Filtering Data</a></h3>    grep &#60;text&#62; &#60;file&#62;                                    | Prints lines with &#60;text&#62; in &#60;file&#62;
+</pre><h3 id="Extracting_Sorting_Filtering_Data"><a href="#Contents">Extracting, Sorting, and Filtering Data</a></h3><pre>    grep &#60;text&#62; &#60;file&#62;                                    | Prints lines with &#60;text&#62; in &#60;file&#62;
     grep -i &#60;text&#62; &#60;file&#62;                                 | Prints lines with &#60;text&#62; in &#60;file&#62; while ignoring capitalization
     grep -v &#60;text&#62; &#60;file&#62;                                 | Prints lines without &#60;text&#62; in &#60;file&#62;
     grep -r &#60;text&#62; &#60;directory&#62;                            | Prints file names with &#60;text&#62; in &#60;directory&#62;
@@ -376,7 +375,7 @@ This document aims to improve the original by adding content, removing outdated 
     sed '&#60;number&#62;,$d' &#60;file&#62;                              | Deletes lines from line &#60;number&#62; to the last line in &#60;file&#62;
     sed '/&#60;text&#62;/d' &#60;file&#62;                                | Deletes all lines with "&#60;text&#62;" in &#60;file&#62;
 
-<h3 id="Compressing_and_Extracting_Data"><a href="#Contents">Compressing and Extracting Data</a></h3>    tar -zcf &#60;text&#62;.tar.gz &#60;file&#62;                         | Compresses &#60;file&#62; with gzip into the archive &#60;text&#62;.tar.gz
+</pre><h3 id="Compressing_and_Extracting_Data"><a href="#Contents">Compressing and Extracting Data</a></h3><pre>    tar -zcf &#60;text&#62;.tar.gz &#60;file&#62;                         | Compresses &#60;file&#62; with gzip into the archive &#60;text&#62;.tar.gz
                                                             | 'z' uses gzip, 'j' uses bzip2, 'J' uses xz
                                                             | e.g. "tar -Jcf all_data.tar.xz data-monday.txt data-tuesday.txt data-wednesday.txt"
 
@@ -387,7 +386,7 @@ This document aims to improve the original by adding content, removing outdated 
     zmore &#60;file&#62;                                          | View compressed file in the console (same as more)
     zless &#60;file&#62;                                          | View compressed file in the console (same as less)
 
-<h3 id="Mounting_and_Filesystems"><a href="#Contents">Mounting and Filesystems</a></h3>    lsblk                                                 | Lists block storage devices
+</pre><h3 id="Mounting_and_Filesystems"><a href="#Contents">Mounting and Filesystems</a></h3><pre>    lsblk                                                 | Lists block storage devices
     df                                                    | Lists file systems, their available space, and mount points
     df -h                                                 | Lists file systems, their available space with human readable sizes, and mount points
     fdisk -l                                              | Lists all file systems in /proc/partitions
@@ -407,18 +406,18 @@ This document aims to improve the original by adding content, removing outdated 
                                                             | use mkfs with appropriate filesystem on &#60;disk&#62; beforehand
     dd if=&#60;disk&#62; of=&#60;text&#62;.&#60;iso/img&#62;                      | Makes an image of &#60;disk&#62;
 
-<h2 id="Time_and_Date"><a href="#Contents">Time and Date</a></h2><hr><h3 id="Viewing_Time_and_Date"><a href="#Contents">Viewing</a></h3>    timedatectl                                           | Prints information about current system time, time zone, and synchronization
+</pre><h2 id="Time_and_Date"><a href="#Contents">Time and Date</a></h2><hr><h3 id="Viewing_Time_and_Date"><a href="#Contents">Viewing</a></h3><pre>    timedatectl                                           | Prints information about current system time, time zone, and synchronization
     hwclock --show                                        | Prints the current date and time from the hardware clock
     date                                                  | Prints the current system time and date
     date +%H                                              | Prints the current hour with preceding zero
     date +%H:%M:%S                                        | Prints the current hour, minute, and seconds
 
-<h3 id="Modifying_Time_and_Date"><a href="#Contents">Modifying</a></h3>    timedatectl set-ntp true                              | Enables the synchronization of system time with an NTP server
+</pre><h3 id="Modifying_Time_and_Date"><a href="#Contents">Modifying</a></h3><pre>    timedatectl set-ntp true                              | Enables the synchronization of system time with an NTP server
     hwclock --systohc                                     | Sets the hardware clock from the system clock
     timedatectl set-time 'YYYY-MM-DD hh:mm:ss'            | Sets the system time and date
     date 'MMDDhhmmYYYY'                                   | Sets the system time and date
 
-<h2 id="Programs"><a href="#Contents">Programs</a></h2><hr><h3 id="Scheduling_Programs"><a href="#Contents">Scheduling Programs</a></h3>    watch &#60;command&#62;                                       | Executes &#60;command&#62; every 2 seconds and displays the output
+</pre><h2 id="Programs"><a href="#Contents">Programs</a></h2><hr><h3 id="Scheduling_Programs"><a href="#Contents">Scheduling Programs</a></h3><pre>    watch &#60;command&#62;                                       | Executes &#60;command&#62; every 2 seconds and displays the output
     watch -n &#60;number&#62; &#60;command&#62;                           | Executes &#60;command&#62; every &#60;number&#62; seconds (up to 1 decimal place) and displays the output
 
     at &#60;time&#62;                                             | Allows you to enter commands which will execute on &#60;time&#62;
@@ -439,14 +438,14 @@ This document aims to improve the original by adding content, removing outdated 
     crontab -l                                            | Lists the current user's crontab entry
     crontab -r                                            | Deletes the current user's crontab entry
 
-<h3 id="Background_Processes"><a href="#Contents">Background Processes</a></h3>    &#60;command&#62; &                                           | Runs &#60;command&#62; in the background
+</pre><h3 id="Background_Processes"><a href="#Contents">Background Processes</a></h3><pre>    &#60;command&#62; &                                           | Runs &#60;command&#62; in the background
     nohup &#60;command&#62;                                       | Runs &#60;command&#62; and continues running when terminal is closed
 
     jobs                                                  | Lists programs running in the background
     fg &#60;number&#62;                                           | Makes program &#60;number&#62; run in the foreground
     bg &#60;number&#62;                                           | Makes program &#60;number&#62; run in the background
 
-<h3 id="Process_Management"><a href="#Contents">Process Management</a></h3>    w                                                     | Lists current users and what they are doing
+</pre><h3 id="Process_Management"><a href="#Contents">Process Management</a></h3><pre>    w                                                     | Lists current users and what they are doing
     top                                                   | Shows a dynamic list of running processes and system resources
                                                             | 'q' to quit, 'h' for help, 'k' to kill a process
     htop                                                  | Shows an interactive dynamic list of running processes and system resources with color
@@ -474,7 +473,7 @@ This document aims to improve the original by adding content, removing outdated 
     reboot                                                | Restarts the machine
     shutdown -r                                           | Restarts the machine
 
-<h2 id="Permissions"><a href="#Contents">Permissions</a></h2><hr><h3 id="Users_and_Groups"><a href="#Contents">Users and Groups</a></h3>    useradd &#60;text&#62;                                        | Creates a new user named &#60;text&#62;, an alternative command 'adduser' is made to be more user-friendly
+</pre><h2 id="Permissions"><a href="#Contents">Permissions</a></h2><hr><h3 id="Users_and_Groups"><a href="#Contents">Users and Groups</a></h3><pre>    useradd &#60;text&#62;                                        | Creates a new user named &#60;text&#62;, an alternative command 'adduser' is made to be more user-friendly
     passwd &#60;user&#62;                                         | Changes the password for &#60;user&#62;
     userdel &#60;user&#62;                                        | Deletes &#60;user&#62;, an alternative command 'deluser' is made to be more user-friendly
     usermod -l &#60;text&#62; &#60;user&#62;                              | Changes the name of &#60;user&#62; to &#60;text&#62;
@@ -483,7 +482,7 @@ This document aims to improve the original by adding content, removing outdated 
     groupdel &#60;group&#62;                                      | Deletes &#60;group&#62;, an alternative command 'delgroup' is made to be more user-friendly
     usermod -aG &#60;group&#62; &#60;user&#62;                            | Adds &#60;user&#62; to &#60;group&#62;
 
-<h3 id="File_Permissions"><a href="#Contents">File Permissions</a></h3>    chown &#60;user&#62; &#60;file&#62;                                   | Sets ownership of &#60;file&#62; to &#60;user&#62;
+</pre><h3 id="File_Permissions"><a href="#Contents">File Permissions</a></h3><pre>    chown &#60;user&#62; &#60;file&#62;                                   | Sets ownership of &#60;file&#62; to &#60;user&#62;
     chown &#60;user&#62;:&#60;group&#62; &#60;file&#62;                           | Sets user ownership of &#60;file&#62; to &#60;user&#62; and group ownership to &#60;group&#62;
     chown -R &#60;user&#62;:&#60;group&#62; &#60;directory&#62;                   | Sets user ownership of &#60;directory&#62; and all subdirectories to &#60;user&#62; and group ownership to &#60;group&#62;
     chmod &#60;u/g/o/a&#62;&#60;+/-/=&#62;&#60;r/w/x&#62; &#60;file&#62;                  | Modifies permissions of &#60;file&#62;
@@ -501,7 +500,7 @@ This document aims to improve the original by adding content, removing outdated 
                                                             |      "chmod 777 startup.sh" gives everyone read, write, and execute permissions
                                                             |      "chmod 664 photo.jpg" gives user and group read and write permissions, and read permission to others
 
-<h2 id="Multiple_Commands"><a href="#Contents">Multiple Commands</a></h2><hr><h3 id="Flow_Redirection"><a href="#Contents">Flow Redirection</a></h3>    &#60;command&#62; &#62; &#60;file&#62;                                    | Standard output of &#60;command&#62; is redirected to &#60;file&#62;
+</pre><h2 id="Multiple_Commands"><a href="#Contents">Multiple Commands</a></h2><hr><h3 id="Flow_Redirection"><a href="#Contents">Flow Redirection</a></h3><pre>    &#60;command&#62; &#62; &#60;file&#62;                                    | Standard output of &#60;command&#62; is redirected to &#60;file&#62;
                                                             | e.g. "ps -ejH &#62; output.txt"
                                                             |      "cat &#62; data.txt"
     &#60;command&#62; 2&#62; &#60;file&#62;                                   | Error output of &#60;command&#62; is redirected to &#60;file&#62;
@@ -518,14 +517,14 @@ This document aims to improve the original by adding content, removing outdated 
                                                             | e.g. "cat &#62; &#60;file&#62; &#60;&#60; endhere" will not write the entered lines until you enter 'endhere' on a new line
     &#60;command&#62; &#60;&#60;&#60; "&#60;text&#62;"                                | Inputs &#60;text&#62; to &#60;command&#62;
 
-<h3 id="Chaining_Commands"><a href="#Contents">Chaining Commands</a></h3>    &#60;command1&#62; ; &#60;command2&#62;                               | Executes &#60;command1&#62; then executes &#60;command2&#62;
+</pre><h3 id="Chaining_Commands"><a href="#Contents">Chaining Commands</a></h3><pre>    &#60;command1&#62; ; &#60;command2&#62;                               | Executes &#60;command1&#62; then executes &#60;command2&#62;
     &#60;command1&#62; | &#60;command2&#62;                               | Executes &#60;command1&#62; and redirects the output to &#60;command2&#62;
     &#60;command1&#62; && &#60;command2&#62;                              | Executes &#60;command1&#62; and executes &#60;command2&#62; if &#60;command1&#62; was successful
     &#60;command1&#62; || &#60;command2&#62;                              | Executes &#60;command1&#62; and executes &#60;command2&#62; if &#60;command1&#62; failed
     &#60;command1&#62; && { &#60;command2&#62; ; &#60;command3&#62; ; }           | Executes &#60;command1&#62; and executes both &#60;command2&#62; then &#60;command3&#62; if &#60;command1&#62; was successful
     &#60;command1&#62; && &#60;command2&#62; || &#60;command3&#62;                | Executes &#60;command1&#62; and executes &#60;command2&#62; if &#60;command1&#62; was successful, or &#60;command3&#62; if &#60;command1&#62; failed
 
-<h3 id="Executing_and_Scripting"><a href="#Contents">Executing and Scripting</a></h3>    &#60;file&#62;                                                | Executes &#60;file&#62; (assuming &#60;file&#62; has correct executable permission)
+</pre><h3 id="Executing_and_Scripting"><a href="#Contents">Executing and Scripting</a></h3><pre>    &#60;file&#62;                                                | Executes &#60;file&#62; (assuming &#60;file&#62; has correct executable permission)
                                                             | e.g. "~/Downloads/install.sh" runs 'install.sh'
                                                             |      "./uninstall.sh" runs the 'uninstall.sh' file in the working directory
                                                             |      "/usr/bin/pwd" functions the same as 'pwd'
@@ -554,7 +553,7 @@ This document aims to improve the original by adding content, removing outdated 
     &#62;echo "Success!"                                        | tells the user "Success!"
     &#62;sleep 2                                                | pauses for 2 seconds before exiting
 
-<h3 id="License_Information"><a href="#Contents">License Information</a></h3>This document is a derivative work of the "Linux Bash Shell Cheat Sheet" PDF by Raph D. from 2011:
+</pre><h3 id="License_Information"><a href="#Contents">License Information</a></h3><pre>This document is a derivative work of the "Linux Bash Shell Cheat Sheet" PDF by Raph D. from 2011:
     <a href="https://web.archive.org/web/20111018212827/http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf">https://web.archive.org/web/20111018212827/http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf</a>
 The original document was published on their blog (archived) here:
     <a href="https://web.archive.org/web/20120106085933/http://freeworld.posterous.com/">https://web.archive.org/web/20120106085933/http://freeworld.posterous.com/</a>
