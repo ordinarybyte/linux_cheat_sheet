@@ -45,37 +45,36 @@ This document aims to improve the original by adding content, removing outdated 
  |--------------------------------------------------------------
  | <a href="#Basic_Information">Basic Information</a> .............................. 79
  |   <a href="#Terminal_Shortcuts">Terminal Shortcuts</a>                               80
- |   <a href="#File_Path_Shortcuts">File Path Shortcuts</a>                              104
- |   <a href="#Console_Terminal_Shell">Console/Terminal/Shell</a>                           114
+ |   <a href="#File_Path_Syntax">File Path Syntax</a>                                 104
+ |   <a href="#Console_Terminology">Console Terminology</a>                              114
  |   <a href="#Shells">Shells</a>                                           122
+ |   <a href="#Text_Editors">Text Editors</a>                                     208
  | <a href="#Basic_Commands">Basic Commands</a> ................................. 127
  |   <a href="#Terminal_Navigation">Terminal Navigation</a>                              128
- |   <a href="#File_Manipulation">File Manipulation</a>                                161
- |   <a href="#Text_Editors">Text Editors</a>                                     208
  |   <a href="#System_Information">System Information</a>                               217
- |   <a href="#Installing_Software_Arch">Installing Software (Arch Linux)</a>                 234
- |   <a href="#Installing_Software_Debian">Installing Software (Debian and Derivatives)</a>     248
- |   <a href="#Installing_Software_Source">Installing From Source (Do Your Own Research)</a>    260
- | <a href="#Network">Network</a> ........................................ 271
- |   <a href="#Local_Network">Local</a>                                            272
- |   <a href="#Internet">Internet</a>                                         288
- |   <a href="#Data_Over_Internet">Data Over Internet</a>                               301
+ |   <a href="#Time_and_Date">Time and Date</a>                                  425
+ | <a href="#Installing_Software">Installing Software</a> .............................. 127
+ |   <a href="#Installing_Software_Arch_Linux">Arch Linux (Using pacman)</a>                        234
+ |   <a href="#Installing_Software_Debian">Debian and Derivatives (Using apt)</a>               248
+ |   <a href="#Installing_Software_From_Source">From Source (Do Your Own Research)</a>               260
  | <a href="#File_Data">File Data</a> ...................................... 332
+ |   <a href="#File_Manipulation">File Manipulation</a>                                161
  |   <a href="#File_Searching">File Searching</a>                                   333
- |   <a href="#Extracting_Sorting_Filtering_Data">Extracting, Sorting, and Filtering Data</a>          347
+ |   <a href="#Reading_Sorting_and_Filtering_Data">Reading, Sorting, and Filtering Data</a>          347
  |   <a href="#Compressing_and_Extracting_Data">Compressing and Extracting Data</a>                  392
  |   <a href="#Mounting_and_Filesystems">Mounting and Filesystems</a>                         404
- | <a href="#Time_and_Date">Time and Date</a> .................................. 425
- |   <a href="#Viewing_Time_and_Date">Viewing</a>                                          426
- |   <a href="#Modifying_Time_and_Date">Modifying</a>                                        433
+ | <a href="#Permissions">Permissions</a> .................................... 499
+ |   <a href="#Users_and_Groups">Users and Groups</a>                                 500
+ |   <a href="#File_Permissions">File Permissions</a>                                 510
+ | <a href="#Network">Network</a> ........................................ 271
+ |   <a href="#Local_Area_Network">Local Area Network</a>                               272
+ |   <a href="#Internet">Internet</a>                                         288
+ |   <a href="#Data_Over_Internet">Data Over Internet</a>                               301
  | <a href="#Programs">Programs</a> ....................................... 439
  |   <a href="#Scheduling_Programs">Scheduling Programs</a>                              440
  |   <a href="#Background_Processes">Background Processes</a>                             462
  |   <a href="#Process_Management">Process Management</a>                               470
- | <a href="#Permissions">Permissions</a> .................................... 499
- |   <a href="#Users_and_Groups">Users and Groups</a>                                 500
- |   <a href="#File_Permissions">File Permissions</a>                                 510
- | <a href="#Multiple_Commands">Multiple Commands</a> .............................. 529
+ | <a href="#Managing_Commands">Managing Commands</a> .............................. 529
  |   <a href="#Flow_Redirection">Flow Redirection</a>                                 530
  |   <a href="#Chaining_Commands">Chaining Commands</a>                                548
  |   <a href="#Executing_and_Scripting">Executing and Scripting</a>                          556
@@ -105,7 +104,7 @@ This document aims to improve the original by adding content, removing outdated 
 
     Ctrl+Alt+F&#60;number&#62;                                    | Selects &#60;number&#62; console, F1-F6 switches between different virtual consoles, and F7 is used for the X session (with GUI windows and apps)
 
-</pre><h3 id="File_Path_Shortcuts"><a href="#Contents">File Path Shortcuts</a></h3><pre>    /                                                     | Root directory, parent path to all the files on a system (always used to specify absolute paths)
+</pre><h3 id="File_Path_Syntax"><a href="#Contents">File Path Syntax</a></h3><pre>    /                                                     | Root directory, parent path to all the files on a system (always used to specify absolute paths)
                                                             | e.g. '/home/user/Documents/data/data-tuesday.csv' is the absolute path for './data/data-tuesday.csv' when working in '~/Documents'
     .                                                     | Working directory
                                                             | e.g. 'cd ./downloaded_files/' functions the same as 'cd /home/user/Downloads/downloaded_files/' when working in '/home/user/Downloads'
@@ -114,7 +113,7 @@ This document aims to improve the original by adding content, removing outdated 
     ..                                                    | Parent of working directory
                                                             |e.g. 'cd ..' functions the same as 'cd /home/user/' when working in '/home/user/Downloads'
 
-</pre><h3 id="Console_Terminal_Shell"><a href="#Contents">Console/Terminal/Shell</a></h3><pre>    Console                                               | Sometimes refers to a physical terminal (like the connected keyboard and monitor), and is a low-level part of the system
+</pre><h3 id="Console_Terminology"><a href="#Contents">Console Terminology</a></h3><pre>    Console                                               | Sometimes refers to a physical terminal (like the connected keyboard and monitor), and is a low-level part of the system
                                                             | can also be called a tty (teletypewriter)
     Terminal                                              | Sometimes refers to a terminal emulator, or the hardware (like a connected keyboard and monitor), running a shell
     Terminal Emulator                                     | A software wrapper for a shell
@@ -122,8 +121,18 @@ This document aims to improve the original by adding content, removing outdated 
     Command Line                                          | An interface used to enter commands (Command-Line Interface, CLI)
 
 </pre><h3 id="Shells"><a href="#Contents">Shells</a></h3><pre>    sh                                                    | A programming language described by the POSIX standard (sh is a specification, not implementation, and usually links to another implementation like bash)
-    bash                                                  | An implementation of the POSIX standard, although not fully POSIX-compliant (it may change the behaviour of valid POSIX shell scripts), it has more functionality than sh
+    bash                                                  | A common implementation of the POSIX standard, although not fully POSIX-compliant (it may change the behaviour of valid POSIX shell scripts), it has more functionality than sh
                                                             | you can search for lists of differences between shells
+    dash                                                  | The default shell for Debian, fully POSIX-compliant but not fully compatible with bash
+    zsh                                                   | The default shell for Mac OS, very feature-rich but is incompatible with other shells in multiple ways
+
+</pre><h3 id="Text_Editors"><a href="#Contents">Text Editors</a></h3><pre>    nano &#60;file&#62;                                           | Opens the nano editor to create or edit &#60;file&#62;
+                                                            | shortcuts and options are displayed at the bottom of the terminal
+    vim &#60;file&#62;                                            | Opens the vim editor to create or edit &#60;file&#62;
+                                                            | exit by typing ':q' in normal mode, ':wq' to save and exit, or ':q!' to exit without saving
+                                                            | enter insert mode (start typing) by pressing 'i', exit to normal mode with the 'Esc' key, and enter visual mode (selecting text) with 'v'
+                                                            | in normal mode, type 'dd' to delete the selected line, 'yy' to copy the line, 'P' to paste before cursor, and 'p' to paste clipboard after cursor
+                                                            | select text by starting visual mode in the first position, then moving the cursor to the second position, press 'y' to copy, or 'd' to delete, then 'p' to paste
 
 </pre><h2 id="Basic_Commands"><a href="#Contents">Basic Commands</a></h2><hr><h3 id="Terminal_Navigation"><a href="#Contents">Terminal Navigation</a></h3><pre>    ls -a                                                 | Lists all files and directories in working directory
     ls -l                                                 | Lists details of all files and directories in working directory
@@ -139,10 +148,6 @@ This document aims to improve the original by adding content, removing outdated 
     cd ..                                                 | Changes to parent of working directory
     cd -                                                  | Changes to previous working directory
 
-    du -h                                                 | Lists storage usage of directories, human readable sizes
-    du -ah                                                | Lists storage usage of files & directories, human readable sizes
-    du -sh                                                | Lists storage summary of usage of directories, human readable sizes
-
     pwd                                                   | Prints the working directory
 
     history                                               | Lists history of commands
@@ -154,10 +159,72 @@ This document aims to improve the original by adding content, removing outdated 
     man &#60;command&#62;                                         | Shows the manual page for &#60;command&#62;
 
     less &#60;file&#62;                                           | Shows the contents of &#60;file&#62; in an interactive, dynamic interface
+    &#60;command&#62; | less                                      | Shows the output of &#60;command&#62; in an interactive, dynamic interface
 
     echo &#60;text&#62;                                           | Prints &#60;text&#62;
 
-</pre><h3 id="File_Manipulation"><a href="#Contents">File Manipulation</a></h3><pre>    cat &#60;file&#62;                                            | Prints the content of &#60;file&#62;
+</pre><h3 id="System_Information"><a href="#Contents">System Information</a></h3><pre>    free                                                  | Lists information about system memory
+    free -h                                               | Lists information about system memory in a human readable format
+    dmidecode -t memory                                   | Lists information about physical memory
+
+    lspci                                                 | Lists PCI and PCIe devices
+    lspci -nnk                                            | Lists PCI and PCIe devices with some detail and drivers
+    lspci -vvv                                            | Lists detailed information about PCI and PCIe devices
+    lsusb                                                 | Lists USB devices
+    lsusb -v                                              | Lists detailed USB device information
+    lsusb -vvt                                            | Lists detailed USB device information as a tree
+    lscpu                                                 | Lists CPU information
+
+    uname -a                                              | Lists system software information including: hostname, kernel, and architecture
+    hostnamectl                                           | Lists various system information
+    neofetch                                              | Lists various system information
+
+</pre><h3 id="Time_and_Date"><a href="#Contents">Time and Date</a></h3><pre>    timedatectl                                           | Prints information about current system time, time zone, and synchronization
+    hwclock --show                                        | Prints the current date and time from the hardware clock
+    date                                                  | Prints the current system time and date
+    date +%H                                              | Prints the current hour with preceding zero
+    date +%H:%M:%S                                        | Prints the current hour, minute, and seconds
+
+    timedatectl set-ntp true                              | Enables the synchronization of system time with an NTP server
+    hwclock --systohc                                     | Sets the hardware clock from the system clock
+    timedatectl set-time 'YYYY-MM-DD hh:mm:ss'            | Sets the system time and date
+    date 'MMDDhhmmYYYY'                                   | Sets the system time and date
+
+</pre><h2 id="Installing_Software"><a href="#Contents">Installing Software</a></h2><hr><h3 id="Installing_Software_Arch_Linux"><a href="#Contents">Arch Linux (Using pacman)</a></h3><pre>    pacman -S &#60;package&#62;                                   | Installs &#60;package&#62; and any dependencies
+    pacman -R &#60;package&#62;                                   | Uninstalls &#60;package&#62;
+    pacman -Rs &#60;package&#62;                                  | Uninstalls &#60;package&#62; and any dependencies which are no longer required
+
+    pacman -Qs &#60;text&#62;                                     | Searches repositories and lists packages with &#60;text&#62;
+    pacman -Syu                                           | Updates all packages
+                                                            | 'S' synchronizes packages including all dependencies
+                                                            | 'y' refreshes package database
+                                                            | 'u' upgrades outdated packages
+
+    yay -S &#60;package&#62;                                      | Installs &#60;package&#62; from the AUR if available
+                                                            | you can install yay with "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
+
+</pre><h3 id="Installing_Software_Debian"><a href="#Contents">Debian and Derivatives (Using apt)</a></h3><pre>    apt install &#60;package&#62;                                 | Installs &#60;package&#62; and any dependencies
+    apt remove &#60;package&#62;                                  | Uninstalls &#60;package&#62;
+    apt autoremove                                        | Uninstalls orphaned dependencies (packages no longer required)
+                                                            | best practice to run after "apt remove &#60;package&#62;" to clean any unused dependencies
+
+    apt search &#60;text&#62;                                     | Searches repositories and lists packages with &#60;text&#62;
+    apt update                                            | Updates repositories and checks for newer package versions
+    apt upgrade                                           | Upgrades current packages
+                                                            | best practice to first run "apt update" to get the latest packages
+    apt full-upgrade                                      | Upgrades the entire system (will remove currently installed packages if needed to update the system)
+
+</pre><h3 id="Installing_Software_From_Source"><a href="#Contents">From Source (Do Your Own Research)</a></h3><pre>    1. | wget &#60;address&#62;                                   | Downloads the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
+    2. | ls                                               | Verify file name and existence
+    3. | tar -xf &#60;archive&#62;                                | Decompress the file
+       |                                                    | if .zip: "unzip &#60;text&#62;.zip"
+    4. | ls                                               | Check for a new directory (most likely has the same, or similar name to &#60;archive&#62;)
+    5. | cd &#60;directory&#62;                                   | Change working directory to the new &#60;directory&#62;
+    6. | ./configure                                      | Create a makefile
+    7. | make                                             | Build the software package
+    8. | sudo make install                                | Install the package to the correct locations on the machine
+
+</pre><h2 id="File_Data"><a href="#Contents">File Data</a></h2><hr><h3 id="File_Manipulation"><a href="#Contents">File Manipulation</a></h3><pre>    cat &#60;file&#62;                                            | Prints the content of &#60;file&#62;
                                                             | append " | less" for better readability
     cat &#62; &#60;file&#62;                                          | Creates or overwrites &#60;file&#62;, each line you enter will be written to each line of &#60;file&#62;
     head -n &#60;number&#62; &#60;file&#62;                               | Prints the content of &#60;file&#62; at &#60;number&#62; lines from the top
@@ -203,65 +270,126 @@ This document aims to improve the original by adding content, removing outdated 
                                                             | A symbolic link (or soft link) is a file which points to another file/directory
     ln -s &#60;directory1&#62; &#60;directory2&#62;                       | Creates &#60;directory2&#62; as a symbolic link to &#60;directory1&#62;
 
-</pre><h3 id="Text_Editors"><a href="#Contents">Text Editors</a></h3><pre>    nano &#60;file&#62;                                           | Opens the nano editor to create or edit &#60;file&#62;
-                                                            | shortcuts and options are displayed at the bottom of the terminal
-    vim &#60;file&#62;                                            | Opens the vim editor to create or edit &#60;file&#62;
-                                                            | exit by typing ':q' in normal mode, ':wq' to save and exit, or ':q!' to exit without saving
-                                                            | enter insert mode (start typing) by pressing 'i', exit to normal mode with the 'Esc' key, and enter visual mode (selecting text) with 'v'
-                                                            | in normal mode, type 'dd' to delete the selected line, 'yy' to copy the line, 'P' to paste before cursor, and 'p' to paste clipboard after cursor
-                                                            | select text by starting visual mode in the first position, then moving the cursor to the second position, press 'y' to copy, or 'd' to delete, then 'p' to paste
+</pre><h3 id="File_Searching"><a href="#Contents">File Searching</a></h3><pre>    locate &#60;text&#62;                                         | Searches all file names in a database for &#60;text&#62;
+                                                            | append " | less" for better readability
+    locate -r /&#60;text&#62;$                                    | Searches all file names in a database for exact matches of &#60;text&#62;
+    updatedb                                              | Updates the database
 
-</pre><h3 id="System_Information"><a href="#Contents">System Information</a></h3><pre>    free                                                  | Lists information about system memory
-    free -h                                               | Lists information about system memory in a human readable format
-    dmidecode -t memory                                   | Lists information about physical memory
+    find &#60;directory&#62; -name "&#60;text&#62;"                       | Searches all file names in &#60;directory&#62; for "&#60;text&#62;"
+                                                            | e.g. "find ~ -name 'linux_ch*'" lists all files beginning with 'linux_ch'
+                                                            |      "find ~ -name '*.png'" lists all .png files
+                                                            | append " | less" for better readability
+    find &#60;directory&#62; -size +&#60;number&#62;&#60;k/M/G/T&#62;             | Searches &#60;directory&#62; for files larger than &#60;number&#62;, k/M/G/T are decimal prefixes
+    find -name "&#60;text&#62;" -mtime -&#60;number&#62;                  | Searches &#60;directory&#62; for files named "&#60;text&#62;" modified less than &#60;number&#62; days ago
+    find -type d                                          | Searches working directory for directories
 
-    lspci                                                 | Lists PCI and PCIe devices
-    lspci -nnk                                            | Lists PCI and PCIe devices with some detail and drivers
-    lspci -vvv                                            | Lists detailed information about PCI and PCIe devices
-    lsusb                                                 | Lists USB devices
-    lsusb -v                                              | Lists detailed USB device information
-    lsusb -vvt                                            | Lists detailed USB device information as a tree
-    lscpu                                                 | Lists CPU information
+</pre><h3 id="Reading_Sorting_and_Filtering_Data"><a href="#Contents">Reading, Sorting, and Filtering Data</a></h3><pre>    grep &#60;text&#62; &#60;file&#62;                                    | Prints lines with &#60;text&#62; in &#60;file&#62;
+    grep -i &#60;text&#62; &#60;file&#62;                                 | Prints lines with &#60;text&#62; in &#60;file&#62; while ignoring capitalization
+    grep -v &#60;text&#62; &#60;file&#62;                                 | Prints lines without &#60;text&#62; in &#60;file&#62;
+    grep -r &#60;text&#62; &#60;directory&#62;                            | Prints file names with &#60;text&#62; in &#60;directory&#62;
+    grep -E "^&#60;text&#62;" &#60;file&#62;                              | Prints lines starting with &#60;text&#62; in &#60;file&#62;
+    grep -E "&#60;text&#62;$" &#60;file&#62;                              | Prints lines ending with &#60;text&#62; in &#60;file&#62;
+    grep -E "...&#60;text&#62;" &#60;file&#62;                            | Prints lines containing any 3 characters followed by &#60;text&#62; in &#60;file&#62;
+    grep -E "[0-9]" &#60;file&#62;                                | Prints lines containing numbers in &#60;file&#62;
+    grep -E "[a-zA-Z]" &#60;file&#62;                             | Prints lines containing alphabetical letters in &#60;file&#62;
+    grep -E "^[A-Z].*\.$" &#60;file&#62;                          | Prints lines that start with a capital letter which is followed by any character, and the line ends with a period in &#60;file&#62;
 
-    uname -a                                              | Lists system software information including: hostname, kernel, and architecture
-    hostnamectl                                           | Lists various system information
-    neofetch                                              | Lists various system information
+    sort &#60;file&#62;                                           | Prints the sorted content of &#60;file&#62; alphabetically
+    sort -u &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; alphabetically and removes duplicates
+    sort -o &#60;file1&#62; &#60;file2&#62;                               | Prints the sorted content of &#60;file2&#62; alphabetically and outputs it to &#60;file1&#62;
+    sort -r &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; reverse alphabetically
+    sort -R &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; randomly
 
-</pre><h3 id="Installing_Software_Arch"><a href="#Contents">Installing Software (Arch Linux)</a></h3><pre>    pacman -S &#60;package&#62;                                   | Installs &#60;package&#62; and any dependencies
-    pacman -R &#60;package&#62;                                   | Uninstalls &#60;package&#62;
-    pacman -Rs &#60;package&#62;                                  | Uninstalls &#60;package&#62; and any dependencies which are no longer required
+    uniq &#60;file&#62;                                           | Prints the content of &#60;file&#62; without any duplicated adjacent lines
 
-    pacman -Qs &#60;text&#62;                                     | Searches repositories and lists packages with &#60;text&#62;
-    pacman -Syu                                           | Updates all packages
-                                                            | 'S' synchronizes packages including all dependencies
-                                                            | 'y' refreshes package database
-                                                            | 'u' upgrades outdated packages
+    diff &#60;file1&#62; &#60;file2&#62;                                  | Displays the differences between &#60;file1&#62; and &#60;file2&#62;
+    diff -c &#60;file1&#62; &#60;file2&#62;                               | Displays the differences between &#60;file1&#62; and &#60;file2&#62; with context for each difference
+    diff -u &#60;file1&#62; &#60;file2&#62;                               | Displays the differences between &#60;file1&#62; and &#60;file2&#62; as one file
 
-    yay -S &#60;package&#62;                                      | Installs &#60;package&#62; from the AUR if available
-                                                            | you can install yay with "pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
+    wc &#60;file&#62;                                             | Prints the number of lines, number of words, byte size, and file path
+                                                            | e.g. "wc Documents/plaintexts/*" lists all files in the plaintexts/ directory
+                                                            |      "wc ~/Documents/data/data-friday.txt"
 
-</pre><h3 id="Installing_Software_Debian"><a href="#Contents">Installing Software (Debian and Derivatives)</a></h3><pre>    apt install &#60;package&#62;                                 | Installs &#60;package&#62; and any dependencies
-    apt remove &#60;package&#62;                                  | Uninstalls &#60;package&#62;
-    apt autoremove                                        | Uninstalls orphaned dependencies (packages no longer required)
-                                                            | best practice to run after "apt remove &#60;package&#62;" to clean any unused dependencies
+    cut -c &#60;number1&#62;-&#60;number2&#62; &#60;file&#62;                     | Prints everything between and including the &#60;number1&#62; character to &#60;number2&#62; character of each line
 
-    apt search &#60;text&#62;                                     | Searches repositories and lists packages with &#60;text&#62;
-    apt update                                            | Updates repositories and checks for newer package versions
-    apt upgrade                                           | Upgrades current packages
-                                                            | best practice to first run "apt update" to get the latest packages
-    apt full-upgrade                                      | Upgrades the entire system (will remove currently installed packages if needed to update the system)
+    sed 's/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;                      | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62;
+                                                            | 's' specifies the substitution operation
+                                                            | 'g' searches for all matches in each line
+    sed '&#60;number&#62; s/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;             | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62; on line &#60;number&#62;
+    sed '&#60;number1&#62;,&#60;number2&#62; s/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;  | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62; on lines &#60;number1&#62;-&#60;number2&#62;
+    sed 's/&#60;text1&#62;/&#60;text2&#62;/&#60;number&#62;g' &#60;file1&#62;             | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; which is after and including the &#60;number&#62; occurrence in each line, with &#60;text2&#62;
+    sed -n '&#60;number1&#62;,&#60;number2&#62;p' &#60;file&#62;                  | Prints lines &#60;number1&#62; to &#60;number2&#62; in &#60;file&#62;
+                                                            | 'p' prints the matched lines
+                                                            | '-n' makes it not print the full contents of &#60;file&#62; as well
+    sed -n '/^&#60;text&#62;/p' &#60;file&#62;                            | Prints every line that starts with "&#60;text&#62;" in &#60;file&#62;
+    sed -n -e '1~2p' -e '1~7p' &#60;file&#62;                     | Prints every 2nd line starting at 1, and every 7th line starting at 1 in &#60;file&#62;
+    sed '&#60;number1&#62;,&#60;number2&#62;d' &#60;file&#62;                     | Deletes lines &#60;number1&#62;-&#60;number2&#62; in &#60;file&#62;
+    sed '&#60;number&#62;,$d' &#60;file&#62;                              | Deletes lines from line &#60;number&#62; to the last line in &#60;file&#62;
+    sed '/&#60;text&#62;/d' &#60;file&#62;                                | Deletes all lines with "&#60;text&#62;" in &#60;file&#62;
 
-</pre><h3 id="Installing_Software_Source"><a href="#Contents">Installing From Source (Do Your Own Research)</a></h3><pre>    1. | wget &#60;address&#62;                                   | Downloads the source file (is usually .tar.gz, .tar.xz, .zip, or another compressed format)
-    2. | ls                                               | Verify file name and existence
-    3. | tar -xf &#60;archive&#62;                                | Decompress the file
-       |                                                    | if .zip: "unzip &#60;text&#62;.zip"
-    4. | ls                                               | Check for a new directory (most likely has the same, or similar name to &#60;archive&#62;)
-    5. | cd &#60;directory&#62;                                   | Change working directory to the new &#60;directory&#62;
-    6. | ./configure                                      | Create a makefile
-    7. | make                                             | Build the software package
-    8. | sudo make install                                | Install the package to the correct locations on the machine
+</pre><h3 id="Compressing_and_Extracting_Data"><a href="#Contents">Compressing and Extracting Data</a></h3><pre>    tar -zcf &#60;text&#62;.tar.gz &#60;file&#62;                         | Compresses &#60;file&#62; with gzip into the archive &#60;text&#62;.tar.gz
+                                                            | 'z' uses gzip, 'j' uses bzip2, 'J' uses xz
+                                                            | e.g. "tar -Jcf all_data.tar.xz data-monday.txt data-tuesday.txt data-wednesday.txt"
 
-</pre><h2 id="Network"><a href="#Contents">Network</a></h2><hr><h3 id="Local_Network"><a href="#Contents">Local</a></h3><pre>    ip &#60;a/addr&#62;                                           | Displays information about network interfaces
+    tar -xf &#60;archive&#62;                                     | Decompresses &#60;archive&#62; and outputs contents to working directory
+    tar -tf &#60;archive&#62;                                     | Lists contents of &#60;archive&#62; without decompressing it
+
+    zcat &#60;file&#62;                                           | View compressed file in the console (same as cat)
+    zmore &#60;file&#62;                                          | View compressed file in the console (same as more)
+    zless &#60;file&#62;                                          | View compressed file in the console (same as less)
+
+</pre><h3 id="Mounting_and_Filesystems"><a href="#Contents">Mounting and Filesystems</a></h3><pre>    du -h                                                 | Lists storage usage of directories, human readable sizes
+    du -ah                                                | Lists storage usage of files & directories, human readable sizes
+    du -sh                                                | Lists storage summary of usage of directories, human readable sizes
+
+    lsblk                                                 | Lists block storage devices
+    df                                                    | Lists file systems, their available space, and mount points
+    df -h                                                 | Lists file systems, their available space with human readable sizes, and mount points
+    fdisk -l                                              | Lists all file systems in /proc/partitions
+    fdisk &#60;disk&#62;                                          | Creates and modifies partition tables on &#60;disk&#62;
+                                                            | in fdisk, enter 'm' for help, and 'q' to quit without saving
+
+    mkfs.&#60;text&#62; &#60;device&#62;                                  | When &#60;text&#62; is a valid filesystem, formats &#60;device&#62; with that filesystem
+                                                            | e.g. "mkfs.ext4 /dev/sda2"
+
+    mount &#60;device&#62; &#60;directory&#62;                            | Mounts &#60;device&#62; to &#60;directory&#62;
+    umount &#60;device&#62;                                       | Unmounts &#60;device&#62;
+
+    dd if=&#60;text1&#62;.txt of=&#60;text2&#62;.txt conv=ucase           | Creates a copy of &#60;text1&#62;.txt with all uppercase letters named &#60;text2&#62;.txt
+    dd if=&#60;disk1&#62; of=&#60;disk2&#62;                              | Clones &#60;disk1&#62; to &#60;disk2&#62;, &#60;disk2&#62; should be at least equal size to &#60;disk1&#62;
+    dd if=/dev/zero of=&#60;disk&#62;                             | Overwrites all data on &#60;disk&#62;
+    dd if=&#60;text&#62;.&#60;iso/img&#62; of=&#60;disk&#62;                      | Flashes &#60;text&#62;.&#60;iso,img&#62; to &#60;disk&#62;
+                                                            | use mkfs with appropriate filesystem on &#60;disk&#62; beforehand
+    dd if=&#60;disk&#62; of=&#60;text&#62;.&#60;iso/img&#62;                      | Makes an image of &#60;disk&#62;
+
+</pre><h2 id="Permissions"><a href="#Contents">Permissions</a></h2><hr><h3 id="Users_and_Groups"><a href="#Contents">Users and Groups</a></h3><pre>    useradd &#60;text&#62;                                        | Creates a new user named &#60;text&#62;, an alternative command 'adduser' is made to be more user-friendly
+    passwd &#60;user&#62;                                         | Changes the password for &#60;user&#62;
+    userdel &#60;user&#62;                                        | Deletes &#60;user&#62;, an alternative command 'deluser' is made to be more user-friendly
+    usermod -l &#60;text&#62; &#60;user&#62;                              | Changes the name of &#60;user&#62; to &#60;text&#62;
+
+    groupadd &#60;text&#62;                                       | Create a new user group named &#60;text&#62;, an alternative command 'addgroup' is made to be more user-friendly
+    groupdel &#60;group&#62;                                      | Deletes &#60;group&#62;, an alternative command 'delgroup' is made to be more user-friendly
+    usermod -aG &#60;group&#62; &#60;user&#62;                            | Adds &#60;user&#62; to &#60;group&#62;
+
+</pre><h3 id="File_Permissions"><a href="#Contents">File Permissions</a></h3><pre>    chown &#60;user&#62; &#60;file&#62;                                   | Sets ownership of &#60;file&#62; to &#60;user&#62;
+    chown &#60;user&#62;:&#60;group&#62; &#60;file&#62;                           | Sets user ownership of &#60;file&#62; to &#60;user&#62; and group ownership to &#60;group&#62;
+    chown -R &#60;user&#62;:&#60;group&#62; &#60;directory&#62;                   | Sets user ownership of &#60;directory&#62; and all subdirectories to &#60;user&#62; and group ownership to &#60;group&#62;
+    chmod &#60;u/g/o/a&#62;&#60;+/-/=&#62;&#60;r/w/x&#62; &#60;file&#62;                  | Modifies permissions of &#60;file&#62;
+                                                            | 'u' is user, 'g' is group, 'o' is other, 'a' is all
+                                                            | '+' adds a right, '-' removes a right, '=' sets a right
+                                                            | 'r' is read permission, 'w' is write permission, 'x' allows execution
+                                                            | e.g. "chmod a+x startup.sh" makes startup.sh executable by anyone
+                                                            |      "chmod ug+rwx data.txt" gives full permissions of data.txt to user and group
+    chmod &#60;number1&#62;&#60;number2&#62;&#60;number3&#62; &#60;file&#62;              | Modifies permissions of &#60;file&#62;
+                                                            | &#60;number&#62; can be any whole number from 0-7
+                                                            | 'r'=4, 'w'=2, 'x'=1
+                                                            | &#60;number1&#62; is user, &#60;number2&#62; is group, &#60;number3&#62; is other
+                                                            | e.g. 'rwx'='4+2+1'=7
+                                                            |      'rx'='4+1'=5
+                                                            |      "chmod 777 startup.sh" gives everyone read, write, and execute permissions
+                                                            |      "chmod 664 photo.jpg" gives user and group read and write permissions, and read permission to others
+
+</pre><h2 id="Network"><a href="#Contents">Network</a></h2><hr><h3 id="Local_Area_Network"><a href="#Contents">Local Area Network</a></h3><pre>    ip &#60;a/addr&#62;                                           | Displays information about network interfaces
 
     nmcli                                                 | Displays status and configurations of network interfaces
     nmcli device wifi list                                | Lists available Wi-Fi access points
@@ -317,105 +445,6 @@ This document aims to improve the original by adding content, removing outdated 
     rsync -P &#60;user&#62;@&#60;address&#62;:&#60;source&#62; &#60;dest&#62;             | Copies &#60;source&#62; from &#60;address&#62; to &#60;dest&#62; on local machine and allows resuming the command after interruption
 
     w3m &#60;address&#62;                                         | Opens a TUI internet browser and loads &#60;address&#62;, not included on most distributions
-
-</pre><h2 id="File_Data"><a href="#Contents">File Data</a></h2><hr><h3 id="File_Searching"><a href="#Contents">File Searching</a></h3><pre>    locate &#60;text&#62;                                         | Searches all file names in a database for &#60;text&#62;
-                                                            | append " | less" for better readability
-    locate -r /&#60;text&#62;$                                    | Searches all file names in a database for exact matches of &#60;text&#62;
-    updatedb                                              | Updates the database
-
-    find &#60;directory&#62; -name "&#60;text&#62;"                       | Searches all file names in &#60;directory&#62; for "&#60;text&#62;"
-                                                            | e.g. "find ~ -name 'linux_ch*'" lists all files beginning with 'linux_ch'
-                                                            |      "find ~ -name '*.png'" lists all .png files
-                                                            | append " | less" for better readability
-    find &#60;directory&#62; -size +&#60;number&#62;&#60;k/M/G/T&#62;             | Searches &#60;directory&#62; for files larger than &#60;number&#62;, k/M/G/T are decimal prefixes
-    find -name "&#60;text&#62;" -mtime -&#60;number&#62;                  | Searches &#60;directory&#62; for files named "&#60;text&#62;" modified less than &#60;number&#62; days ago
-    find -type d                                          | Searches working directory for directories
-
-</pre><h3 id="Extracting_Sorting_Filtering_Data"><a href="#Contents">Extracting, Sorting, and Filtering Data</a></h3><pre>    grep &#60;text&#62; &#60;file&#62;                                    | Prints lines with &#60;text&#62; in &#60;file&#62;
-    grep -i &#60;text&#62; &#60;file&#62;                                 | Prints lines with &#60;text&#62; in &#60;file&#62; while ignoring capitalization
-    grep -v &#60;text&#62; &#60;file&#62;                                 | Prints lines without &#60;text&#62; in &#60;file&#62;
-    grep -r &#60;text&#62; &#60;directory&#62;                            | Prints file names with &#60;text&#62; in &#60;directory&#62;
-    grep -E "^&#60;text&#62;" &#60;file&#62;                              | Prints lines starting with &#60;text&#62; in &#60;file&#62;
-    grep -E "&#60;text&#62;$" &#60;file&#62;                              | Prints lines ending with &#60;text&#62; in &#60;file&#62;
-    grep -E "...&#60;text&#62;" &#60;file&#62;                            | Prints lines containing any 3 characters followed by &#60;text&#62; in &#60;file&#62;
-    grep -E "[0-9]" &#60;file&#62;                                | Prints lines containing numbers in &#60;file&#62;
-    grep -E "[a-zA-Z]" &#60;file&#62;                             | Prints lines containing alphabetical letters in &#60;file&#62;
-    grep -E "^[A-Z].*\.$" &#60;file&#62;                          | Prints lines that start with a capital letter which is followed by any character, and the line ends with a period in &#60;file&#62;
-
-    sort &#60;file&#62;                                           | Prints the sorted content of &#60;file&#62; alphabetically
-    sort -u &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; alphabetically and removes duplicates
-    sort -o &#60;file1&#62; &#60;file2&#62;                               | Prints the sorted content of &#60;file2&#62; alphabetically and outputs it to &#60;file1&#62;
-    sort -r &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; reverse alphabetically
-    sort -R &#60;file&#62;                                        | Prints the sorted content of &#60;file&#62; randomly
-
-    uniq &#60;file&#62;                                           | Prints the content of &#60;file&#62; without any duplicated adjacent lines
-
-    diff &#60;file1&#62; &#60;file2&#62;                                  | Displays the differences between &#60;file1&#62; and &#60;file2&#62;
-    diff -c &#60;file1&#62; &#60;file2&#62;                               | Displays the differences between &#60;file1&#62; and &#60;file2&#62; with context for each difference
-    diff -u &#60;file1&#62; &#60;file2&#62;                               | Displays the differences between &#60;file1&#62; and &#60;file2&#62; as one file
-
-    wc &#60;file&#62;                                             | Prints the number of lines, number of words, byte size, and file path
-                                                            | e.g. "wc Documents/plaintexts/*" lists all files in the plaintexts/ directory
-                                                            |      "wc ~/Documents/data/data-friday.txt"
-
-    cut -c &#60;number1&#62;-&#60;number2&#62; &#60;file&#62;                     | Prints everything between and including the &#60;number1&#62; character to &#60;number2&#62; character of each line
-
-    sed 's/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;                      | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62;
-                                                            | 's' specifies the substitution operation
-                                                            | 'g' searches for all matches in each line
-    sed '&#60;number&#62; s/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;             | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62; on line &#60;number&#62;
-    sed '&#60;number1&#62;,&#60;number2&#62; s/&#60;text1&#62;/&#60;text2&#62;/g' &#60;file&#62;  | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; with &#60;text2&#62; on lines &#60;number1&#62;-&#60;number2&#62;
-    sed 's/&#60;text1&#62;/&#60;text2&#62;/&#60;number&#62;g' &#60;file1&#62;             | Prints the content of &#60;file&#62;, replacing every occurrence of &#60;text1&#62; which is after and including the &#60;number&#62; occurrence in each line, with &#60;text2&#62;
-    sed -n '&#60;number1&#62;,&#60;number2&#62;p' &#60;file&#62;                  | Prints lines &#60;number1&#62; to &#60;number2&#62; in &#60;file&#62;
-                                                            | 'p' prints the matched lines
-                                                            | '-n' makes it not print the full contents of &#60;file&#62; as well
-    sed -n '/^&#60;text&#62;/p' &#60;file&#62;                            | Prints every line that starts with "&#60;text&#62;" in &#60;file&#62;
-    sed -n -e '1~2p' -e '1~7p' &#60;file&#62;                     | Prints every 2nd line starting at 1, and every 7th line starting at 1 in &#60;file&#62;
-    sed '&#60;number1&#62;,&#60;number2&#62;d' &#60;file&#62;                     | Deletes lines &#60;number1&#62;-&#60;number2&#62; in &#60;file&#62;
-    sed '&#60;number&#62;,$d' &#60;file&#62;                              | Deletes lines from line &#60;number&#62; to the last line in &#60;file&#62;
-    sed '/&#60;text&#62;/d' &#60;file&#62;                                | Deletes all lines with "&#60;text&#62;" in &#60;file&#62;
-
-</pre><h3 id="Compressing_and_Extracting_Data"><a href="#Contents">Compressing and Extracting Data</a></h3><pre>    tar -zcf &#60;text&#62;.tar.gz &#60;file&#62;                         | Compresses &#60;file&#62; with gzip into the archive &#60;text&#62;.tar.gz
-                                                            | 'z' uses gzip, 'j' uses bzip2, 'J' uses xz
-                                                            | e.g. "tar -Jcf all_data.tar.xz data-monday.txt data-tuesday.txt data-wednesday.txt"
-
-    tar -xf &#60;archive&#62;                                     | Decompresses &#60;archive&#62; and outputs contents to working directory
-    tar -tf &#60;archive&#62;                                     | Lists contents of &#60;archive&#62; without decompressing it
-
-    zcat &#60;file&#62;                                           | View compressed file in the console (same as cat)
-    zmore &#60;file&#62;                                          | View compressed file in the console (same as more)
-    zless &#60;file&#62;                                          | View compressed file in the console (same as less)
-
-</pre><h3 id="Mounting_and_Filesystems"><a href="#Contents">Mounting and Filesystems</a></h3><pre>    lsblk                                                 | Lists block storage devices
-    df                                                    | Lists file systems, their available space, and mount points
-    df -h                                                 | Lists file systems, their available space with human readable sizes, and mount points
-    fdisk -l                                              | Lists all file systems in /proc/partitions
-    fdisk &#60;disk&#62;                                          | Creates and modifies partition tables on &#60;disk&#62;
-                                                            | in fdisk, enter 'm' for help, and 'q' to quit without saving
-
-    mkfs.&#60;text&#62; &#60;device&#62;                                  | When &#60;text&#62; is a valid filesystem, formats &#60;device&#62; with that filesystem
-                                                            | e.g. "mkfs.ext4 /dev/sda2"
-
-    mount &#60;device&#62; &#60;directory&#62;                            | Mounts &#60;device&#62; to &#60;directory&#62;
-    umount &#60;device&#62;                                       | Unmounts &#60;device&#62;
-
-    dd if=&#60;text1&#62;.txt of=&#60;text2&#62;.txt conv=ucase           | Creates a copy of &#60;text1&#62;.txt with all uppercase letters named &#60;text2&#62;.txt
-    dd if=&#60;disk1&#62; of=&#60;disk2&#62;                              | Clones &#60;disk1&#62; to &#60;disk2&#62;, &#60;disk2&#62; should be at least equal size to &#60;disk1&#62;
-    dd if=/dev/zero of=&#60;disk&#62;                             | Overwrites all data on &#60;disk&#62;
-    dd if=&#60;text&#62;.&#60;iso/img&#62; of=&#60;disk&#62;                      | Flashes &#60;text&#62;.&#60;iso,img&#62; to &#60;disk&#62;
-                                                            | use mkfs with appropriate filesystem on &#60;disk&#62; beforehand
-    dd if=&#60;disk&#62; of=&#60;text&#62;.&#60;iso/img&#62;                      | Makes an image of &#60;disk&#62;
-
-</pre><h2 id="Time_and_Date"><a href="#Contents">Time and Date</a></h2><hr><h3 id="Viewing_Time_and_Date"><a href="#Contents">Viewing</a></h3><pre>    timedatectl                                           | Prints information about current system time, time zone, and synchronization
-    hwclock --show                                        | Prints the current date and time from the hardware clock
-    date                                                  | Prints the current system time and date
-    date +%H                                              | Prints the current hour with preceding zero
-    date +%H:%M:%S                                        | Prints the current hour, minute, and seconds
-
-</pre><h3 id="Modifying_Time_and_Date"><a href="#Contents">Modifying</a></h3><pre>    timedatectl set-ntp true                              | Enables the synchronization of system time with an NTP server
-    hwclock --systohc                                     | Sets the hardware clock from the system clock
-    timedatectl set-time 'YYYY-MM-DD hh:mm:ss'            | Sets the system time and date
-    date 'MMDDhhmmYYYY'                                   | Sets the system time and date
 
 </pre><h2 id="Programs"><a href="#Contents">Programs</a></h2><hr><h3 id="Scheduling_Programs"><a href="#Contents">Scheduling Programs</a></h3><pre>    watch &#60;command&#62;                                       | Executes &#60;command&#62; every 2 seconds and displays the output
     watch -n &#60;number&#62; &#60;command&#62;                           | Executes &#60;command&#62; every &#60;number&#62; seconds (up to 1 decimal place) and displays the output
@@ -473,34 +502,7 @@ This document aims to improve the original by adding content, removing outdated 
     reboot                                                | Restarts the machine
     shutdown -r                                           | Restarts the machine
 
-</pre><h2 id="Permissions"><a href="#Contents">Permissions</a></h2><hr><h3 id="Users_and_Groups"><a href="#Contents">Users and Groups</a></h3><pre>    useradd &#60;text&#62;                                        | Creates a new user named &#60;text&#62;, an alternative command 'adduser' is made to be more user-friendly
-    passwd &#60;user&#62;                                         | Changes the password for &#60;user&#62;
-    userdel &#60;user&#62;                                        | Deletes &#60;user&#62;, an alternative command 'deluser' is made to be more user-friendly
-    usermod -l &#60;text&#62; &#60;user&#62;                              | Changes the name of &#60;user&#62; to &#60;text&#62;
-
-    groupadd &#60;text&#62;                                       | Create a new user group named &#60;text&#62;, an alternative command 'addgroup' is made to be more user-friendly
-    groupdel &#60;group&#62;                                      | Deletes &#60;group&#62;, an alternative command 'delgroup' is made to be more user-friendly
-    usermod -aG &#60;group&#62; &#60;user&#62;                            | Adds &#60;user&#62; to &#60;group&#62;
-
-</pre><h3 id="File_Permissions"><a href="#Contents">File Permissions</a></h3><pre>    chown &#60;user&#62; &#60;file&#62;                                   | Sets ownership of &#60;file&#62; to &#60;user&#62;
-    chown &#60;user&#62;:&#60;group&#62; &#60;file&#62;                           | Sets user ownership of &#60;file&#62; to &#60;user&#62; and group ownership to &#60;group&#62;
-    chown -R &#60;user&#62;:&#60;group&#62; &#60;directory&#62;                   | Sets user ownership of &#60;directory&#62; and all subdirectories to &#60;user&#62; and group ownership to &#60;group&#62;
-    chmod &#60;u/g/o/a&#62;&#60;+/-/=&#62;&#60;r/w/x&#62; &#60;file&#62;                  | Modifies permissions of &#60;file&#62;
-                                                            | 'u' is user, 'g' is group, 'o' is other, 'a' is all
-                                                            | '+' adds a right, '-' removes a right, '=' sets a right
-                                                            | 'r' is read permission, 'w' is write permission, 'x' allows execution
-                                                            | e.g. "chmod a+x startup.sh" makes startup.sh executable by anyone
-                                                            |      "chmod ug+rwx data.txt" gives full permissions of data.txt to user and group
-    chmod &#60;number1&#62;&#60;number2&#62;&#60;number3&#62; &#60;file&#62;              | Modifies permissions of &#60;file&#62;
-                                                            | &#60;number&#62; can be any whole number from 0-7
-                                                            | 'r'=4, 'w'=2, 'x'=1
-                                                            | &#60;number1&#62; is user, &#60;number2&#62; is group, &#60;number3&#62; is other
-                                                            | e.g. 'rwx'='4+2+1'=7
-                                                            |      'rx'='4+1'=5
-                                                            |      "chmod 777 startup.sh" gives everyone read, write, and execute permissions
-                                                            |      "chmod 664 photo.jpg" gives user and group read and write permissions, and read permission to others
-
-</pre><h2 id="Multiple_Commands"><a href="#Contents">Multiple Commands</a></h2><hr><h3 id="Flow_Redirection"><a href="#Contents">Flow Redirection</a></h3><pre>    &#60;command&#62; &#62; &#60;file&#62;                                    | Standard output of &#60;command&#62; is redirected to &#60;file&#62;
+</pre><h2 id="Managing_Commands"><a href="#Contents">Managing Commands</a></h2><hr><h3 id="Flow_Redirection"><a href="#Contents">Flow Redirection</a></h3><pre>    &#60;command&#62; &#62; &#60;file&#62;                                    | Standard output of &#60;command&#62; is redirected to &#60;file&#62;
                                                             | e.g. "ps -ejH &#62; output.txt"
                                                             |      "cat &#62; data.txt"
     &#60;command&#62; 2&#62; &#60;file&#62;                                   | Error output of &#60;command&#62; is redirected to &#60;file&#62;
